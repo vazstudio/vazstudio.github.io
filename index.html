@@ -1,27 +1,1174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>VAZ — Creative Design Studio</title>
+
+<meta name="description" content="VAZ Creative Design Studio — تصميم هويات بصرية، شعارات، محتوى وإبداع بصري للعلامات التجارية.">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#08090c;color:#f7f7f8;line-height:1.5}a{text-decoration:none;color:inherit}.wrap{max-width:1100px;margin:auto;padding:0 22px}
-header{position:sticky;top:0;z-index:5;background:rgba(8,9,12,.85);backdrop-filter:blur(15px);border-bottom:1px solid #252833}nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:28px;font-weight:900;letter-spacing:-2px}.logo span{color:#d9ff3f}nav ul{display:flex;gap:25px;list-style:none;color:#c8cbd1;font-size:14px}.navbtn,.primary{background:#d9ff3f;color:#08090c}.navbtn{padding:11px 17px;border-radius:999px;font-weight:800;font-size:14px}
-.hero{padding:105px 0 85px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:330px;height:330px;background:#d9ff3f;opacity:.08;filter:blur(100px);right:-80px;top:30px;border-radius:50%}.eyebrow{display:inline-block;border:1px solid #30342c;color:#d9ff3f;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:22px}h1{font-size:clamp(50px,9vw,100px);line-height:.92;letter-spacing:-5px;max-width:900px}h1 em{font-style:normal;color:#d9ff3f}.hero p{max-width:610px;color:#9da1aa;font-size:18px;margin:28px 0}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-block;padding:14px 20px;border-radius:12px;font-weight:800}.secondary{border:1px solid #252833}
-section{padding:75px 0}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}h2{font-size:38px;letter-spacing:-2px}.sectionhead p{color:#9da1aa;max-width:430px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#111319;border:1px solid #252833;border-radius:20px;padding:28px;min-height:210px}.num{color:#d9ff3f;font-weight:900;font-size:13px}.card h3{font-size:22px;margin:45px 0 8px}.card p{color:#9da1aa;font-size:14px}
-.about{background:#0e1015;border-top:1px solid #252833;border-bottom:1px solid #252833}.aboutbox{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.about p{color:#9da1aa;font-size:17px}.price{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #252833;padding:20px 0}.price:first-child{border-top:0}.price span{color:#d9ff3f;font-weight:800}.contact{border:1px solid #252833;background:#111319;border-radius:24px;padding:45px;text-align:center}.contact p{color:#9da1aa;margin:12px auto 25px;max-width:560px}footer{padding:35px 0;color:#777b84;border-top:1px solid #252833;font-size:13px}
-@media(max-width:750px){nav ul{display:none}.hero{padding:80px 0 65px}h1{letter-spacing:-3px}.grid,.aboutbox{grid-template-columns:1fr}.sectionhead{display:block}.sectionhead p{margin-top:10px}.contact{padding:32px 20px}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --purple:#26004d;
+  --purple2:#430078;
+  --violet:#6d16a8;
+  --light:#f8f5ff;
+  --dark:#10051c;
+  --text:#20152a;
+  --muted:#756b80;
+  --white:#ffffff;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
+  background:var(--light);
+  color:var(--text);
+  line-height:1.7;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(38,0,77,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:15px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  font-size:32px;
+  font-weight:300;
+  letter-spacing:8px;
+}
+
+.logo-mark{
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  letter-spacing:1px;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  color:#eee5f8;
+  font-size:15px;
+}
+
+.nav-links a{
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:#d8a7ff;
+}
+
+.nav-button{
+  padding:10px 20px;
+  border:1px solid rgba(255,255,255,.4);
+  border-radius:30px;
+  color:#fff;
+  transition:.3s;
+}
+
+.nav-button:hover{
+  background:#fff;
+  color:var(--purple);
+}
+
+/* HERO */
+
+.hero{
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  background:
+    radial-gradient(circle at 75% 30%,rgba(130,42,190,.38),transparent 28%),
+    radial-gradient(circle at 15% 80%,rgba(104,0,165,.25),transparent 30%),
+    linear-gradient(135deg,#17002f,#32005d 55%,#160025);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+  right:-180px;
+  top:-180px;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.06);
+  left:-120px;
+  bottom:-150px;
+}
+
+.hero-inner{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:80px 25px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:60px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.hero-label{
+  display:inline-block;
+  padding:7px 15px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:30px;
+  color:#dfc8f0;
+  font-size:13px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-size:clamp(48px,7vw,86px);
+  line-height:1.05;
+  font-weight:300;
+  margin-bottom:25px;
+}
+
+.hero h1 strong{
+  font-weight:700;
+  background:linear-gradient(90deg,#fff,#d9aaff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:#d7cce0;
+  max-width:580px;
+  font-size:18px;
+  margin-bottom:35px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 28px;
+  border-radius:35px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn-primary{
+  background:#fff;
+  color:var(--purple);
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.btn-outline{
+  border:1px solid rgba(255,255,255,.35);
+  color:#fff;
+}
+
+.btn-outline:hover{
+  background:rgba(255,255,255,.1);
+}
+
+/* LOGO DISPLAY */
+
+.hero-logo{
+  min-height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo-art{
+  position:relative;
+  width:390px;
+  max-width:90%;
+  padding:65px 25px;
+  border-radius:35px;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(160,70,220,.25),transparent 45%),
+    rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
+  text-align:center;
+}
+
+.logo-art .vaz{
+  font-family:Georgia,serif;
+  font-size:92px;
+  font-weight:300;
+  letter-spacing:5px;
+  color:#fff;
+}
+
+.logo-art .star{
+  position:absolute;
+  top:35px;
+  right:80px;
+  font-size:28px;
+  color:#fff;
+}
+
+.logo-art .curve{
+  width:250px;
+  height:25px;
+  border-bottom:2px solid #fff;
+  border-radius:50%;
+  margin:-5px auto 0;
+  transform:rotate(-5deg);
+}
+
+/* SECTIONS */
+
+section{
+  padding:100px 25px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.section-head{
+  max-width:700px;
+  margin-bottom:55px;
+}
+
+.eyebrow{
+  color:var(--violet);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.section-head h2{
+  font-size:clamp(34px,5vw,54px);
+  line-height:1.15;
+  margin-bottom:15px;
+}
+
+.section-head p{
+  color:var(--muted);
+}
+
+/* ABOUT */
+
+.about{
+  background:#fff;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.about-card{
+  background:linear-gradient(145deg,#28004f,#4d087c);
+  color:#fff;
+  border-radius:30px;
+  padding:55px;
+  min-height:330px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 25px 60px rgba(38,0,77,.18);
+}
+
+.about-card span{
+  font-size:70px;
+  font-family:Georgia,serif;
+  opacity:.9;
+}
+
+.about-card h3{
+  font-size:30px;
+  margin:10px 0;
+}
+
+.about-text p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+/* SERVICES */
+
+.services{
+  background:#f5f0fa;
+}
+
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.service{
+  background:#fff;
+  border-radius:25px;
+  padding:35px;
+  border:1px solid #eee6f4;
+  transition:.35s;
+}
+
+.service:hover{
+  transform:translateY(-8px);
+  border-color:#d7b4ee;
+  box-shadow:0 20px 50px rgba(40,0,80,.08);
+}
+
+.service-number{
+  color:#b68bd0;
+  font-size:13px;
+  margin-bottom:25px;
+}
+
+.service h3{
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.service p{
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* WORK */
+
+.work{
+  background:#fff;
+}
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.work-item{
+  min-height:270px;
+  border-radius:25px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 20%,#7c27a8,transparent 35%),
+    linear-gradient(135deg,#19002e,#480077);
+  display:flex;
+  align-items:flex-end;
+  padding:25px;
+  color:#fff;
+  position:relative;
+}
+
+.work-item:nth-child(2){
+  background:
+    radial-gradient(circle at 80% 20%,#b25cdb,transparent 35%),
+    linear-gradient(135deg,#260044,#5c1683);
+}
+
+.work-item:nth-child(3){
+  background:
+    radial-gradient(circle at 30% 70%,#8b42c0,transparent 35%),
+    linear-gradient(135deg,#11001e,#36005d);
+}
+
+.work-item:nth-child(4){
+  background:
+    radial-gradient(circle at 80% 70%,#9e47cb,transparent 35%),
+    linear-gradient(135deg,#22003d,#4e0870);
+}
+
+.work-item:nth-child(5){
+  background:
+    radial-gradient(circle at 20% 20%,#b66bd2,transparent 30%),
+    linear-gradient(135deg,#18002c,#43005f);
+}
+
+.work-item:nth-child(6){
+  background:
+    radial-gradient(circle at 70% 30%,#7d2fa6,transparent 30%),
+    linear-gradient(135deg,#100019,#30004e);
+}
+
+.work-title{
+  position:relative;
+  z-index:2;
+}
+
+.work-title small{
+  opacity:.7;
+}
+
+.work-title h3{
+  font-size:24px;
+}
+
+/* PROCESS */
+
+.process{
+  background:#150021;
+  color:#fff;
+}
+
+.process .section-head p{
+  color:#b9adbf;
+}
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.step{
+  padding:30px 0;
+  border-top:1px solid rgba(255,255,255,.2);
+}
+
+.step-number{
+  color:#c889eb;
+  font-size:14px;
+  margin-bottom:25px;
+}
+
+.step h3{
+  font-size:21px;
+  margin-bottom:10px;
+}
+
+.step p{
+  color:#a99caf;
+  font-size:14px;
+}
+
+/* CTA */
+
+.cta{
+  background:
+    radial-gradient(circle at 20% 20%,rgba(154,63,209,.35),transparent 30%),
+    linear-gradient(135deg,#32005b,#19002f);
+  color:#fff;
+  text-align:center;
+}
+
+.cta h2{
+  font-size:clamp(38px,6vw,65px);
+  margin-bottom:18px;
+}
+
+.cta p{
+  color:#d8cce1;
+  max-width:600px;
+  margin:0 auto 30px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#0d0017;
+  color:#aaa0b0;
+  padding:45px 25px;
+}
+
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+}
+
+.footer-logo{
+  color:#fff;
+  font-family:Georgia,serif;
+  font-size:30px;
+  letter-spacing:5px;
+}
+
+.footer-links{
+  display:flex;
+  gap:20px;
+  font-size:14px;
+}
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+  position:fixed;
+  left:22px;
+  bottom:22px;
+  z-index:2000;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#25D366;
+  color:#fff;
+  font-size:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  transition:.3s;
+}
+
+.whatsapp:hover{
+  transform:scale(1.08);
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  .nav{
+    padding:13px 18px;
+  }
+
+  .logo{
+    font-size:25px;
+    letter-spacing:5px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    padding:70px 20px;
+    text-align:center;
+  }
+
+  .hero p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+
+  .hero-logo{
+    min-height:270px;
+  }
+
+  .logo-art{
+    padding:50px 15px;
+  }
+
+  .logo-art .vaz{
+    font-size:70px;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .service-grid,
+  .work-grid{
+    grid-template-columns:1fr;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  section{
+    padding:75px 20px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .footer-links{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+}
+
+@media(max-width:500px){
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .about-card{
+    padding:35px;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .work-item{
+    min-height:230px;
+  }
+}
 </style>
 </head>
+
 <body>
-<header><div class="wrap"><nav><a class="logo" href="#">VA<span>Z</span></a><ul><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#pricing">Packages</a></li></ul><a class="navbtn" href="#contact">Start a project</a></nav></div></header>
+
+<header>
+  <nav class="nav">
+
+    <a href="#home" class="logo">
+      <span class="logo-mark">V</span>
+      VAZ
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">عن VAZ</a>
+      <a href="#services">الخدمات</a>
+      <a href="#work">أعمالنا</a>
+      <a href="#process">طريقة العمل</a>
+    </div>
+
+    <a class="nav-button" href="#contact">
+      تواصل معنا
+    </a>
+
+  </nav>
+</header>
+
 <main>
-<section class="hero"><div class="wrap"><div class="eyebrow">CREATIVE DESIGN STUDIO</div><h1>We make brands look <em>unforgettable.</em></h1><p>VAZ creates premium visual identities, social media designs and digital experiences that make businesses stand out.</p><div class="actions"><a class="btn primary" href="#contact">Start a project →</a><a class="btn secondary" href="#services">Explore services</a></div></div></section>
-<section id="services"><div class="wrap"><div class="sectionhead"><h2>What we do.</h2><p>Focused design solutions built to give your brand a stronger and more professional presence.</p></div><div class="grid"><article class="card"><div class="num">01 / BRANDING</div><h3>Brand Identity</h3><p>Logos, visual direction and brand systems designed to feel distinctive.</p></article><article class="card"><div class="num">02 / SOCIAL</div><h3>Social Media</h3><p>Premium posts, ads and content visuals that capture attention.</p></article><article class="card"><div class="num">03 / DIGITAL</div><h3>Web Design</h3><p>Clean, modern landing pages and digital experiences for growing brands.</p></article></div></div></section>
-<section id="about" class="about"><div class="wrap aboutbox"><div><div class="eyebrow">ABOUT VAZ</div><h2>Simple. Bold. Premium.</h2></div><p>We believe great design should not only look beautiful — it should communicate clearly, build trust and help your business get noticed. VAZ combines modern aesthetics with practical design thinking.</p></div></section>
-<section id="pricing"><div class="wrap"><div class="sectionhead"><h2>Packages.</h2><p>Flexible starting points for businesses and creators.</p></div><div class="card"><div class="price"><strong>Starter Design</strong><span>From $25</span></div><div class="price"><strong>Social Media Package</strong><span>From $60</span></div><div class="price"><strong>Brand Identity</strong><span>From $120</span></div><div class="price"><strong>Custom Project</strong><span>Let's talk</span></div></div></div></section>
-<section id="contact"><div class="wrap"><div class="contact"><div class="eyebrow">LET'S CREATE</div><h2>Have a project in mind?</h2><p>Tell us what you need and let's turn your idea into a visual identity people remember.</p><a class="btn primary" href="https://wa.me/966580015256">Contact VAZ on WhatsApp →</a></div></div></section>
+
+<section class="hero" id="home">
+
+  <div class="hero-inner">
+
+    <div>
+
+      <span class="hero-label">
+        VAZ — Creative Design Studio
+      </span>
+
+      <h1>
+        نصنع <strong>هوية</strong><br>
+        تُرى وتُذكر.
+      </h1>
+
+      <p>
+        استوديو VAZ الإبداعي للتصميم والهوية البصرية.
+        نحول الأفكار إلى تجارب بصرية أنيقة، حديثة وفاخرة
+        تليق بالعلامات التجارية الطموحة.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#contact" class="btn btn-primary">
+          ابدأ مشروعك
+        </a>
+
+        <a href="#work" class="btn btn-outline">
+          شاهد أعمالنا
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-logo">
+
+      <div class="logo-art">
+
+        <div class="star">✦</div>
+
+        <div class="vaz">
+          VAZ
+        </div>
+
+        <div class="curve"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="about" id="about">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        About VAZ
+      </div>
+
+      <h2>
+        التصميم ليس مجرد شكل.
+      </h2>
+
+      <p>
+        هو الطريقة التي تتحدث بها علامتك التجارية قبل أن تقول أي كلمة.
+      </p>
+
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-card">
+
+        <span>✦</span>
+
+        <h3>
+          VAZ
+        </h3>
+
+        <p>
+          Creative Design Studio
+        </p>
+
+      </div>
+
+      <div class="about-text">
+
+        <p>
+          في VAZ نؤمن أن العلامة التجارية القوية تبدأ بفكرة واضحة
+          ثم تتحول إلى هوية بصرية متناسقة ومميزة.
+        </p>
+
+        <p>
+          من الشعار إلى الألوان، ومن المحتوى إلى التفاصيل الصغيرة،
+          نصمم تجربة متكاملة تجعل مشروعك يبدو أكثر احترافية
+          وأكثر قابلية للتذكر.
+        </p>
+
+        <p>
+          هدفنا بسيط:
+          <strong>أن نجعل علامتك تبدو كما تتخيلها — بل أفضل.</strong>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="services" id="services">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        Services
+      </div>
+
+      <h2>
+        ماذا نصمم لك؟
+      </h2>
+
+      <p>
+        حلول تصميمية متكاملة تناسب العلامات التجارية والمشاريع والأفراد.
+      </p>
+
+    </div>
+
+    <div class="service-grid">
+
+      <article class="service">
+
+        <div class="service-number">01</div>
+
+        <h3>
+          الهوية البصرية
+        </h3>
+
+        <p>
+          بناء هوية متكاملة تشمل الشعار، الألوان،
+          الخطوط والعناصر البصرية للعلامة التجارية.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="service-number">02</div>
+
+        <h3>
+          تصميم الشعارات
+        </h3>
+
+        <p>
+          شعار مميز ومدروس يعكس شخصية مشروعك
+          ويمنحه حضوراً بصرياً احترافياً.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="service-number">03</div>
+
+        <h3>
+          محتوى السوشيال ميديا
+        </h3>
+
+        <p>
+          تصاميم جذابة ومتناسقة لمنصات التواصل
+          تساعد علامتك على الظهور بصورة أقوى.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="service-number">04</div>
+
+        <h3>
+          تصاميم إعلانية
+        </h3>
+
+        <p>
+          تصاميم للحملات والعروض والإعلانات
+          بأسلوب واضح ولافت للنظر.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="service-number">05</div>
+
+        <h3>
+          تصاميم مخصصة
+        </h3>
+
+        <p>
+          لديك فكرة مختلفة؟
+          نصمم لك الحل البصري المناسب لها من الصفر.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="service-number">06</div>
+
+        <h3>
+          تطوير العلامة التجارية
+        </h3>
+
+        <p>
+          تحسين الشكل البصري الحالي للعلامة
+          وجعله أكثر عصرية واحترافية.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="work" id="work">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        Selected Work
+      </div>
+
+      <h2>
+        أعمال بتفاصيل تصنع الفرق.
+      </h2>
+
+      <p>
+        مجموعة من الاتجاهات البصرية التي يمكن أن نبنيها لعلامتك.
+      </p>
+
+    </div>
+
+
+    <div class="work-grid">
+
+      <div class="work-item">
+        <div class="work-title">
+          <small>Brand Identity</small>
+          <h3>Luxury Brand</h3>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-title">
+          <small>Visual Identity</small>
+          <h3>Modern Studio</h3>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-title">
+          <small>Logo Design</small>
+          <h3>Minimal Concept</h3>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-title">
+          <small>Social Media</small>
+          <h3>Creative Campaign</h3>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-title">
+          <small>Branding</small>
+          <h3>Premium Identity</h3>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-title">
+          <small>Art Direction</small>
+          <h3>Visual Experience</h3>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="process" id="process">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="eyebrow">
+        Our Process
+      </div>
+
+      <h2>
+        من الفكرة إلى الهوية.
+      </h2>
+
+      <p>
+        نعمل بطريقة واضحة حتى تعرف ماذا يحدث في كل مرحلة.
+      </p>
+
+    </div>
+
+
+    <div class="process-grid">
+
+      <div class="step">
+
+        <div class="step-number">01 — DISCOVER</div>
+
+        <h3>
+          نفهم مشروعك
+        </h3>
+
+        <p>
+          نتعرف على فكرتك، جمهورك، منافسيك
+          والشخصية التي تريد أن تظهر بها.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">02 — CONCEPT</div>
+
+        <h3>
+          نبني الفكرة
+        </h3>
+
+        <p>
+          نحدد الاتجاه البصري المناسب
+          ونبدأ بتحويل الفكرة إلى تصميم.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">03 — DESIGN</div>
+
+        <h3>
+          نصمم التفاصيل
+        </h3>
+
+        <p>
+          نطور الشعار والألوان والعناصر
+          ونبني تجربة بصرية متناسقة.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="step-number">04 — DELIVER</div>
+
+        <h3>
+          نسلّم المشروع
+        </h3>
+
+        <p>
+          تحصل على الملفات النهائية الجاهزة
+          للاستخدام في مشروعك ومنصاتك.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="cta" id="contact">
+
+  <div class="container">
+
+    <h2>
+      جاهز نخلي علامتك مختلفة؟
+    </h2>
+
+    <p>
+      أرسل لنا فكرتك وسنبدأ ببناء الاتجاه البصري المناسب لك.
+    </p>
+
+    <a
+      href="https://wa.me/966580015256"
+      target="_blank"
+      class="btn btn-primary"
+    >
+      تواصل عبر واتساب
+    </a>
+
+  </div>
+
+</section>
+
 </main>
-<footer><div class="wrap">© 2026 VAZ Creative Design Studio. All rights reserved.</div></footer>
+
+
+<a
+  class="whatsapp"
+  href="https://wa.me/966580015256"
+  target="_blank"
+  aria-label="تواصل معنا عبر واتساب"
+>
+  ☎
+</a>
+
+
+<footer>
+
+  <div class="footer-inner">
+
+    <div class="footer-logo">
+      VAZ
+    </div>
+
+    <div>
+      © 2026 VAZ Creative Design Studio
+    </div>
+
+    <div class="footer-links">
+
+      <a href="#about">عن VAZ</a>
+      <a href="#services">الخدمات</a>
+      <a href="#work">الأعمال</a>
+      <a href="#contact">واتساب</a>
+
+    </div>
+
+  </div>
+
+</footer>
+
 </body>
 </html>
