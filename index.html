@@ -570,11 +570,17 @@ footer{
     padding-top:55px;
   }
 
-  .hero:before{
-    background:
-      linear-gradient(180deg,rgba(9,5,13,.84),rgba(9,5,13,.97)),
-      radial-gradient(circle at 75% 25%,rgba(104,39,124,.35),transparent 40%);
-  }
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(9,5,13,.78),rgba(9,5,13,.78)),
+    url("vaz-hero.jpg") center bottom / 85% auto no-repeat;
+  opacity:.55;
+  pointer-events:none;
+  z-index:0;
+}  
 
   .hero-content{
     width:100%;
