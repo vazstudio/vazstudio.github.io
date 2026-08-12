@@ -3,673 +3,683 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>VAZ — Creative Design Studio</title>
-
-<meta name="description" content="VAZ Creative Design Studio — تصميم هويات بصرية، شعارات، محتوى وإبداع بصري للعلامات التجارية.">
+<meta name="description" content="VAZ Creative Design Studio — نصنع هويات تبقى في الذاكرة.">
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --purple:#26004d;
-  --purple2:#430078;
-  --violet:#6d16a8;
-  --light:#f8f5ff;
-  --dark:#10051c;
-  --text:#20152a;
-  --muted:#756b80;
-  --white:#ffffff;
+  --bg:#09050d;
+  --bg2:#100817;
+  --card:#17101d;
+  --purple:#6d2c82;
+  --purple2:#8e3ca3;
+  --gold:#d9b0bc;
+  --gold2:#efd1d8;
+  --text:#f5edf3;
+  --muted:#a99ca9;
+  --line:rgba(235,205,220,.14);
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
-  background:var(--light);
+  background:
+    radial-gradient(circle at 75% 20%,rgba(103,35,125,.18),transparent 30%),
+    radial-gradient(circle at 20% 70%,rgba(79,24,100,.12),transparent 30%),
+    var(--bg);
   color:var(--text);
-  line-height:1.7;
+  font-family:Cairo,Arial,sans-serif;
+  overflow-x:hidden;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
+a{text-decoration:none;color:inherit}
+
+.container{
+  width:min(1180px,calc(100% - 44px));
+  margin:auto;
 }
 
 /* HEADER */
-
 header{
+  height:86px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
   position:sticky;
   top:0;
-  z-index:1000;
-  background:rgba(38,0,77,.94);
+  z-index:50;
+  background:rgba(9,5,13,.86);
   backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.12);
 }
 
 .nav{
-  max-width:1200px;
-  margin:auto;
-  padding:15px 25px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  width:100%;
 }
 
 .logo{
+  direction:ltr;
+  text-align:left;
+}
+
+.logo-main{
+  font-family:"Playfair Display",serif;
+  font-size:40px;
+  letter-spacing:7px;
+  line-height:.8;
+}
+
+.logo-sub{
+  font-size:8px;
+  letter-spacing:3px;
+  color:#b9aab5;
+  margin-top:10px;
+}
+
+nav{
   display:flex;
   align-items:center;
-  gap:10px;
-  color:#fff;
-  font-size:32px;
-  font-weight:300;
-  letter-spacing:8px;
+  gap:38px;
+  font-size:14px;
+  color:#d8ced6;
 }
 
-.logo-mark{
-  width:42px;
-  height:42px;
-  border:1px solid rgba(255,255,255,.55);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  letter-spacing:1px;
-}
-
-.nav-links{
-  display:flex;
-  gap:30px;
-  color:#eee5f8;
-  font-size:15px;
-}
-
-.nav-links a{
+nav a{
+  position:relative;
   transition:.3s;
 }
 
-.nav-links a:hover{
-  color:#d8a7ff;
+nav a:hover{color:white}
+
+nav a:first-child:after{
+  content:"";
+  position:absolute;
+  right:0;
+  left:0;
+  bottom:-18px;
+  height:1px;
+  background:var(--gold);
 }
 
-.nav-button{
-  padding:10px 20px;
-  border:1px solid rgba(255,255,255,.4);
+.whatsapp{
+  border:1px solid rgba(220,178,194,.38);
+  padding:11px 20px;
   border-radius:30px;
-  color:#fff;
-  transition:.3s;
+  font-size:13px;
 }
 
-.nav-button:hover{
-  background:#fff;
-  color:var(--purple);
+.menu{
+  font-size:27px;
+  margin-right:8px;
+  color:#d9b5c2;
 }
 
 /* HERO */
-
 .hero{
-  min-height:88vh;
+  min-height:475px;
+  position:relative;
   display:flex;
   align-items:center;
-  position:relative;
+  border-bottom:1px solid var(--line);
   overflow:hidden;
-  color:#fff;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
   background:
-    radial-gradient(circle at 75% 30%,rgba(130,42,190,.38),transparent 28%),
-    radial-gradient(circle at 15% 80%,rgba(104,0,165,.25),transparent 30%),
-    linear-gradient(135deg,#17002f,#32005d 55%,#160025);
+    linear-gradient(90deg,rgba(9,5,13,.98) 0%,rgba(9,5,13,.72) 42%,rgba(9,5,13,.25) 100%),
+    radial-gradient(ellipse at 80% 75%,rgba(132,62,129,.3),transparent 38%);
 }
 
-.hero::before{
+.hero:after{
   content:"";
   position:absolute;
-  width:600px;
-  height:600px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.08);
-  right:-180px;
-  top:-180px;
+  width:900px;
+  height:170px;
+  left:35%;
+  bottom:-40px;
+  transform:rotate(-13deg);
+  background:linear-gradient(90deg,transparent,#301c35,#120b15);
+  filter:blur(8px);
+  opacity:.8;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  width:350px;
-  height:350px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.06);
-  left:-120px;
-  bottom:-150px;
-}
-
-.hero-inner{
-  width:100%;
-  max-width:1200px;
-  margin:auto;
-  padding:80px 25px;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:60px;
-  align-items:center;
+.hero-content{
   position:relative;
   z-index:2;
-}
-
-.hero-label{
-  display:inline-block;
-  padding:7px 15px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:30px;
-  color:#dfc8f0;
-  font-size:13px;
-  margin-bottom:25px;
-}
-
-.hero h1{
-  font-size:clamp(48px,7vw,86px);
-  line-height:1.05;
-  font-weight:300;
-  margin-bottom:25px;
-}
-
-.hero h1 strong{
-  font-weight:700;
-  background:linear-gradient(90deg,#fff,#d9aaff);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-
-.hero p{
-  color:#d7cce0;
-  max-width:580px;
-  font-size:18px;
-  margin-bottom:35px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 28px;
-  border-radius:35px;
-  font-weight:600;
-  transition:.3s;
-}
-
-.btn-primary{
-  background:#fff;
-  color:var(--purple);
-}
-
-.btn-primary:hover{
-  transform:translateY(-3px);
-  box-shadow:0 15px 35px rgba(0,0,0,.25);
-}
-
-.btn-outline{
-  border:1px solid rgba(255,255,255,.35);
-  color:#fff;
-}
-
-.btn-outline:hover{
-  background:rgba(255,255,255,.1);
-}
-
-/* LOGO DISPLAY */
-
-.hero-logo{
-  min-height:360px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.logo-art{
-  position:relative;
-  width:390px;
-  max-width:90%;
-  padding:65px 25px;
-  border-radius:35px;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(160,70,220,.25),transparent 45%),
-    rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.13);
-  box-shadow:0 30px 80px rgba(0,0,0,.25);
-  text-align:center;
-}
-
-.logo-art .vaz{
-  font-family:Georgia,serif;
-  font-size:92px;
-  font-weight:300;
-  letter-spacing:5px;
-  color:#fff;
-}
-
-.logo-art .star{
-  position:absolute;
-  top:35px;
-  right:80px;
-  font-size:28px;
-  color:#fff;
-}
-
-.logo-art .curve{
-  width:250px;
-  height:25px;
-  border-bottom:2px solid #fff;
-  border-radius:50%;
-  margin:-5px auto 0;
-  transform:rotate(-5deg);
-}
-
-/* SECTIONS */
-
-section{
-  padding:100px 25px;
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-}
-
-.section-head{
-  max-width:700px;
-  margin-bottom:55px;
+  width:50%;
 }
 
 .eyebrow{
-  color:var(--violet);
-  font-weight:700;
-  font-size:13px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-.section-head h2{
-  font-size:clamp(34px,5vw,54px);
-  line-height:1.15;
-  margin-bottom:15px;
-}
-
-.section-head p{
-  color:var(--muted);
-}
-
-/* ABOUT */
-
-.about{
-  background:#fff;
-}
-
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:center;
-}
-
-.about-card{
-  background:linear-gradient(145deg,#28004f,#4d087c);
-  color:#fff;
-  border-radius:30px;
-  padding:55px;
-  min-height:330px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  box-shadow:0 25px 60px rgba(38,0,77,.18);
-}
-
-.about-card span{
-  font-size:70px;
-  font-family:Georgia,serif;
-  opacity:.9;
-}
-
-.about-card h3{
-  font-size:30px;
-  margin:10px 0;
-}
-
-.about-text p{
-  color:var(--muted);
+  color:#a98a9f;
+  letter-spacing:3px;
+  font-size:11px;
   margin-bottom:20px;
+  direction:ltr;
+  text-align:right;
+}
+
+.hero h1{
+  font-size:43px;
+  line-height:1.35;
+  font-weight:400;
+  margin-bottom:18px;
+}
+
+.hero h1 span{color:#9b648e}
+
+.hero p{
+  color:#bdb0bb;
+  line-height:2;
+  font-size:14px;
+  max-width:490px;
+  margin-bottom:27px;
+}
+
+.buttons{
+  display:flex;
+  gap:14px;
+}
+
+.btn{
+  padding:11px 24px;
+  border-radius:5px;
+  border:1px solid rgba(222,179,197,.5);
+  font-size:13px;
+  transition:.3s;
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,#6b2b7b,#8a397d);
+  border:0;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.hero-brand{
+  position:absolute;
+  z-index:2;
+  left:10%;
+  top:50%;
+  transform:translateY(-50%);
+  text-align:center;
+  direction:ltr;
+}
+
+.hero-brand .vaz{
+  font-family:"Playfair Display",serif;
+  font-size:125px;
+  letter-spacing:18px;
+  color:#e9c8d0;
+  line-height:.9;
+}
+
+.hero-brand .star{
+  font-size:36px;
+  position:absolute;
+  right:-12px;
+  top:-27px;
+  color:#d9aebd;
+}
+
+.hero-brand .curve{
+  width:320px;
+  height:28px;
+  border-bottom:1px solid #cda1af;
+  border-radius:50%;
+  transform:rotate(-5deg);
+  margin:-4px auto 10px;
+}
+
+.hero-brand small{
+  letter-spacing:6px;
+  color:#cdb8c2;
+  font-size:11px;
+}
+
+/* FEATURES */
+.features{
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.015);
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.feature{
+  padding:25px 22px;
+  display:flex;
+  gap:15px;
+  align-items:center;
+  border-left:1px solid var(--line);
+}
+
+.feature:last-child{border-left:0}
+
+.icon{
+  color:#d9aeba;
+  font-size:28px;
+}
+
+.feature h3{
+  font-size:14px;
+  font-weight:500;
+  margin-bottom:5px;
+}
+
+.feature p{
+  color:#8f838f;
+  font-size:10px;
+}
+
+/* SECTION */
+section{
+  padding:52px 0;
+}
+
+.section-head{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-label{
+  color:#9d6c8f;
+  font-size:12px;
+  margin-bottom:7px;
+}
+
+.section-title{
+  font-size:25px;
+  font-weight:400;
 }
 
 /* SERVICES */
-
 .services{
-  background:#f5f0fa;
+  background:linear-gradient(180deg,rgba(27,13,31,.3),transparent);
 }
 
-.service-grid{
+.services-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
 }
 
 .service{
-  background:#fff;
-  border-radius:25px;
-  padding:35px;
-  border:1px solid #eee6f4;
+  min-height:145px;
+  padding:20px 14px;
+  background:linear-gradient(145deg,#1b1120,#130b18);
+  border:1px solid rgba(219,182,198,.09);
+  border-radius:7px;
+  text-align:center;
   transition:.35s;
 }
 
 .service:hover{
-  transform:translateY(-8px);
-  border-color:#d7b4ee;
-  box-shadow:0 20px 50px rgba(40,0,80,.08);
+  transform:translateY(-5px);
+  border-color:rgba(218,173,190,.28);
 }
 
-.service-number{
-  color:#b68bd0;
-  font-size:13px;
-  margin-bottom:25px;
-}
-
-.service h3{
-  font-size:22px;
+.service .sicon{
+  font-size:27px;
+  color:#d7aab8;
   margin-bottom:12px;
 }
 
+.service h3{
+  font-size:12px;
+  font-weight:500;
+  margin-bottom:8px;
+}
+
 .service p{
-  color:var(--muted);
-  font-size:15px;
+  color:#8f838e;
+  font-size:9px;
+  line-height:1.8;
 }
 
 /* WORK */
+.work-tabs{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  color:#897b88;
+  font-size:11px;
+  margin-bottom:18px;
+}
 
-.work{
-  background:#fff;
+.work-tabs .active{
+  color:#ead5dd;
 }
 
 .work-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  grid-template-columns:1.05fr 1.6fr 1.05fr;
+  grid-template-rows:145px 145px;
+  gap:7px;
 }
 
-.work-item{
-  min-height:270px;
-  border-radius:25px;
+.work-card{
+  position:relative;
   overflow:hidden;
+  border-radius:6px;
+  border:1px solid rgba(230,195,208,.1);
   background:
-    radial-gradient(circle at 20% 20%,#7c27a8,transparent 35%),
-    linear-gradient(135deg,#19002e,#480077);
+    radial-gradient(circle at 50% 40%,rgba(126,57,120,.4),transparent 45%),
+    linear-gradient(135deg,#2a172d,#100914);
   display:flex;
-  align-items:flex-end;
-  padding:25px;
-  color:#fff;
+  align-items:center;
+  justify-content:center;
+}
+
+.work-card:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,transparent,rgba(210,165,185,.06));
+}
+
+.work-card.tall{
+  grid-row:span 2;
+}
+
+.work-card .brand{
   position:relative;
+  z-index:1;
+  text-align:center;
+  font-family:"Playfair Display",serif;
+  letter-spacing:4px;
+  color:#e0bdc7;
 }
 
-.work-item:nth-child(2){
-  background:
-    radial-gradient(circle at 80% 20%,#b25cdb,transparent 35%),
-    linear-gradient(135deg,#260044,#5c1683);
+.work-card .brand strong{
+  display:block;
+  font-size:29px;
+  font-weight:400;
 }
 
-.work-item:nth-child(3){
-  background:
-    radial-gradient(circle at 30% 70%,#8b42c0,transparent 35%),
-    linear-gradient(135deg,#11001e,#36005d);
+.work-card .brand small{
+  font-family:Cairo;
+  font-size:8px;
+  letter-spacing:4px;
 }
 
-.work-item:nth-child(4){
-  background:
-    radial-gradient(circle at 80% 70%,#9e47cb,transparent 35%),
-    linear-gradient(135deg,#22003d,#4e0870);
-}
+.work-card.phone .brand strong{font-size:19px}
+.work-card.box .brand strong{font-size:22px}
 
-.work-item:nth-child(5){
-  background:
-    radial-gradient(circle at 20% 20%,#b66bd2,transparent 30%),
-    linear-gradient(135deg,#18002c,#43005f);
-}
-
-.work-item:nth-child(6){
-  background:
-    radial-gradient(circle at 70% 30%,#7d2fa6,transparent 30%),
-    linear-gradient(135deg,#100019,#30004e);
-}
-
-.work-title{
-  position:relative;
-  z-index:2;
-}
-
-.work-title small{
-  opacity:.7;
-}
-
-.work-title h3{
-  font-size:24px;
+.work-btn{
+  display:block;
+  width:max-content;
+  margin:20px auto 0;
+  border:1px solid var(--line);
+  padding:9px 20px;
+  border-radius:4px;
+  font-size:11px;
 }
 
 /* PROCESS */
-
 .process{
-  background:#150021;
-  color:#fff;
-}
-
-.process .section-head p{
-  color:#b9adbf;
+  border-top:1px solid var(--line);
+  background:rgba(255,255,255,.012);
 }
 
 .process-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:20px;
+  position:relative;
+}
+
+.process-grid:before{
+  content:"";
+  position:absolute;
+  top:22px;
+  left:8%;
+  right:8%;
+  height:1px;
+  background:var(--line);
 }
 
 .step{
-  padding:30px 0;
-  border-top:1px solid rgba(255,255,255,.2);
+  position:relative;
+  text-align:center;
 }
 
 .step-number{
-  color:#c889eb;
-  font-size:14px;
-  margin-bottom:25px;
+  width:44px;
+  height:44px;
+  border:1px solid #97627e;
+  background:var(--bg);
+  border-radius:50%;
+  margin:0 auto 17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#d6aaba;
+  position:relative;
+  z-index:2;
 }
 
 .step h3{
-  font-size:21px;
-  margin-bottom:10px;
+  font-size:13px;
+  margin-bottom:8px;
 }
 
 .step p{
-  color:#a99caf;
-  font-size:14px;
+  color:#8d808c;
+  font-size:10px;
+  line-height:1.8;
 }
 
 /* CTA */
-
 .cta{
+  padding:42px 0;
+  position:relative;
+  overflow:hidden;
   background:
-    radial-gradient(circle at 20% 20%,rgba(154,63,209,.35),transparent 30%),
-    linear-gradient(135deg,#32005b,#19002f);
-  color:#fff;
+    radial-gradient(circle at 10% 100%,rgba(107,44,125,.38),transparent 30%),
+    linear-gradient(180deg,#110818,#08050c);
+}
+
+.cta-inner{
   text-align:center;
 }
 
 .cta h2{
-  font-size:clamp(38px,6vw,65px);
-  margin-bottom:18px;
+  font-size:24px;
+  font-weight:400;
+  margin-bottom:8px;
 }
 
 .cta p{
-  color:#d8cce1;
-  max-width:600px;
-  margin:0 auto 30px;
+  color:#a99ca8;
+  font-size:12px;
+  margin-bottom:22px;
+}
+
+.cta-buttons{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+
+.contact{
+  min-width:200px;
+  border:1px solid rgba(221,177,193,.35);
+  padding:11px 20px;
+  border-radius:4px;
+  font-size:12px;
+}
+
+.contact.highlight{
+  background:#4b2056;
 }
 
 /* FOOTER */
-
 footer{
-  background:#0d0017;
-  color:#aaa0b0;
-  padding:45px 25px;
+  border-top:1px solid var(--line);
+  padding:22px 0;
 }
 
 .footer-inner{
-  max-width:1200px;
-  margin:auto;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  align-items:center;
-  gap:25px;
 }
 
-.footer-logo{
-  color:#fff;
-  font-family:Georgia,serif;
-  font-size:30px;
-  letter-spacing:5px;
-}
-
-.footer-links{
+.social{
   display:flex;
-  gap:20px;
-  font-size:14px;
+  gap:18px;
+  color:#a999a6;
+  font-size:12px;
 }
 
-.footer-links a:hover{
-  color:#fff;
-}
-
-/* WHATSAPP */
-
-.whatsapp{
-  position:fixed;
-  left:22px;
-  bottom:22px;
-  z-index:2000;
-  width:62px;
-  height:62px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#25D366;
-  color:#fff;
-  font-size:28px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-  transition:.3s;
-}
-
-.whatsapp:hover{
-  transform:scale(1.08);
+.copy{
+  color:#716773;
+  font-size:9px;
 }
 
 /* MOBILE */
+@media(max-width:800px){
 
-@media(max-width:850px){
+  .container{width:calc(100% - 28px)}
 
-  .nav{
-    padding:13px 18px;
+  header{height:74px}
+
+  .logo-main{font-size:29px}
+  .logo-sub{font-size:6px;letter-spacing:2px;margin-top:7px}
+
+  nav{display:none}
+
+  .whatsapp{padding:8px 12px;font-size:10px}
+
+  .menu{font-size:23px}
+
+  .hero{
+    min-height:650px;
+    align-items:flex-start;
+    padding-top:55px;
   }
 
-  .logo{
-    font-size:25px;
-    letter-spacing:5px;
+  .hero:before{
+    background:
+      linear-gradient(180deg,rgba(9,5,13,.84),rgba(9,5,13,.97)),
+      radial-gradient(circle at 75% 25%,rgba(104,39,124,.35),transparent 40%);
   }
 
-  .nav-links{
-    display:none;
+  .hero-content{
+    width:100%;
+    text-align:right;
   }
 
-  .hero-inner{
-    grid-template-columns:1fr;
-    padding:70px 20px;
-    text-align:center;
+  .eyebrow{font-size:9px}
+
+  .hero h1{
+    font-size:34px;
+    line-height:1.45;
   }
 
   .hero p{
-    margin-left:auto;
-    margin-right:auto;
+    font-size:12px;
+    line-height:2;
   }
 
-  .hero-buttons{
-    justify-content:center;
+  .buttons{justify-content:flex-start}
+
+  .hero-brand{
+    left:50%;
+    top:auto;
+    bottom:42px;
+    transform:translateX(-50%);
   }
 
-  .hero-logo{
-    min-height:270px;
+  .hero-brand .vaz{
+    font-size:76px;
+    letter-spacing:10px;
   }
 
-  .logo-art{
-    padding:50px 15px;
+  .hero-brand .curve{width:220px}
+  .hero-brand small{font-size:8px;letter-spacing:4px}
+
+  .feature-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .logo-art .vaz{
-    font-size:70px;
+  .feature{
+    padding:18px 10px;
   }
 
-  .about-grid{
-    grid-template-columns:1fr;
-    gap:35px;
+  .feature:nth-child(2){
+    border-left:0;
   }
 
-  .service-grid,
+  .feature:nth-child(-n+2){
+    border-bottom:1px solid var(--line);
+  }
+
+  .services-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:7px;
+  }
+
+  .service{
+    min-height:140px;
+  }
+
   .work-grid{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:130px 130px 130px;
   }
+
+  .work-card.tall{
+    grid-row:span 2;
+  }
+
+  .work-card .brand strong{font-size:23px}
 
   .process-grid{
     grid-template-columns:1fr 1fr;
+    gap:28px 10px;
   }
 
-  section{
-    padding:75px 20px;
+  .process-grid:before{display:none}
+
+  .step p{font-size:9px}
+
+  section{padding:42px 0}
+
+  .section-title{font-size:22px}
+
+  .cta h2{font-size:21px}
+
+  .cta-buttons{
+    flex-direction:column;
+    align-items:center;
   }
+
+  .contact{width:230px}
 
   .footer-inner{
     flex-direction:column;
-    text-align:center;
-  }
-
-  .footer-links{
-    flex-wrap:wrap;
-    justify-content:center;
+    gap:15px;
   }
 }
 
-@media(max-width:500px){
-
-  .hero h1{
-    font-size:48px;
-  }
-
-  .about-card{
-    padding:35px;
-  }
-
-  .process-grid{
-    grid-template-columns:1fr;
-  }
-
-  .work-item{
-    min-height:230px;
-  }
+@media(max-width:420px){
+  .hero h1{font-size:30px}
+  .hero-brand .vaz{font-size:67px}
+  .services-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -677,497 +687,301 @@ footer{
 <body>
 
 <header>
-  <nav class="nav">
+  <div class="container nav">
 
-    <a href="#home" class="logo">
-      <span class="logo-mark">V</span>
-      VAZ
-    </a>
+    <div class="logo">
+      <div class="logo-main">VAZ</div>
+      <div class="logo-sub">CREATIVE DESIGN STUDIO</div>
+    </div>
 
-    <div class="nav-links">
+    <nav>
+      <a href="#home">الرئيسية</a>
       <a href="#about">عن VAZ</a>
       <a href="#services">الخدمات</a>
       <a href="#work">أعمالنا</a>
-      <a href="#process">طريقة العمل</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <a class="whatsapp" href="https://wa.me/966580015256">
+        ◔ تواصل عبر واتساب
+      </a>
+      <div class="menu">☰</div>
     </div>
 
-    <a class="nav-button" href="#contact">
-      تواصل معنا
-    </a>
-
-  </nav>
+  </div>
 </header>
 
 <main>
 
 <section class="hero" id="home">
+  <div class="container">
 
-  <div class="hero-inner">
+    <div class="hero-content">
 
-    <div>
-
-      <span class="hero-label">
-        VAZ — Creative Design Studio
-      </span>
+      <div class="eyebrow">DESIGN THAT DEFINES BRANDS</div>
 
       <h1>
-        نصنع <strong>هوية</strong><br>
-        تُرى وتُذكر.
+        تصميم يخلق هوية<br>
+        <span>تبقى في الذاكرة.</span>
       </h1>
 
       <p>
-        استوديو VAZ الإبداعي للتصميم والهوية البصرية.
-        نحول الأفكار إلى تجارب بصرية أنيقة، حديثة وفاخرة
-        تليق بالعلامات التجارية الطموحة.
+        نحوّل الأفكار إلى هويات بصرية فريدة تعكس جوهر علامتك التجارية،
+        ونبني حضورًا لا يُنسى.
       </p>
 
-      <div class="hero-buttons">
-
-        <a href="#contact" class="btn btn-primary">
-          ابدأ مشروعك
-        </a>
-
-        <a href="#work" class="btn btn-outline">
-          شاهد أعمالنا
-        </a>
-
+      <div class="buttons">
+        <a class="btn primary" href="#work">↗ استكشف أعمالنا</a>
+        <a class="btn" href="#contact">ابدأ مشروعك</a>
       </div>
 
     </div>
 
-    <div class="hero-logo">
-
-      <div class="logo-art">
-
-        <div class="star">✦</div>
-
-        <div class="vaz">
-          VAZ
-        </div>
-
-        <div class="curve"></div>
-
-      </div>
-
+    <div class="hero-brand">
+      <div class="vaz">VAZ</div>
+      <div class="star">✦</div>
+      <div class="curve"></div>
+      <small>CREATIVE DESIGN STUDIO</small>
     </div>
 
   </div>
-
 </section>
 
+<section class="features" id="about">
+  <div class="container feature-grid">
 
-<section class="about" id="about">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div class="eyebrow">
-        About VAZ
+    <div class="feature">
+      <div class="icon">♢</div>
+      <div>
+        <h3>تصاميم احترافية</h3>
+        <p>جودة عالية واهتمام بالتفاصيل</p>
       </div>
-
-      <h2>
-        التصميم ليس مجرد شكل.
-      </h2>
-
-      <p>
-        هو الطريقة التي تتحدث بها علامتك التجارية قبل أن تقول أي كلمة.
-      </p>
-
     </div>
 
-    <div class="about-grid">
-
-      <div class="about-card">
-
-        <span>✦</span>
-
-        <h3>
-          VAZ
-        </h3>
-
-        <p>
-          Creative Design Studio
-        </p>
-
+    <div class="feature">
+      <div class="icon">✧</div>
+      <div>
+        <h3>أفكار إبداعية</h3>
+        <p>حلول مبتكرة لهوية مميزة</p>
       </div>
+    </div>
 
-      <div class="about-text">
-
-        <p>
-          في VAZ نؤمن أن العلامة التجارية القوية تبدأ بفكرة واضحة
-          ثم تتحول إلى هوية بصرية متناسقة ومميزة.
-        </p>
-
-        <p>
-          من الشعار إلى الألوان، ومن المحتوى إلى التفاصيل الصغيرة،
-          نصمم تجربة متكاملة تجعل مشروعك يبدو أكثر احترافية
-          وأكثر قابلية للتذكر.
-        </p>
-
-        <p>
-          هدفنا بسيط:
-          <strong>أن نجعل علامتك تبدو كما تتخيلها — بل أفضل.</strong>
-        </p>
-
+    <div class="feature">
+      <div class="icon">◷</div>
+      <div>
+        <h3>الالتزام بالمواعيد</h3>
+        <p>نسلم في الوقت المحدد دائمًا</p>
       </div>
+    </div>
 
+    <div class="feature">
+      <div class="icon">♧</div>
+      <div>
+        <h3>دعم مستمر</h3>
+        <p>نرافقك في كل خطوة</p>
+      </div>
     </div>
 
   </div>
-
 </section>
-
 
 <section class="services" id="services">
-
   <div class="container">
 
     <div class="section-head">
+      <div class="section-label">خدماتنا</div>
+      <div class="section-title">حلول تصميم متكاملة لعلامتك</div>
+    </div>
 
-      <div class="eyebrow">
-        Services
+    <div class="services-grid">
+
+      <div class="service">
+        <div class="sicon">♢</div>
+        <h3>تصاميم مخصصة</h3>
+        <p>حلول تصميم خاصة تناسب احتياجات مشروعك وأهدافك.</p>
       </div>
 
-      <h2>
-        ماذا نصمم لك؟
-      </h2>
+      <div class="service">
+        <div class="sicon">□</div>
+        <h3>تصاميم مطبوعة</h3>
+        <p>تصميم المطبوعات من كروت وبروشورات وبنرات والمزيد.</p>
+      </div>
 
-      <p>
-        حلول تصميمية متكاملة تناسب العلامات التجارية والمشاريع والأفراد.
-      </p>
+      <div class="service">
+        <div class="sicon">⌁</div>
+        <h3>تصاميم إعلانية</h3>
+        <p>تصاميم إعلانية فعالة توصل رسالتك وتحقق أهداف حملاتك.</p>
+      </div>
 
-    </div>
+      <div class="service">
+        <div class="sicon">♡</div>
+        <h3>محتوى السوشيال ميديا</h3>
+        <p>تصاميم احترافية لمنصات التواصل تعكس هوية علامتك.</p>
+      </div>
 
-    <div class="service-grid">
+      <div class="service">
+        <div class="sicon">⌘</div>
+        <h3>تصميم الشعارات</h3>
+        <p>شعارات فريدة وبسيطة ومعبرة تبقى في ذاكرة عملائك.</p>
+      </div>
 
-      <article class="service">
-
-        <div class="service-number">01</div>
-
-        <h3>
-          الهوية البصرية
-        </h3>
-
-        <p>
-          بناء هوية متكاملة تشمل الشعار، الألوان،
-          الخطوط والعناصر البصرية للعلامة التجارية.
-        </p>
-
-      </article>
-
-
-      <article class="service">
-
-        <div class="service-number">02</div>
-
-        <h3>
-          تصميم الشعارات
-        </h3>
-
-        <p>
-          شعار مميز ومدروس يعكس شخصية مشروعك
-          ويمنحه حضوراً بصرياً احترافياً.
-        </p>
-
-      </article>
-
-
-      <article class="service">
-
-        <div class="service-number">03</div>
-
-        <h3>
-          محتوى السوشيال ميديا
-        </h3>
-
-        <p>
-          تصاميم جذابة ومتناسقة لمنصات التواصل
-          تساعد علامتك على الظهور بصورة أقوى.
-        </p>
-
-      </article>
-
-
-      <article class="service">
-
-        <div class="service-number">04</div>
-
-        <h3>
-          تصاميم إعلانية
-        </h3>
-
-        <p>
-          تصاميم للحملات والعروض والإعلانات
-          بأسلوب واضح ولافت للنظر.
-        </p>
-
-      </article>
-
-
-      <article class="service">
-
-        <div class="service-number">05</div>
-
-        <h3>
-          تصاميم مخصصة
-        </h3>
-
-        <p>
-          لديك فكرة مختلفة؟
-          نصمم لك الحل البصري المناسب لها من الصفر.
-        </p>
-
-      </article>
-
-
-      <article class="service">
-
-        <div class="service-number">06</div>
-
-        <h3>
-          تطوير العلامة التجارية
-        </h3>
-
-        <p>
-          تحسين الشكل البصري الحالي للعلامة
-          وجعله أكثر عصرية واحترافية.
-        </p>
-
-      </article>
+      <div class="service">
+        <div class="sicon">◈</div>
+        <h3>الهوية البصرية</h3>
+        <p>تصميم هوية متكاملة تعكس شخصية علامتك وتبني حضورك.</p>
+      </div>
 
     </div>
-
   </div>
-
 </section>
 
-
-<section class="work" id="work">
-
+<section id="work">
   <div class="container">
 
     <div class="section-head">
-
-      <div class="eyebrow">
-        Selected Work
-      </div>
-
-      <h2>
-        أعمال بتفاصيل تصنع الفرق.
-      </h2>
-
-      <p>
-        مجموعة من الاتجاهات البصرية التي يمكن أن نبنيها لعلامتك.
-      </p>
-
+      <div class="section-label">أعمالنا</div>
+      <div class="section-title">أعمال صنعت الفرق</div>
     </div>
 
+    <div class="work-tabs">
+      <span class="active">الكل</span>
+      <span>هويات بصرية</span>
+      <span>شعارات</span>
+      <span>سوشيال ميديا</span>
+      <span>تصاميم إعلانية</span>
+    </div>
 
     <div class="work-grid">
 
-      <div class="work-item">
-        <div class="work-title">
-          <small>Brand Identity</small>
-          <h3>Luxury Brand</h3>
+      <div class="work-card tall">
+        <div class="brand">
+          <strong>AUREA</strong>
+          <small>COSMETICS</small>
         </div>
       </div>
 
-      <div class="work-item">
-        <div class="work-title">
-          <small>Visual Identity</small>
-          <h3>Modern Studio</h3>
+      <div class="work-card">
+        <div class="brand">
+          <strong>NOVA</strong>
+          <small>BRAND IDENTITY</small>
         </div>
       </div>
 
-      <div class="work-item">
-        <div class="work-title">
-          <small>Logo Design</small>
-          <h3>Minimal Concept</h3>
+      <div class="work-card phone">
+        <div class="brand">
+          <strong>NEX COLLECTION</strong>
+          <small>DIGITAL</small>
         </div>
       </div>
 
-      <div class="work-item">
-        <div class="work-title">
-          <small>Social Media</small>
-          <h3>Creative Campaign</h3>
+      <div class="work-card">
+        <div class="brand">
+          <strong>LUNA</strong>
+          <small>BEAUTY</small>
         </div>
       </div>
 
-      <div class="work-item">
-        <div class="work-title">
-          <small>Branding</small>
-          <h3>Premium Identity</h3>
+      <div class="work-card box">
+        <div class="brand">
+          <strong>MIRA</strong>
+          <small>PACKAGING</small>
         </div>
       </div>
 
-      <div class="work-item">
-        <div class="work-title">
-          <small>Art Direction</small>
-          <h3>Visual Experience</h3>
+      <div class="work-card tall">
+        <div class="brand">
+          <strong>AZMJI</strong>
+          <small>PERFUME</small>
         </div>
       </div>
 
     </div>
 
-  </div>
+    <a class="work-btn" href="#contact">↗ عرض جميع الأعمال</a>
 
+  </div>
 </section>
 
-
-<section class="process" id="process">
-
+<section class="process">
   <div class="container">
 
     <div class="section-head">
-
-      <div class="eyebrow">
-        Our Process
-      </div>
-
-      <h2>
-        من الفكرة إلى الهوية.
-      </h2>
-
-      <p>
-        نعمل بطريقة واضحة حتى تعرف ماذا يحدث في كل مرحلة.
-      </p>
-
+      <div class="section-label">طريقة العمل</div>
+      <div class="section-title">من الفكرة إلى هوية متكاملة</div>
     </div>
-
 
     <div class="process-grid">
 
       <div class="step">
-
-        <div class="step-number">01 — DISCOVER</div>
-
-        <h3>
-          نفهم مشروعك
-        </h3>
-
-        <p>
-          نتعرف على فكرتك، جمهورك، منافسيك
-          والشخصية التي تريد أن تظهر بها.
-        </p>
-
+        <div class="step-number">01</div>
+        <h3>نستلم المشروع</h3>
+        <p>نتعرف على فكرتك، جمهورك، شخصيتك والأهداف التي تريد أن تظهر بها.</p>
       </div>
 
-
       <div class="step">
-
-        <div class="step-number">02 — CONCEPT</div>
-
-        <h3>
-          نبني الفكرة
-        </h3>
-
-        <p>
-          نحدد الاتجاه البصري المناسب
-          ونبدأ بتحويل الفكرة إلى تصميم.
-        </p>
-
+        <div class="step-number">02</div>
+        <h3>نطور الفكرة</h3>
+        <p>نحدد الاتجاه المناسب ونحوّل الفكرة إلى مفهوم بصري واضح.</p>
       </div>
 
-
       <div class="step">
-
-        <div class="step-number">03 — DESIGN</div>
-
-        <h3>
-          نصمم التفاصيل
-        </h3>
-
-        <p>
-          نطور الشعار والألوان والعناصر
-          ونبني تجربة بصرية متناسقة.
-        </p>
-
+        <div class="step-number">03</div>
+        <h3>نصمم الهوية</h3>
+        <p>نصمم الشعار والألوان والعناصر ونبني هوية بصرية متكاملة.</p>
       </div>
 
-
       <div class="step">
-
-        <div class="step-number">04 — DELIVER</div>
-
-        <h3>
-          نسلّم المشروع
-        </h3>
-
-        <p>
-          تحصل على الملفات النهائية الجاهزة
-          للاستخدام في مشروعك ومنصاتك.
-        </p>
-
+        <div class="step-number">04</div>
+        <h3>نسلم المشروع</h3>
+        <p>تحصل على الهوية النهائية الجاهزة للاستخدام في جميع المنصات.</p>
       </div>
 
     </div>
-
   </div>
-
 </section>
 
-
 <section class="cta" id="contact">
+  <div class="container cta-inner">
 
-  <div class="container">
+    <h2>جاهز لنعمل على مشروعك القادم؟</h2>
 
-    <h2>
-      جاهز نخلي علامتك مختلفة؟
-    </h2>
+    <p>تواصل معنا الآن وابدأ رحلتك مع VAZ.</p>
 
-    <p>
-      أرسل لنا فكرتك وسنبدأ ببناء الاتجاه البصري المناسب لك.
-    </p>
+    <div class="cta-buttons">
+      <a class="contact highlight" href="https://wa.me/966580015256">
+        ◔ تواصل عبر واتساب الآن
+      </a>
 
-    <a
-      href="https://wa.me/966580015256"
-      target="_blank"
-      class="btn btn-primary"
-    >
-      تواصل عبر واتساب
-    </a>
+      <a class="contact" href="tel:+966580015256">
+        ☎ 058 001 5256
+      </a>
+    </div>
 
   </div>
-
 </section>
 
 </main>
 
-
-<a
-  class="whatsapp"
-  href="https://wa.me/966580015256"
-  target="_blank"
-  aria-label="تواصل معنا عبر واتساب"
->
-  ☎
-</a>
-
-
 <footer>
+  <div class="container footer-inner">
 
-  <div class="footer-inner">
-
-    <div class="footer-logo">
-      VAZ
+    <div class="logo">
+      <div class="logo-main">VAZ</div>
+      <div class="logo-sub">CREATIVE DESIGN STUDIO</div>
     </div>
 
-    <div>
+    <div class="social">
+      <span>Instagram</span>
+      <span>Behance</span>
+      <span>LinkedIn</span>
+    </div>
+
+    <div class="copy">
       © 2026 VAZ Creative Design Studio
     </div>
 
-    <div class="footer-links">
-
-      <a href="#about">عن VAZ</a>
-      <a href="#services">الخدمات</a>
-      <a href="#work">الأعمال</a>
-      <a href="#contact">واتساب</a>
-
-    </div>
-
   </div>
-
 </footer>
 
 </body>
