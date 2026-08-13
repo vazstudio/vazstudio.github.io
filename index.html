@@ -100,19 +100,38 @@ header{
 
 
 nav{
-  display:flex;
-  align-items:center;
-  gap:38px;
-  font-size:14px;
-  color:#d8ced6;
+    display:flex;
+    align-items:center;
+    gap:38px;
+    font-size:14px;
+    font-weight:400;
+    letter-spacing:.3px;
+    color:#d8ced6;
 }
 
 nav a{
-  position:relative;
-  transition:.3s;
+    position:relative;
+    transition:color .3s ease, opacity .3s ease;
+    opacity:.88;
 }
 
-nav a:hover{color:white}
+nav a:hover{
+    color:#ffffff;
+    opacity:1;
+}
+  
+  
+  
+  
+  
+
+
+
+  
+  
+
+
+
 
 nav a:first-child:after{
   content:"";
