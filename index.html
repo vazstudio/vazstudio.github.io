@@ -676,9 +676,21 @@ footer{
   }
 
   .work-grid{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:130px 130px 130px;
-  }
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+    gap:10px;
+}
+
+.work-card{
+    min-height:220px;
+}
+
+.work-card.tall{
+    grid-row:auto;
+}
+    
+    
+  
 
   .work-card.tall{
     grid-row:span 2;
