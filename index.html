@@ -599,7 +599,23 @@ footer{
   .whatsapp{padding:8px 12px;font-size:10px}
 
   .menu{font-size:23px}
+.menu{
+    cursor:pointer;
+}
 
+nav.open{
+    display:flex !important;
+    position:absolute;
+    top:74px;
+    right:0;
+    left:0;
+    flex-direction:column;
+    gap:20px;
+    padding:25px;
+    background:#100817;
+    border-bottom:1px solid rgba(222,179,197,.2);
+    z-index:100;
+}
   .hero{
     min-height:650px;
     align-items:flex-start;
@@ -767,7 +783,7 @@ footer{
       <a class="whatsapp" href="https://wa.me/966580015256">
         ◔ تواصل عبر واتساب
       </a>
-      <div class="menu">☰</div>
+      <div class="menu" onclick="toggleMenu()">☰</div>
     </div>
 
   </div>
@@ -1048,6 +1064,11 @@ footer{
 
   </div>
 </footer>
-
+<script>
+function toggleMenu(){
+    const nav = document.querySelector('header nav');
+    nav.classList.toggle('open');
+}
+</script>
 </body>
 </html>
