@@ -843,6 +843,98 @@ nav.open{
     
     
 
+
+
+    
+        
+        
+    
+
+    
+    
+        
+        
+        
+  
+
+    
+    
+        
+        
+        
+    
+/* ===== VAZ — WORK SECTION FIX ===== */
+
+.work-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-auto-rows: auto !important;
+  gap: 18px !important;
+  width: 100% !important;
+  align-items: start !important;
+}
+
+.work-card,
+.work-card.tall {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  overflow: hidden !important;
+  break-inside: avoid !important;
+}
+
+.work-card img,
+.work-card.tall img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+}
+
+.work-card img,
+.work-card.tall img {
+  aspect-ratio: 4 / 5;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 15px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .work-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .work-card,
+  .work-card.tall {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .work-card img,
+  .work-card.tall img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5;
+    object-fit: cover !important;
+  }
+}
+
+/* ===== END VAZ — WORK SECTION FIX ===== */
 </style>
 </head>
 
