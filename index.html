@@ -1040,6 +1040,13 @@ nav.open{
       <a class="whatsapp" href="https://wa.me/966580015256">
         ◔ تواصل عبر واتساب
       </a>
+      <select id="languageSelect" onchange="changeLanguage(this.value)" style="background:#17101d;color:#f5edf3;border:1px solid rgba(220,178,194,.38);border-radius:30px;padding:8px 10px;font-family:Cairo,Arial,sans-serif;font-size:11px;outline:none;cursor:pointer;">
+  <option value="ar">🇸🇦 العربية</option>
+  <option value="en">🇺🇸 English</option>
+  <option value="hi">🇮🇳 हिन्दी</option>
+  <option value="ur">🇵🇰 اردو</option>
+  <option value="bn">🇧🇩 বাংলা</option>
+</select>
       <div class="menu" onclick="toggleMenu()">☰</div>
     </div>
 
@@ -1336,6 +1343,369 @@ function toggleMenu(){
     const nav = document.querySelector('header nav');
     nav.classList.toggle('open');
 }
+  const translations = {
+
+  ar: {
+    nav_home: "الرئيسية",
+    nav_about: "عن VAZ",
+    nav_services: "الخدمات",
+    nav_work: "أعمالنا",
+    nav_contact: "تواصل معنا",
+    whatsapp: "◔ تواصل عبر واتساب",
+
+    hero_eyebrow: "DESIGN THAT DEFINES BRANDS",
+    hero_title: "تصميم يخلق هوية<br><span>تبقى في الذاكرة.</span>",
+    hero_text: "نحوّل الأفكار إلى هويات بصرية فريدة تعكس جوهر علامتك التجارية، ونبني حضورًا لا يُنسى.",
+    hero_work: "↗ استكشف أعمالنا",
+    hero_start: "ابدأ مشروعك",
+
+    about_design: "تصاميم احترافية",
+    about_design_text: "جودة عالية واهتمام بالتفاصيل",
+    about_ideas: "أفكار إبداعية",
+    about_ideas_text: "حلول مبتكرة لهوية مميزة",
+    about_time: "الالتزام بالمواعيد",
+    about_time_text: "نسلم في الوقت المحدد دائمًا",
+    about_support: "دعم مستمر",
+    about_support_text: "نرافقك في كل خطوة",
+
+    services_label: "خدماتنا",
+    services_title: "حلول تصميم متكاملة لعلامتك",
+
+    service_custom: "تصاميم مخصصة",
+    service_custom_text: "حلول تصميم خاصة تناسب احتياجات مشروعك وأهدافك.",
+    service_print: "تصاميم مطبوعة",
+    service_print_text: "تصميم المطبوعات من كروت وبروشورات وبنرات والمزيد.",
+    service_ads: "تصاميم إعلانية",
+    service_ads_text: "تصاميم إعلانية فعالة توصل رسالتك وتحقق أهداف حملاتك.",
+    service_social: "محتوى السوشيال ميديا",
+    service_social_text: "تصاميم احترافية لمنصات التواصل تعكس هوية علامتك.",
+    service_logo: "تصميم الشعارات",
+    service_logo_text: "شعارات فريدة وبسيطة ومعبرة تبقى في ذاكرة عملائك.",
+    service_identity: "الهوية البصرية",
+    service_identity_text: "تصميم هوية متكاملة تعكس شخصية علامتك وتبني حضورك.",
+
+    work_label: "أعمالنا",
+    work_title: "أعمال صنعت الفرق",
+    work_all: "الكل",
+    work_identity: "هويات بصرية",
+    work_logos: "شعارات",
+    work_social: "سوشيال ميديا",
+    work_ads: "تصاميم إعلانية",
+    work_all_button: "↗ عرض جميع الأعمال",
+
+    process_label: "طريقة العمل",
+    process_title: "من الفكرة إلى هوية متكاملة",
+    step1_title: "نستلم المشروع",
+    step1_text: "نتعرف على فكرتك، جمهورك، شخصيتك والأهداف التي تريد أن تظهر بها.",
+    step2_title: "نطور الفكرة",
+    step2_text: "نحدد الاتجاه المناسب ونحوّل الفكرة إلى مفهوم بصري واضح.",
+    step3_title: "نصمم الهوية",
+    step3_text: "نصمم الشعار والألوان والعناصر ونبني هوية بصرية متكاملة.",
+    step4_title: "نسلم المشروع",
+    step4_text: "تحصل على الهوية النهائية الجاهزة للاستخدام في جميع المنصات.",
+
+    cta_title: "جاهز لنعمل على مشروعك القادم؟",
+    cta_text: "تواصل معنا الآن وابدأ رحلتك مع VAZ.",
+    cta_whatsapp: "◔ تواصل عبر واتساب الآن",
+
+    copyright: "© 2026 VAZ Creative Design Studio"
+  },
+
+  en: {
+    nav_home: "Home",
+    nav_about: "About VAZ",
+    nav_services: "Services",
+    nav_work: "Our Work",
+    nav_contact: "Contact Us",
+    whatsapp: "◔ WhatsApp",
+
+    hero_eyebrow: "DESIGN THAT DEFINES BRANDS",
+    hero_title: "Design that creates identity<br><span>that stays in memory.</span>",
+    hero_text: "We turn ideas into distinctive visual identities that reflect the essence of your brand and build an unforgettable presence.",
+    hero_work: "↗ Explore Our Work",
+    hero_start: "Start Your Project",
+
+    about_design: "Professional Designs",
+    about_design_text: "High quality with attention to detail",
+    about_ideas: "Creative Ideas",
+    about_ideas_text: "Innovative solutions for a distinctive identity",
+    about_time: "On-Time Delivery",
+    about_time_text: "We always deliver on schedule",
+    about_support: "Continuous Support",
+    about_support_text: "We support you every step of the way",
+
+    services_label: "Our Services",
+    services_title: "Complete Design Solutions for Your Brand",
+
+    service_custom: "Custom Designs",
+    service_custom_text: "Custom design solutions tailored to your project's needs and goals.",
+    service_print: "Print Designs",
+    service_print_text: "Print design for cards, brochures, banners and more.",
+    service_ads: "Advertising Designs",
+    service_ads_text: "Effective advertising designs that deliver your message and achieve campaign goals.",
+    service_social: "Social Media Content",
+    service_social_text: "Professional social media designs that reflect your brand identity.",
+    service_logo: "Logo Design",
+    service_logo_text: "Unique, simple and memorable logos for your brand.",
+    service_identity: "Visual Identity",
+    service_identity_text: "A complete visual identity that reflects your brand personality and builds your presence.",
+
+    work_label: "Our Work",
+    work_title: "Work That Makes a Difference",
+    work_all: "All",
+    work_identity: "Visual Identity",
+    work_logos: "Logos",
+    work_social: "Social Media",
+    work_ads: "Advertising",
+    work_all_button: "↗ View All Work",
+
+    process_label: "Our Process",
+    process_title: "From Idea to Complete Identity",
+    step1_title: "We Receive the Project",
+    step1_text: "We understand your idea, audience, personality and the goals you want to achieve.",
+    step2_title: "We Develop the Idea",
+    step2_text: "We define the right direction and turn the idea into a clear visual concept.",
+    step3_title: "We Design the Identity",
+    step3_text: "We design the logo, colors and elements to build a complete visual identity.",
+    step4_title: "We Deliver",
+    step4_text: "You receive the final identity ready to use across all platforms.",
+
+    cta_title: "Ready to Work on Your Next Project?",
+    cta_text: "Contact us now and start your journey with VAZ.",
+    cta_whatsapp: "◔ Contact Us on WhatsApp",
+
+    copyright: "© 2026 VAZ Creative Design Studio"
+  },
+
+  hi: {
+    nav_home: "होम",
+    nav_about: "VAZ के बारे में",
+    nav_services: "सेवाएँ",
+    nav_work: "हमारा काम",
+    nav_contact: "संपर्क करें",
+    whatsapp: "◔ WhatsApp",
+
+    hero_eyebrow: "DESIGN THAT DEFINES BRANDS",
+    hero_title: "ऐसा डिज़ाइन जो पहचान बनाए<br><span>और यादों में रहे।</span>",
+    hero_text: "हम विचारों को विशिष्ट दृश्य पहचान में बदलते हैं जो आपके ब्रांड के सार को दर्शाती है और एक यादगार उपस्थिति बनाती है।",
+    hero_work: "↗ हमारा काम देखें",
+    hero_start: "अपना प्रोजेक्ट शुरू करें",
+
+    about_design: "पेशेवर डिज़ाइन",
+    about_design_text: "उच्च गुणवत्ता और बारीकियों पर ध्यान",
+    about_ideas: "रचनात्मक विचार",
+    about_ideas_text: "विशिष्ट पहचान के लिए नवीन समाधान",
+    about_time: "समय पर डिलीवरी",
+    about_time_text: "हम हमेशा समय पर काम पूरा करते हैं",
+    about_support: "निरंतर सहायता",
+    about_support_text: "हम हर कदम पर आपके साथ हैं",
+
+    services_label: "हमारी सेवाएँ",
+    services_title: "आपके ब्रांड के लिए पूर्ण डिज़ाइन समाधान",
+
+    service_custom: "कस्टम डिज़ाइन",
+    service_custom_text: "आपके प्रोजेक्ट की आवश्यकताओं और लक्ष्यों के अनुसार विशेष डिज़ाइन समाधान।",
+    service_print: "प्रिंट डिज़ाइन",
+    service_print_text: "कार्ड, ब्रोशर, बैनर और अन्य प्रिंट सामग्री का डिज़ाइन।",
+    service_ads: "विज्ञापन डिज़ाइन",
+    service_ads_text: "प्रभावी विज्ञापन डिज़ाइन जो आपके संदेश और अभियान के लक्ष्यों को पूरा करें।",
+    service_social: "सोशल मीडिया कंटेंट",
+    service_social_text: "पेशेवर सोशल मीडिया डिज़ाइन जो आपके ब्रांड की पहचान को दर्शाते हैं।",
+    service_logo: "लोगो डिज़ाइन",
+    service_logo_text: "अद्वितीय, सरल और यादगार लोगो।",
+    service_identity: "विज़ुअल आइडेंटिटी",
+    service_identity_text: "एक संपूर्ण दृश्य पहचान जो आपके ब्रांड के व्यक्तित्व को दर्शाती है।",
+
+    work_label: "हमारा काम",
+    work_title: "ऐसा काम जो बदलाव लाए",
+    work_all: "सभी",
+    work_identity: "विज़ुअल आइडेंटिटी",
+    work_logos: "लोगो",
+    work_social: "सोशल मीडिया",
+    work_ads: "विज्ञापन",
+    work_all_button: "↗ सभी कार्य देखें",
+
+    process_label: "हमारी प्रक्रिया",
+    process_title: "विचार से पूर्ण पहचान तक",
+    step1_title: "हम प्रोजेक्ट प्राप्त करते हैं",
+    step1_text: "हम आपके विचार, दर्शकों, व्यक्तित्व और लक्ष्यों को समझते हैं।",
+    step2_title: "हम विचार विकसित करते हैं",
+    step2_text: "हम सही दिशा तय करके विचार को स्पष्ट दृश्य अवधारणा में बदलते हैं।",
+    step3_title: "हम पहचान डिज़ाइन करते हैं",
+    step3_text: "हम लोगो, रंग और तत्वों को डिज़ाइन करके पूर्ण दृश्य पहचान बनाते हैं।",
+    step4_title: "हम प्रोजेक्ट डिलीवर करते हैं",
+    step4_text: "आपको सभी प्लेटफ़ॉर्म के लिए तैयार अंतिम पहचान मिलती है।",
+
+    cta_title: "अपने अगले प्रोजेक्ट पर काम करने के लिए तैयार हैं?",
+    cta_text: "अभी संपर्क करें और VAZ के साथ अपनी यात्रा शुरू करें।",
+    cta_whatsapp: "◔ WhatsApp पर संपर्क करें",
+
+    copyright: "© 2026 VAZ Creative Design Studio"
+  },
+
+  ur: {
+    nav_home: "مرکزی صفحہ",
+    nav_about: "VAZ کے بارے میں",
+    nav_services: "خدمات",
+    nav_work: "ہمارا کام",
+    nav_contact: "رابطہ کریں",
+    whatsapp: "◔ واٹس ایپ",
+
+    hero_eyebrow: "DESIGN THAT DEFINES BRANDS",
+    hero_title: "ایسا ڈیزائن جو شناخت بنائے<br><span>اور یادوں میں رہے۔</span>",
+    hero_text: "ہم خیالات کو منفرد بصری شناخت میں تبدیل کرتے ہیں جو آپ کے برانڈ کی اصل کو ظاہر کرتی ہے اور ایک ناقابل فراموش موجودگی بناتی ہے۔",
+    hero_work: "↗ ہمارا کام دیکھیں",
+    hero_start: "اپنا پروجیکٹ شروع کریں",
+
+    about_design: "پیشہ ورانہ ڈیزائن",
+    about_design_text: "اعلیٰ معیار اور تفصیلات پر خصوصی توجہ",
+    about_ideas: "تخلیقی خیالات",
+    about_ideas_text: "منفرد شناخت کے لیے جدید حل",
+    about_time: "وقت کی پابندی",
+    about_time_text: "ہم ہمیشہ مقررہ وقت پر کام مکمل کرتے ہیں",
+    about_support: "مسلسل تعاون",
+    about_support_text: "ہم ہر قدم پر آپ کے ساتھ ہیں",
+
+    services_label: "ہماری خدمات",
+    services_title: "آپ کے برانڈ کے لیے مکمل ڈیزائن حل",
+
+    service_custom: "مخصوص ڈیزائن",
+    service_custom_text: "آپ کے پروجیکٹ کی ضروریات اور اہداف کے مطابق خصوصی ڈیزائن حل۔",
+    service_print: "پرنٹ ڈیزائن",
+    service_print_text: "کارڈز، بروشرز، بینرز اور دیگر پرنٹ مواد کا ڈیزائن۔",
+    service_ads: "اشتہاری ڈیزائن",
+    service_ads_text: "مؤثر اشتہاری ڈیزائن جو آپ کا پیغام اور مہم کے اہداف پورے کریں۔",
+    service_social: "سوشل میڈیا مواد",
+    service_social_text: "پیشہ ورانہ سوشل میڈیا ڈیزائن جو آپ کے برانڈ کی شناخت کو ظاہر کریں۔",
+    service_logo: "لوگو ڈیزائن",
+    service_logo_text: "منفرد، سادہ اور یادگار لوگو۔",
+    service_identity: "بصری شناخت",
+    service_identity_text: "مکمل بصری شناخت جو آپ کے برانڈ کی شخصیت کو ظاہر کرے۔",
+
+    work_label: "ہمارا کام",
+    work_title: "ایسا کام جو فرق پیدا کرے",
+    work_all: "سب",
+    work_identity: "بصری شناخت",
+    work_logos: "لوگو",
+    work_social: "سوشل میڈیا",
+    work_ads: "اشتہاری ڈیزائن",
+    work_all_button: "↗ تمام کام دیکھیں",
+
+    process_label: "ہمارا طریقہ کار",
+    process_title: "خیال سے مکمل شناخت تک",
+    step1_title: "ہم پروجیکٹ وصول کرتے ہیں",
+    step1_text: "ہم آپ کے خیال، سامعین، شخصیت اور اہداف کو سمجھتے ہیں۔",
+    step2_title: "ہم خیال تیار کرتے ہیں",
+    step2_text: "ہم مناسب سمت طے کرکے خیال کو واضح بصری تصور میں تبدیل کرتے ہیں۔",
+    step3_title: "ہم شناخت ڈیزائن کرتے ہیں",
+    step3_text: "ہم لوگو، رنگ اور عناصر ڈیزائن کرکے مکمل بصری شناخت بناتے ہیں۔",
+    step4_title: "ہم پروجیکٹ فراہم کرتے ہیں",
+    step4_text: "آپ کو تمام پلیٹ فارمز پر استعمال کے لیے تیار حتمی شناخت ملتی ہے۔",
+
+    cta_title: "کیا آپ اپنے اگلے پروجیکٹ کے لیے تیار ہیں؟",
+    cta_text: "ابھی رابطہ کریں اور VAZ کے ساتھ اپنا سفر شروع کریں۔",
+    cta_whatsapp: "◔ واٹس ایپ پر رابطہ کریں",
+
+    copyright: "© 2026 VAZ Creative Design Studio"
+  },
+
+  bn: {
+    nav_home: "হোম",
+    nav_about: "VAZ সম্পর্কে",
+    nav_services: "সেবাসমূহ",
+    nav_work: "আমাদের কাজ",
+    nav_contact: "যোগাযোগ করুন",
+    whatsapp: "◔ WhatsApp",
+
+    hero_eyebrow: "DESIGN THAT DEFINES BRANDS",
+    hero_title: "এমন ডিজাইন যা পরিচয় তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",
+    hero_text: "আমরা ধারণাগুলোকে অনন্য ভিজ্যুয়াল পরিচয়ে রূপান্তর করি যা আপনার ব্র্যান্ডের মূল ভাবনা প্রকাশ করে এবং একটি স্মরণীয় উপস্থিতি তৈরি করে।",
+    hero_work: "↗ আমাদের কাজ দেখুন",
+    hero_start: "আপনার প্রজেক্ট শুরু করুন",
+
+    about_design: "পেশাদার ডিজাইন",
+    about_design_text: "উচ্চমান এবং বিস্তারিত বিষয়ে যত্ন",
+    about_ideas: "সৃজনশীল ধারণা",
+    about_ideas_text: "অনন্য পরিচয়ের জন্য উদ্ভাবনী সমাধান",
+    about_time: "সময়মতো ডেলিভারি",
+    about_time_text: "আমরা সবসময় নির্ধারিত সময়ে কাজ শেষ করি",
+    about_support: "নিরবচ্ছিন্ন সহায়তা",
+    about_support_text: "প্রতিটি ধাপে আমরা আপনার পাশে থাকি",
+
+    services_label: "আমাদের সেবা",
+    services_title: "আপনার ব্র্যান্ডের জন্য সম্পূর্ণ ডিজাইন সমাধান",
+
+    service_custom: "কাস্টম ডিজাইন",
+    service_custom_text: "আপনার প্রজেক্টের প্রয়োজন ও লক্ষ্য অনুযায়ী বিশেষ ডিজাইন সমাধান।",
+    service_print: "প্রিন্ট ডিজাইন",
+    service_print_text: "কার্ড, ব্রোশিওর, ব্যানার এবং আরও অনেক প্রিন্ট উপকরণের ডিজাইন।",
+    service_ads: "বিজ্ঞাপন ডিজাইন",
+    service_ads_text: "কার্যকর বিজ্ঞাপন ডিজাইন যা আপনার বার্তা ও প্রচারণার লক্ষ্য পূরণ করে।",
+    service_social: "সোশ্যাল মিডিয়া কনটেন্ট",
+    service_social_text: "পেশাদার সোশ্যাল মিডিয়া ডিজাইন যা আপনার ব্র্যান্ড পরিচয়কে তুলে ধরে।",
+    service_logo: "লোগো ডিজাইন",
+    service_logo_text: "অনন্য, সহজ এবং স্মরণীয় লোগো।",
+    service_identity: "ভিজ্যুয়াল আইডেন্টিটি",
+    service_identity_text: "সম্পূর্ণ ভিজ্যুয়াল পরিচয় যা আপনার ব্র্যান্ডের ব্যক্তিত্বকে প্রকাশ করে।",
+
+    work_label: "আমাদের কাজ",
+    work_title: "যে কাজ পার্থক্য তৈরি করে",
+    work_all: "সব",
+    work_identity: "ভিজ্যুয়াল আইডেন্টিটি",
+    work_logos: "লোগো",
+    work_social: "সোশ্যাল মিডিয়া",
+    work_ads: "বিজ্ঞাপন",
+    work_all_button: "↗ সব কাজ দেখুন",
+
+    process_label: "আমাদের প্রক্রিয়া",
+    process_title: "ধারণা থেকে সম্পূর্ণ পরিচয় পর্যন্ত",
+    step1_title: "আমরা প্রজেক্ট গ্রহণ করি",
+    step1_text: "আমরা আপনার ধারণা, দর্শক, ব্যক্তিত্ব এবং লক্ষ্য বুঝি।",
+    step2_title: "আমরা ধারণা তৈরি করি",
+    step2_text: "আমরা সঠিক দিক নির্ধারণ করে ধারণাটিকে একটি পরিষ্কার ভিজ্যুয়াল কনসেপ্টে রূপান্তর করি।",
+    step3_title: "আমরা পরিচয় ডিজাইন করি",
+    step3_text: "আমরা লোগো, রঙ এবং উপাদান ডিজাইন করে সম্পূর্ণ ভিজ্যুয়াল পরিচয় তৈরি করি।",
+    step4_title: "আমরা প্রজেক্ট প্রদান করি",
+    step4_text: "আপনি সব প্ল্যাটফর্মে ব্যবহারের জন্য প্রস্তুত চূড়ান্ত পরিচয় পান।",
+
+    cta_title: "আপনার পরবর্তী প্রজেক্টে কাজ করতে প্রস্তুত?",
+    cta_text: "এখনই যোগাযোগ করুন এবং VAZ-এর সাথে আপনার যাত্রা শুরু করুন।",
+    cta_whatsapp: "◔ WhatsApp-এ যোগাযোগ করুন",
+
+    copyright: "© 2026 VAZ Creative Design Studio"
+  }
+};
+
+function changeLanguage(lang){
+
+  const rtlLanguages = ["ar", "ur"];
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir = rtlLanguages.includes(lang) ? "rtl" : "ltr";
+
+  const select = document.getElementById("languageSelect");
+  if(select) select.value = lang;
+
+  localStorage.setItem("vazLanguage", lang);
+
+  const t = translations[lang];
+
+  document.querySelectorAll("[data-i18n]").forEach(function(element){
+    const key = element.getAttribute("data-i18n");
+
+    if(t[key]){
+      element.innerHTML = t[key];
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const savedLanguage = localStorage.getItem("vazLanguage") || "ar";
+
+  changeLanguage(savedLanguage);
+
+});
 </script>
 </body>
 </html>
