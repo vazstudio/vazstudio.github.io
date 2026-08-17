@@ -154,7 +154,27 @@ nav a:first-child:after{
   font-size:27px;
   margin-right:8px;
   color:#d9b5c2;
+  position:relative;
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
 }
+
+.menu select{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+  cursor:pointer;
+}
+  
+  
+  
+
 
 /* HERO */
 .hero{
@@ -1047,15 +1067,24 @@ nav.open{
   
   
 
-      <div class="menu" onclick="document.querySelector('header nav').classList.toggle('open')">
+      <div class="menu">
   =
   <select id="languageSelect" onchange="changeLanguage(this.value)">
-  <option value="ar">🇸🇦 العربية</option>
-  <option value="en">🇺🇸 English</option>
-  <option value="hi">🇮🇳 हिन्दी</option>
-  <option value="ur">🇵🇰 اردو</option>
-  <option value="bn">🇧🇩 বাংলা</option>
-</select>
+    <option value="ar">🇸🇦 العربية</option>
+    <option value="en">🇺🇸 English</option>
+    <option value="hi">🇮🇳 हिन्दी</option>
+    <option value="ur">🇵🇰 اردو</option>
+    <option value="bn">🇧🇩 বাংলা</option>
+  </select>
+</div>
+  
+  
+  
+  
+  
+  
+  
+
     
     
     
