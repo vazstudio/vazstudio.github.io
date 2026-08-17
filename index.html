@@ -1678,26 +1678,55 @@ function toggleMenu(){
 
 function changeLanguage(lang){
 
-  const rtlLanguages = ["ar", "ur"];
+    const rtlLanguages = ["ar", "ur"];
 
-  document.documentElement.lang = lang;
-  document.documentElement.dir = rtlLanguages.includes(lang) ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+    document.documentElement.dir =
+        rtlLanguages.includes(lang) ? "rtl" : "ltr";
 
-  const select = document.getElementById("languageSelect");
-  if(select) select.value = lang;
+    const select = document.getElementById("languageSelect");
 
-  localStorage.setItem("vazLanguage", lang);
-
-  const t = translations[lang];
-
-  document.querySelectorAll("[data-i18n]").forEach(function(element){
-    const key = element.getAttribute("data-i18n");
-
-    if(t[key]){
-      element.innerHTML = t[key];
+    if(select){
+        select.value = lang;
     }
-  });
-}
+
+    localStorage.setItem("vazLanguage", lang);
+
+    const t = translations[lang];
+
+    if(!t) return;
+
+    
+
+        
+
+        
+            
+        
+
+    
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+    
+
+    
+      
+    
+  
+
 
 document.addEventListener("DOMContentLoaded", function(){
 
