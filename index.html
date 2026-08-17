@@ -1720,7 +1720,9 @@ function toggleMenu(){
   }
 };
 
-function changeLanguage(lang){
+<script>
+
+function changeLanguage(lang) {
 
     const rtlLanguages = ["ar", "ur"];
 
@@ -1730,7 +1732,7 @@ function changeLanguage(lang){
 
     const select = document.getElementById("languageSelect");
 
-    if(select){
+    if (select) {
         select.value = lang;
     }
 
@@ -1738,7 +1740,274 @@ function changeLanguage(lang){
 
     const t = translations[lang];
 
-    if(!t) return;
+    if (!t) return;
+
+    /*
+     * NAVIGATION
+     */
+    const navLinks = document.querySelectorAll("nav a");
+
+    if (navLinks.length >= 5) {
+        navLinks[0].textContent = t.nav_home;
+        navLinks[1].textContent = t.nav_about;
+        navLinks[2].textContent = t.nav_services;
+        navLinks[3].textContent = t.nav_work;
+        navLinks[4].textContent = t.nav_contact;
+    }
+
+    /*
+     * WHATSAPP
+     */
+    const whatsappButtons = document.querySelectorAll(".whatsapp");
+
+    whatsappButtons.forEach(function (button) {
+        button.textContent = t.whatsapp;
+    });
+
+    /*
+     * HERO
+     */
+    const eyebrow = document.querySelector(".eyebrow");
+    if (eyebrow) {
+        eyebrow.textContent = t.hero_eyebrow;
+    }
+
+    const heroTitle = document.querySelector(".hero h1");
+    if (heroTitle) {
+        heroTitle.innerHTML = t.hero_title;
+    }
+
+    const heroText = document.querySelector(".hero p");
+    if (heroText) {
+        heroText.textContent = t.hero_text;
+    }
+
+    const heroButtons = document.querySelectorAll(".hero .btn");
+
+    if (heroButtons.length >= 2) {
+        heroButtons[0].textContent = t.hero_work;
+        heroButtons[1].textContent = t.hero_start;
+    }
+
+    /*
+     * FEATURES
+     */
+    const featureTitles = document.querySelectorAll(".feature h3");
+    const featureTexts = document.querySelectorAll(".feature p");
+
+    const featureTitleKeys = [
+        "about_design",
+        "about_ideas",
+        "about_time",
+        "about_support"
+    ];
+
+    const featureTextKeys = [
+        "about_design_text",
+        "about_ideas_text",
+        "about_time_text",
+        "about_support_text"
+    ];
+
+    featureTitles.forEach(function (el, index) {
+        if (t[featureTitleKeys[index]]) {
+            el.textContent = t[featureTitleKeys[index]];
+        }
+    });
+
+    featureTexts.forEach(function (el, index) {
+        if (t[featureTextKeys[index]]) {
+            el.textContent = t[featureTextKeys[index]];
+        }
+    });
+
+    /*
+     * SERVICES
+     */
+    const servicesLabel = document.querySelector(".services .section-label");
+    const servicesTitle = document.querySelector(".services .section-title");
+
+    if (servicesLabel) {
+        servicesLabel.textContent = t.services_label;
+    }
+
+    if (servicesTitle) {
+        servicesTitle.textContent = t.services_title;
+    }
+
+    const serviceTitles = document.querySelectorAll(".service h3");
+    const serviceTexts = document.querySelectorAll(".service p");
+
+    const serviceTitleKeys = [
+        "service_custom",
+        "service_print",
+        "service_ads",
+        "service_social",
+        "service_logo",
+        "service_identity"
+    ];
+
+    const serviceTextKeys = [
+        "service_custom_text",
+        "service_print_text",
+        "service_ads_text",
+        "service_social_text",
+        "service_logo_text",
+        "service_identity_text"
+    ];
+
+    serviceTitles.forEach(function (el, index) {
+        if (t[serviceTitleKeys[index]]) {
+            el.textContent = t[serviceTitleKeys[index]];
+        }
+    });
+
+    serviceTexts.forEach(function (el, index) {
+        if (t[serviceTextKeys[index]]) {
+            el.textContent = t[serviceTextKeys[index]];
+        }
+    });
+
+    /*
+     * WORK
+     */
+    const workLabel = document.querySelector("#work .section-label");
+    const workTitle = document.querySelector("#work .section-title");
+
+    if (workLabel) {
+        workLabel.textContent = t.work_label;
+    }
+
+    if (workTitle) {
+        workTitle.textContent = t.work_title;
+    }
+
+    const workTabs = document.querySelectorAll(".work-tabs span");
+
+    const workTabKeys = [
+        "work_all",
+        "work_identity",
+        "work_logos",
+        "work_social",
+        "work_ads"
+    ];
+
+    workTabs.forEach(function (el, index) {
+        if (t[workTabKeys[index]]) {
+            el.textContent = t[workTabKeys[index]];
+        }
+    });
+
+    const workButton = document.querySelector(".work-btn");
+
+    if (workButton) {
+        workButton.textContent = t.work_all_button;
+    }
+
+    /*
+     * PROCESS
+     */
+    const processLabel = document.querySelector(".process .section-label");
+    const processTitle = document.querySelector(".process .section-title");
+
+    if (processLabel) {
+        processLabel.textContent = t.process_label;
+    }
+
+    if (processTitle) {
+        processTitle.textContent = t.process_title;
+    }
+
+    const stepTitles = document.querySelectorAll(".step h3");
+    const stepTexts = document.querySelectorAll(".step p");
+
+    const stepTitleKeys = [
+        "step1_title",
+        "step2_title",
+        "step3_title",
+        "step4_title"
+    ];
+
+    const stepTextKeys = [
+        "step1_text",
+        "step2_text",
+        "step3_text",
+        "step4_text"
+    ];
+
+    stepTitles.forEach(function (el, index) {
+        if (t[stepTitleKeys[index]]) {
+            el.textContent = t[stepTitleKeys[index]];
+        }
+    });
+
+    stepTexts.forEach(function (el, index) {
+        if (t[stepTextKeys[index]]) {
+            el.textContent = t[stepTextKeys[index]];
+        }
+    });
+
+    /*
+     * CTA
+     */
+    const ctaTitle = document.querySelector(".cta h2");
+    const ctaText = document.querySelector(".cta p");
+    const ctaWhatsapp = document.querySelector(".cta .highlight");
+
+    if (ctaTitle) {
+        ctaTitle.textContent = t.cta_title;
+    }
+
+    if (ctaText) {
+        ctaText.textContent = t.cta_text;
+    }
+
+    if (ctaWhatsapp) {
+        ctaWhatsapp.textContent = t.cta_whatsapp;
+    }
+
+    /*
+     * FOOTER
+     */
+    const copyright = document.querySelector(".copy");
+
+    if (copyright) {
+        copyright.textContent = t.copyright;
+    }
+}
+
+
+/*
+ * LOAD SAVED LANGUAGE
+ */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const savedLanguage =
+        localStorage.getItem("vazLanguage") || "ar";
+
+    changeLanguage(savedLanguage);
+
+});
+
+</script>
+
+    
+
+    
+    
+        
+
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
 
     
 
