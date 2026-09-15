@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متجر VAZ — Creative Design Studio</title>
+<meta name="description" content="متجر VAZ — منتجات وتصاميم رقمية بهوية VAZ.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#120a18;--bg2:#1a1023;--card:#21152b;--purple:#7b3f91;--purple2:#a45bb8;--gold:#d9b0bc;--gold2:#efd1d8;--text:#faf4f8;--muted:#b9aab9;--line:rgba(235,205,220,.18)}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 75% 12%,rgba(103,35,125,.18),transparent 30%),radial-gradient(circle at 15% 80%,rgba(79,24,100,.12),transparent 35%),var(--bg);color:var(--text);font-family:Cairo,Arial,sans-serif;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 44px));margin:auto}
+header{height:86px;border-bottom:1px solid var(--line);display:flex;align-items:center;background:rgba(18,10,24,.92);backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
+.nav{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{direction:ltr;text-align:left}.logo-main{font-family:"Playfair Display",serif;font-size:42px;font-weight:400;letter-spacing:9px;line-height:1;color:#f4eaf2}.logo-sub{font-size:8px;letter-spacing:4px;color:#a99aa8;margin-top:8px}
+nav{display:flex;gap:34px;font-size:13px;color:#d8ced6}nav a{opacity:.9}nav a:hover{color:#fff}
+.whatsapp{border:1px solid rgba(220,178,194,.38);padding:10px 18px;border-radius:30px;font-size:12px}
+.hero{padding:80px 0 55px;text-align:center;border-bottom:1px solid var(--line)}
+.eyebrow{color:#a98a9f;letter-spacing:4px;font-size:11px;margin-bottom:14px;direction:ltr}
+h1{font-family:"Playfair Display",serif;font-size:48px;font-weight:400;letter-spacing:5px;color:#efd8df;margin-bottom:10px}
+.hero h2{font-size:27px;font-weight:300;color:#faf4f8;margin-bottom:15px}.hero p{max-width:620px;margin:auto;color:#a99ca8;font-size:13px;line-height:2}
+.store{padding:55px 0 70px}.section-head{text-align:center;margin-bottom:35px}.section-label{color:#9d6c8f;font-size:11px;margin-bottom:7px}.section-title{font-size:27px;font-weight:300}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(145deg,rgba(43,23,48,.92),rgba(19,10,24,.96));border:1px solid rgba(219,182,198,.13);border-radius:9px;overflow:hidden;transition:.3s}.card:hover{transform:translateY(-4px);border-color:rgba(218,173,190,.3)}
+.media{aspect-ratio:4/3;background:linear-gradient(135deg,#2a172d,#100914);display:flex;align-items:center;justify-content:center;overflow:hidden}.media img{width:100%;height:100%;object-fit:cover;display:block}
+.placeholder{font-family:"Playfair Display",serif;font-size:38px;letter-spacing:7px;color:#dcb8c5}.body{padding:20px}.body h3{font-size:17px;font-weight:400;margin-bottom:7px}.body p{font-size:11px;color:#948794;line-height:1.9;min-height:42px}.price{display:flex;align-items:center;justify-content:space-between;margin-top:18px}.price strong{font-size:16px;font-weight:400;color:#efd1d8}.btn{border:1px solid rgba(222,179,197,.4);padding:8px 15px;border-radius:5px;font-size:11px}.btn.primary{background:linear-gradient(135deg,#6b2b7b,#8a397d);border:0}
+.note{margin-top:35px;text-align:center;color:#817381;font-size:10px}
+footer{border-top:1px solid var(--line);padding:25px 0;color:#817381;font-size:10px;text-align:center}
+@media(max-width:800px){.container{width:calc(100% - 28px)}header{height:auto;min-height:74px;padding:13px 0}.logo-main{font-size:32px;letter-spacing:7px}.logo-sub{font-size:7px;letter-spacing:2.5px}nav{display:none}.whatsapp{padding:8px 12px;font-size:10px}.hero{padding:58px 0 42px}h1{font-size:39px}.hero h2{font-size:23px}.grid{grid-template-columns:1fr 1fr;gap:12px}.body{padding:15px}.body h3{font-size:14px}.body p{font-size:10px}.price{gap:8px;align-items:flex-end;flex-direction:column}.btn{width:100%;text-align:center}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.media{aspect-ratio:16/10}.hero h2{font-size:21px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html"><div class="logo-main">VAZ</div><div class="logo-sub">CREATIVE DESIGN STUDIO</div></a>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="index.html#services">الخدمات</a>
+      <a href="index.html#work">أعمالنا</a>
+      <a href="store.html">المتجر</a>
+      <a href="index.html#contact">تواصل معنا</a>
+    </nav>
+    <a class="whatsapp" href="https://wa.me/966580015256">◔ تواصل عبر واتساب</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">VAZ DIGITAL STORE</div>
+    <h1>VAZ</h1>
+    <h2>متجر التصاميم والمنتجات الرقمية</h2>
+    <p>منتجات رقمية مصممة بنفس الهوية البصرية لـ VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة متناسقة من أول نظرة.</p>
+  </div>
+</section>
+
+<section class="store">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">المتجر</div>
+      <div class="section-title">اكتشف منتجات VAZ</div>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="media"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" alt="NEX Collection"></div>
+        <div class="body"><h3>NEX COLLECTION</h3><p>مجموعة تصاميم رقمية بهوية تحريرية فاخرة.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="VAZ_LUMERA.png" alt="LUMERA"></div>
+        <div class="body"><h3>LUMERA</h3><p>هوية بصرية ومنتج بصري مصمم بأسلوب VAZ.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="VAZ_MAVORA_final_800x434.png" alt="MAVORA"></div>
+        <div class="body"><h3>MAVORA</h3><p>تصميم فاخر قابل للتوظيف ضمن مشاريع العلامات التجارية.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="VAZ_VELORA.png" alt="VELORA"></div>
+        <div class="body"><h3>VELORA</h3><p>منتج بصري مستوحى من الهوية الداكنة الفاخرة لـ VAZ.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="VAZ_VERANE_final_800x434.png" alt="VERANE"></div>
+        <div class="body"><h3>VERANE</h3><p>تصميم بصري أنيق للاستخدام ضمن مشاريع الهوية والإعلانات.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="AUREA-COSMETICS.jpeg" alt="AUREA Cosmetics"></div>
+        <div class="body"><h3>AUREA COSMETICS</h3><p>عرض بصري فاخر يطابق لغة VAZ في الألوان والخامات.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+      </article>
+    </div>
+    <div class="note">سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب.</div>
+  </div>
+</section>
+</main>
+
+<footer>VAZ — CREATIVE DESIGN STUDIO</footer>
+</body>
+</html>
