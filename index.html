@@ -176,6 +176,38 @@ nav a:first-child:after{
   
 
 
+/* ===== VAZ LANGUAGE SWITCHER ===== */
+.language-switcher{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  border:1px solid rgba(220,178,194,.28);
+  padding:8px 11px;
+  border-radius:30px;
+  background:rgba(255,255,255,.015);
+  color:#d8ced6;
+}
+.language-icon{
+  font-size:15px;
+  line-height:1;
+}
+.language-switcher select{
+  appearance:none;
+  -webkit-appearance:none;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#d8ced6;
+  font-family:Cairo,Arial,sans-serif;
+  font-size:11px;
+  cursor:pointer;
+}
+.language-switcher select option{
+  background:#17101d;
+  color:#f5edf3;
+}
+/* ===== END VAZ LANGUAGE SWITCHER ===== */
+
 /* HERO */
 .hero{
   min-height:520px;
@@ -210,7 +242,7 @@ nav a:first-child:after{
   position:relative;
   z-index:2;
   width:50%;
-}transform:translateY(-25px);
+}
 
 .eyebrow{
   color:#a98a9f;
@@ -1067,16 +1099,16 @@ nav.open{
   
   
 
-      <div class="menu">
-  =
-  <select id="languageSelect" onchange="changeLanguage(this.value)">
-    <option value="ar">🇸🇦 العربية</option>
-    <option value="en">🇺🇸 English</option>
-    <option value="hi">🇮🇳 हिन्दी</option>
-    <option value="ur">🇵🇰 اردو</option>
-    <option value="bn">🇧🇩 বাংলা</option>
-  </select>
-</div>
+      <div class="language-switcher">
+        <span class="language-icon" aria-hidden="true">🌐</span>
+        <select id="languageSelect" aria-label="اختيار اللغة" onchange="changeLanguage(this.value)">
+          <option value="ar">🇸🇦 العربية</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="hi">🇮🇳 हिन्दी</option>
+          <option value="ur">🇵🇰 اردو</option>
+          <option value="bn">🇧🇩 বাংলা</option>
+        </select>
+      </div>
   
   
   
@@ -1720,8 +1752,6 @@ function toggleMenu(){
   }
 };
 
-<script>
-
 function changeLanguage(lang) {
 
     const rtlLanguages = ["ar", "ur"];
@@ -1989,65 +2019,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-</script>
-
-    
-
-    
-    
-        
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-        
-
-        
-            
-        
-
-    
-
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-  
-
-  
-    
-
-    
-      
-    
-  
-
-
-document.addEventListener("DOMContentLoaded", function(){
-
-  const savedLanguage = localStorage.getItem("vazLanguage") || "ar";
-
-  changeLanguage(savedLanguage);
-
-});
 </script>
 </body>
 </html>
