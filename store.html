@@ -31,6 +31,26 @@ h1{font-family:"Playfair Display",serif;font-size:48px;font-weight:400;letter-sp
 footer{border-top:1px solid var(--line);padding:25px 0;color:#817381;font-size:10px;text-align:center}
 @media(max-width:800px){.container{width:calc(100% - 28px)}header{height:auto;min-height:74px;padding:13px 0}.logo-main{font-size:32px;letter-spacing:7px}.logo-sub{font-size:7px;letter-spacing:2.5px}nav{display:none}.whatsapp{padding:8px 12px;font-size:10px}.hero{padding:58px 0 42px}h1{font-size:39px}.hero h2{font-size:23px}.grid{grid-template-columns:1fr 1fr;gap:12px}.body{padding:15px}.body h3{font-size:14px}.body p{font-size:10px}.price{gap:8px;align-items:flex-end;flex-direction:column}.btn{width:100%;text-align:center}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}.media{aspect-ratio:16/10}.hero h2{font-size:21px}}
+
+/* VAZ approved luxury visual layer */
+body{background:#08030b url("vaz-hero.jpg") center top/cover fixed no-repeat;position:relative}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,2,8,.48) 0%,rgba(7,3,11,.28) 36%,rgba(8,3,12,.62) 100%),linear-gradient(90deg,rgba(3,1,6,.40),rgba(92,28,100,.10),rgba(3,1,6,.42));pointer-events:none}
+header{background:rgba(8,3,12,.48);border-bottom:1px solid rgba(232,184,202,.24)}
+.hero{min-height:760px;padding:0;text-align:right;display:flex;align-items:flex-end;background:transparent;position:relative;overflow:hidden}
+.hero .container{position:relative;width:min(1180px,calc(100% - 40px));margin:auto}
+.hero .container:after{content:"";position:absolute;left:8%;top:43%;transform:translateY(-50%);width:360px;height:210px;background:radial-gradient(ellipse,rgba(155,63,168,.18),transparent 68%);pointer-events:none}
+.hero:after{content:"VAZ";position:absolute;left:8%;top:42%;font:400 132px/.9 "Playfair Display",serif;letter-spacing:18px;color:rgba(237,200,211,.92);text-shadow:0 0 35px rgba(196,91,180,.15);direction:ltr}
+.hero:before{content:"✦";position:absolute;left:calc(8% + 335px);top:30%;font-size:34px;color:#e8b8ca;z-index:1}
+.eyebrow{color:#b995aa;font-size:10px;letter-spacing:4px;margin-bottom:18px}
+h1{font-family:Cairo,Arial,sans-serif;font-size:48px;font-weight:400;line-height:1.38;letter-spacing:0;color:#fbf7fa;margin-bottom:20px}h1 span{color:#e8b8ca}
+.hero h2{font-size:0}.hero p{max-width:610px;color:#d0c0ca;font-size:14px;line-height:2;margin-bottom:28px}
+.buttons{display:flex;gap:12px}.btn{padding:12px 25px;border-radius:6px;border:1px solid rgba(232,184,202,.48);background:rgba(8,3,12,.28);backdrop-filter:blur(8px)}.btn.primary{background:linear-gradient(135deg,#8b2e9d,#b34bbb);border-color:transparent}
+.features{background:rgba(7,3,11,.48);backdrop-filter:blur(12px)}
+.store{background:rgba(7,3,11,.28);backdrop-filter:blur(8px)}
+.card{background:linear-gradient(145deg,rgba(31,15,39,.82),rgba(9,4,13,.90));border-color:rgba(232,184,202,.20)}
+.lang{height:42px;width:42px;border:1px solid rgba(232,184,202,.38);border-radius:50%;background:rgba(8,3,12,.20);position:relative;display:grid;place-items:center}.lang select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.lang span{font-size:17px;color:#e8b8ca}
+.actions{display:flex;align-items:center;gap:10px}
+@media(max-width:850px){header{background:rgba(8,3,12,.42)}.hero{min-height:760px;align-items:flex-end}.hero .container{width:calc(100% - 28px)}.hero:after{display:none}.hero:before{display:none}.hero .container:after{display:none}.hero-content{width:100%;padding:0 0 58px}.hero{text-align:right}.eyebrow{font-size:9px;letter-spacing:3px}.hero h1,h1{font-size:31px;line-height:1.4}.hero p{font-size:12px;line-height:2}.buttons{gap:12px}.btn{padding:12px 20px}.feature-grid{grid-template-columns:1fr 1fr}.feature{min-height:108px;padding:18px 12px}.feature h3{font-size:12px}.feature p{font-size:9px}.icon{font-size:23px}.actions .whatsapp{padding:8px 11px;font-size:9px}.lang{width:42px;height:42px}}
 </style>
 </head>
 <body>
@@ -44,21 +64,23 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:#817381;font-size:1
       <a href="store.html">المتجر</a>
       <a href="index.html#contact">تواصل معنا</a>
     </nav>
-    <a class="whatsapp" href="https://wa.me/966580015256">◔ تواصل عبر واتساب</a>
+    <div class="actions"><a class="whatsapp" href="https://wa.me/966580015256">◔ تواصل عبر واتساب</a><div class="lang"><span id="languageLetter">ع</span><select id="languageSelect" aria-label="Language"><option value="ar">العربية</option><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option><option value="bn">বাংলা</option></select></div></div>
   </div>
 </header>
 
 <main>
 <section class="hero">
   <div class="container">
-    <div class="eyebrow">VAZ DIGITAL STORE</div>
-    <h1>VAZ</h1>
-    <h2>متجر التصاميم والمنتجات الرقمية</h2>
-    <p>منتجات رقمية مصممة بنفس الهوية البصرية لـ VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة متناسقة من أول نظرة.</p>
+    <div class="hero-content">
+      <div class="eyebrow">DESIGN THAT DEFINES BRANDS</div>
+      <h1>متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span></h1>
+      <p>منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة.</p>
+      <div class="buttons"><a class="btn primary" href="#products">↗ استكشف منتجاتنا</a><a class="btn" href="https://wa.me/966580015256">ابدأ طلبك</a></div>
+    </div>
   </div>
 </section>
 
-<section class="store">
+<section class="store" id="products">
   <div class="container">
     <div class="section-head">
       <div class="section-label">المتجر</div>
@@ -94,8 +116,18 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:#817381;font-size:1
     <div class="note">سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب.</div>
   </div>
 </section>
-</main>
+<section class="features"><div class="container feature-grid">
+<div class="feature"><div class="icon">♢</div><div><h3>تصاميم احترافية</h3><p>جودة عالية واهتمام بالتفاصيل</p></div></div>
+<div class="feature"><div class="icon">✧</div><div><h3>أفكار إبداعية</h3><p>حلول مبتكرة لهوية مميزة</p></div></div>
+<div class="feature"><div class="icon">◷</div><div><h3>الالتزام بالمواعيد</h3><p>نسلم في الوقت المحدد دائمًا</p></div></div>
+<div class="feature"><div class="icon">♧</div><div><h3>دعم مستمر</h3><p>نرافقك في كل خطوة</p></div></div>
+</div></section></main>
 
 <footer>VAZ — CREATIVE DESIGN STUDIO</footer>
-</body>
+<script>
+const letters={ar:"ع",en:"E",hi:"ह",ur:"ا",bn:"ব"};
+const labels={ar:{hero:"متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span>",p:"منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة."},en:{hero:"A store that creates an experience<br><span>that stays in memory.</span>",p:"Digital products designed in the VAZ visual language — quiet luxury, precise details and a consistent visual experience."},hi:{hero:"एक स्टोर जो अनुभव बनाए<br><span>और याद रह जाए।</span>",p:"VAZ की दृश्य भाषा में डिज़ाइन किए गए डिजिटल उत्पाद — शांत लक्ज़री और सटीक विवरण।"},ur:{hero:"ایسا اسٹور جو تجربہ بنائے<br><span>اور یاد رہ جائے۔</span>",p:"VAZ کی بصری زبان میں تیار کردہ ڈیجیٹل مصنوعات — پرسکون لگژری اور باریک تفصیلات۔"},bn:{hero:"একটি স্টোর যা অভিজ্ঞতা তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",p:"VAZ-এর ভিজ্যুয়াল ভাষায় তৈরি ডিজিটাল পণ্য — শান্ত বিলাসিতা ও সূক্ষ্ম বিবরণ۔"}};
+function applyLanguage(lang){lang=labels[lang]?lang:"ar";document.documentElement.lang=lang;document.documentElement.dir=(lang==="ar"||lang==="ur")?"rtl":"ltr";document.querySelector(".hero h1").innerHTML=labels[lang].hero;document.querySelector(".hero p").textContent=labels[lang].p;document.getElementById("languageLetter").textContent=letters[lang];document.getElementById("languageSelect").value=lang;localStorage.setItem("vazLanguage",lang)}
+document.getElementById("languageSelect").addEventListener("change",e=>applyLanguage(e.target.value));applyLanguage(localStorage.getItem("vazLanguage")||"ar");
+</script></body>
 </html>
