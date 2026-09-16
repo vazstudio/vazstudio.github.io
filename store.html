@@ -78,6 +78,37 @@ h1 span{color:#e8b8ca}
 footer{background:rgba(6,2,9,.78);border-top:1px solid rgba(232,184,202,.16)}
 @media(max-width:850px){body{background-attachment:scroll;background-size:auto 100svh;background-position:center top}header{height:76px;background:rgba(7,2,11,.38)}.hero{min-height:100svh}.hero .container{width:calc(100% - 28px);padding-bottom:110px}.hero:after,.hero .container:after{display:none}.hero-content{max-width:none;width:100%}.hero p{font-size:12px}.eyebrow{font-size:9px;letter-spacing:3px}.store{padding:70px 0 65px}.features{width:calc(100% - 28px);margin-bottom:50px}.feature{min-height:104px;padding:16px 10px}}
 @media(max-width:520px){.hero .container{padding-bottom:108px}h1{font-size:31px}.hero p{font-size:11.5px}.buttons{gap:10px}.btn{padding:12px 18px;font-size:11px}.feature h3{font-size:11px}.feature p{font-size:8.5px}}
+
+/* VAZ HERO POSITION — approved mobile layout: keep image clean, place all hero text below the image boundary */
+@media(max-width:850px){
+  .hero{
+    min-height:auto;
+    height:auto;
+    display:block;
+    padding-top:690px;
+    text-align:right;
+    border-bottom:0;
+    overflow:visible;
+  }
+  .hero .container{
+    width:calc(100% - 28px);
+    padding-bottom:82px;
+  }
+  .hero-content{
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .hero-content .eyebrow{order:1;margin-bottom:18px}
+  .hero-content h1{order:2;margin-bottom:20px}
+  .hero-content p{order:3;margin-bottom:28px}
+  .hero-content .buttons{order:4}
+}
+
 </style>
 </head>
 <body>
