@@ -1,0 +1,50 @@
+name: One-time extend hero image
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  extend-hero-image:
+    if: github.event.head_commit.message != 'Extend mobile hero image to features'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extend mobile hero background
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '@media(max-width:850px){.features{overflow:visible}.feature-grid{min-height:216px}.feature{min-height:108px}}'
+          addition = '@media(max-width:850px){.hero{overflow:visible}.hero-bg-force{bottom:auto;height:calc(100% + 216px)}.features{position:relative;z-index:5}}'
+          if addition not in s:
+              if marker in s:
+                  s = s.replace(marker, marker + addition)
+              else:
+                  raise SystemExit('Expected mobile features CSS marker was not found; no change made.')
+              p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit website change
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet || git commit -m 'Extend mobile hero image to features'
+          git push
+
+      - name: Remove one-time workflow
+        if: success()
+        run: |
+          rm -f .github/workflows/one-time-extend-hero-image.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/one-time-extend-hero-image.yml
+          git diff --cached --quiet || git commit -m 'Remove one-time hero image workflow'
+          git push
