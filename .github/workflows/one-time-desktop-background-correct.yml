@@ -1,0 +1,37 @@
+name: One-time desktop background correct
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply verified desktop background model
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          css='''\n@media(min-width:851px){\n  body{background-image:none!important;}\n  main{position:relative!important;background-image:url("./vaz-store-bg.jpg?v=20260917-desktop")!important;background-repeat:no-repeat!important;background-position:center top!important;background-size:100% auto!important;}\n  main::before{display:none!important;content:none!important;}\n  .hero-bg-force{display:none!important;}\n  .hero{background:transparent!important;overflow:visible!important;}\n  #work{position:relative!important;z-index:2!important;background:#08030b!important;background-image:none!important;}\n}\n'''
+          marker='@media(min-width:851px){\n  body{background-image:none!important;}\n  main{position:relative!important;background-image:url("./vaz-store-bg.jpg?v=20260917-desktop")!important;'
+          if marker not in s:
+              s=s.replace('</style>',css+'</style>',1)
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html
+          if git diff --cached --quiet; then echo 'No change'; else git commit -m 'Correct desktop background without stretching'; git push; fi
+      - name: Remove this workflow
+        if: always()
+        run: |
+          rm -f .github/workflows/one-time-desktop-background-correct.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/one-time-desktop-background-correct.yml
+          if git diff --cached --quiet; then echo 'Already removed'; else git commit -m 'Remove one-time desktop background correct workflow'; git push; fi
