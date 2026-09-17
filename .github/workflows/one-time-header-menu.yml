@@ -1,0 +1,42 @@
+name: One-time header menu fix
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update header
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          m = re.search(r'<div class="actions">.*?</div>\s*</div>\s*</header>', s, re.S)
+          if not m:
+              raise SystemExit('header actions block not found')
+          block = m.group(0)
+          sm = re.search(r'<select[^>]*id=["\']languageSelect["\'][^>]*>.*?</select>', block, re.S)
+          if not sm:
+              raise SystemExit('languageSelect not found')
+          select = sm.group(0)
+          new_block = '''<div class="actions"><div class="menu-lang"><button type="button" class="menu-toggle" aria-label="فتح قائمة اللغات" aria-expanded="false"><span>=</span></button><div class="menu-panel">''' + select + '''</div></div></div></div></header>'''
+          s = s[:m.start()] + new_block + s[m.end():]
+          css = '''\n@media(max-width:850px){.nav{direction:ltr}.actions{margin-left:auto;margin-right:0}.menu-lang{position:relative}.menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer;transition:.25s}.menu-toggle:hover,.menu-lang.open .menu-toggle{border-color:var(--accent2);box-shadow:0 0 18px rgba(154,63,168,.22)}.menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.35);display:none;z-index:120}.menu-lang.open .menu-panel{display:block}.menu-panel select{position:static;width:100%;height:auto;opacity:1;appearance:none;-webkit-appearance:none;background:transparent;border:0;outline:0;color:var(--white);font:400 13px Cairo,Arial,sans-serif;padding:8px;cursor:pointer}.menu-panel select option{background:#120a18;color:#fff}.menu-panel:after{content:'⌄';position:absolute;left:16px;top:15px;color:var(--rose);pointer-events:none}.whatsapp{display:none!important}}\n@media(min-width:851px){.actions .menu-lang{position:relative}.actions .menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer}.actions .menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);display:none;z-index:120}.actions .menu-lang.open .menu-panel{display:block}.actions .menu-panel select{position:static;width:100%;height:auto;opacity:1;background:transparent;border:0;color:var(--white);font:400 13px Cairo,Arial,sans-serif;padding:8px}.actions .menu-panel option{background:#120a18;color:#fff}}\n'''
+          if '.menu-lang{' not in s:
+              s = s.replace('</style>', css + '</style>', 1)
+          js = '''\n<script>document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.menu-toggle'),w=document.querySelector('.menu-lang');if(b&&w){b.addEventListener('click',function(e){e.stopPropagation();var o=w.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')});document.addEventListener('click',function(e){if(!w.contains(e.target)){w.classList.remove('open');b.setAttribute('aria-expanded','false')}})}});</script>\n'''
+          if 'menu-toggle' in s and "aria-expanded" in s and "DOMContentLoaded" not in s:
+              s = s.replace('</body>', js + '</body>', 1)
+          p.write_text(s, encoding='utf-8')
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Replace WhatsApp with language menu"
+          git push
