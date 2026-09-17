@@ -1,0 +1,37 @@
+name: One-time desktop background final
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply desktop background layer
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          css='''\n@media(min-width:851px){\n  main{position:relative;}\n  main::before{\n    content:"";\n    position:absolute;\n    top:0;\n    left:0;\n    width:100%;\n    height:calc(100vh - 84px + 110px);\n    background:url("./vaz-store-bg.jpg?v=20260917-final") center top/100% 100% no-repeat;\n    z-index:0;\n    pointer-events:none;\n  }\n  .hero-bg-force{display:none!important;}\n  .hero{overflow:visible!important;background:transparent!important;}\n  .features{position:relative;z-index:5;}\n  #work{position:relative;z-index:1;background:#08030b!important;}\n  .process,.cta,footer{position:relative;z-index:1;}\n}\n'''
+          marker='</style>'
+          if '@media(min-width:851px){\n  main{position:relative;}' not in s:
+              s=s.replace(marker,css+marker,1)
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html
+          if git diff --cached --quiet; then echo 'No change'; else git commit -m 'Create desktop background layer behind features'; git push; fi
+      - name: Remove one-time workflow
+        if: always()
+        run: |
+          rm -f .github/workflows/one-time-desktop-background-final.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/one-time-desktop-background-final.yml
+          if git diff --cached --quiet; then echo 'Already removed'; else git commit -m 'Remove one-time desktop background workflow'; git push; fi
