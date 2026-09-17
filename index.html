@@ -76,6 +76,26 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
   .features{position:relative;z-index:5;background:transparent!important}
 }
 
+
+@media(min-width:851px){
+  main{position:relative;}
+  main::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:calc(100vh - 84px + 110px);
+    background:url("./vaz-store-bg.jpg?v=20260917-final") center top/100% 100% no-repeat;
+    z-index:0;
+    pointer-events:none;
+  }
+  .hero-bg-force{display:none!important;}
+  .hero{overflow:visible!important;background:transparent!important;}
+  .features{position:relative;z-index:5;}
+  #work{position:relative;z-index:1;background:#08030b!important;}
+  .process,.cta,footer{position:relative;z-index:1;}
+}
 </style>
 </head>
 <body>
