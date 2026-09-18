@@ -15,7 +15,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:#08030b;color:var(--white);font-family:Cairo,Arial,sans-serif;overflow-x:hidden;position:relative;background-image:url("https://raw.githubusercontent.com/vazstudio/vazstudio.github.io/main/vaz-store-bg.jpg");background-repeat:no-repeat;background-position:center top;background-size:cover}body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,2,8,.16) 0%,rgba(7,3,11,.08) 42%,rgba(8,3,12,.22) 100%),linear-gradient(90deg,rgba(3,1,6,.12),rgba(83,29,94,.04),rgba(3,1,6,.12));pointer-events:none}
+body{background:#08030b;color:var(--white);font-family:Cairo,Arial,sans-serif;overflow-x:hidden;position:relative}body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,2,8,.16) 0%,rgba(7,3,11,.08) 42%,rgba(8,3,12,.22) 100%),linear-gradient(90deg,rgba(3,1,6,.12),rgba(83,29,94,.04),rgba(3,1,6,.12));pointer-events:none}
 a{color:inherit;text-decoration:none}.container{width:min(1180px,calc(100% - 40px));margin:auto}
 header{position:sticky;top:0;z-index:100;height:84px;background:rgba(8,3,12,.48);backdrop-filter:blur(18px);border-bottom:1px solid rgba(229,183,200,.22)}
 .nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
@@ -48,7 +48,7 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
 @media(max-width:520px){.logo-main{font-size:31px;letter-spacing:6px}.logo-sub{font-size:7px;letter-spacing:2.5px}.whatsapp{padding:0 10px;font-size:9px}.whatsapp .wa-icon{width:18px;height:18px;flex-basis:18px}.lang{width:42px;height:42px}.lang span{font-size:16px}.hero h1,h1{font-size:31px}.services-grid,.work-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr 1fr}.section-title{font-size:22px}}
 
 @media(max-width:850px){.nav{direction:ltr}.actions{margin-left:auto;margin-right:0}.menu-lang{position:relative}.menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer;transition:.25s}.menu-toggle:hover,.menu-lang.open .menu-toggle{border-color:var(--accent2);box-shadow:0 0 18px rgba(154,63,168,.22)}.menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.35);display:none;z-index:120}.menu-lang.open .menu-panel{display:block}.menu-panel select{position:static;width:100%;height:auto;opacity:1;appearance:none;-webkit-appearance:none;background:transparent;border:0;outline:0;color:var(--white);font:400 13px Cairo,Arial,sans-serif;padding:8px;cursor:pointer}.menu-panel select option{background:#120a18;color:#fff}.menu-panel:after{content:'⌄';position:absolute;left:16px;top:15px;color:var(--rose);pointer-events:none}.whatsapp{display:none!important}}
-@media(min-width:851px){.hero{overflow:visible}.hero-bg-force{height:calc(100% + 110px);background-size:100% auto;background-position:center top}.features{position:relative;z-index:5}}@media(min-width:851px){.actions .menu-lang{position:relative}.actions .menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer}.actions .menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);display:none;z-index:120}.actions .menu-lang.open .menu-panel{display:block}.actions .menu-panel select{position:static;width:100%;height:auto;opacity:1;background:transparent;border:0;color:var(--white);font:400 13px Cairo,Arial,sans-serif;padding:8px}.actions .menu-panel option{background:#120a18;color:#fff}}
+@media(min-width:851px){.actions .menu-lang{position:relative}.actions .menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer}.actions .menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);display:none;z-index:120}.actions .menu-lang.open .menu-panel{display:block}.actions .menu-panel select{position:static;width:100%;height:auto;opacity:1;background:transparent;border:0;color:var(--white);font:400 13px Cairo,Arial,sans-serif;padding:8px}.actions .menu-panel option{background:#120a18;color:#fff}}
 <!-- seamless-features-transition -->
 @media(max-width:850px){
   .features{border:0!important;border-radius:0!important;overflow:visible!important;background:linear-gradient(180deg,rgba(8,3,12,0) 0%,rgba(8,3,12,.16) 18%,rgba(8,3,12,.30) 100%)!important;box-shadow:none!important;width:100%!important;margin:0!important;}
@@ -66,44 +66,13 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
   .feature:last-child{border-left:0!important;}
 }
 
-@media(min-width:851px){body{background-image:none!important}.hero-bg-force{background-size:cover!important;background-position:center top!important;background-repeat:no-repeat!important}}
-
-@media(min-width:851px){.hero{overflow:visible!important}.hero-bg-force{height:calc(100% + 280px)!important;background-size:100% auto!important;background-position:center top!important;background-repeat:no-repeat!important}.features{position:relative;z-index:5}}
-
+.desktop-hero-background{display:none}
 @media(min-width:851px){
-  .hero{overflow:visible!important}
-  .hero-bg-force{height:calc(100% + 112px)!important;bottom:auto!important;background-size:cover!important;background-position:center top!important;background-repeat:no-repeat!important}
-  .features{position:relative;z-index:5;background:transparent!important}
-}
-
-
-@media(min-width:851px){
-  main{position:relative;}
-  main::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:calc(100vh - 84px + 110px);
-    background:url("./vaz-store-bg.jpg?v=20260917-final") center top/100% 100% no-repeat;
-    z-index:0;
-    pointer-events:none;
-  }
-  .hero-bg-force{display:none!important;}
-  .hero{overflow:visible!important;background:transparent!important;}
-  .features{position:relative;z-index:5;}
-  #work{position:relative;z-index:1;background:#08030b!important;}
-  .process,.cta,footer{position:relative;z-index:1;}
-}
-
-@media(min-width:851px){
-  body{background-image:none!important;}
-  main{position:relative!important;background-image:url("./vaz-store-bg.jpg?v=20260917-desktop")!important;background-repeat:no-repeat!important;background-position:center top!important;background-size:100% auto!important;}
-  main::before{display:none!important;content:none!important;}
-  .hero-bg-force{display:none!important;}
-  .hero{background:transparent!important;overflow:visible!important;}
-  #work{position:relative!important;z-index:2!important;background:#08030b!important;background-image:none!important;}
+  .desktop-hero-stage{position:relative;overflow:hidden}
+  .desktop-hero-stage>.desktop-hero-background{display:block;position:absolute;top:0;left:0;z-index:0;width:100%;height:auto;max-width:none;pointer-events:none}
+  .desktop-hero-stage .hero-bg-force{display:none}
+  .desktop-hero-stage>.hero,.desktop-hero-stage>.features{position:relative;z-index:1}
+  #work{position:relative;z-index:1;background:#08030b}
 }
 </style>
 </head>
@@ -116,6 +85,7 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
 </nav>
 <div class="actions"><div class="menu-lang"><button type="button" class="menu-toggle" aria-label="فتح قائمة اللغات" aria-expanded="false"><span>=</span></button><div class="menu-panel"><select id="languageSelect" aria-label="Language"><option value="ar">🇸🇦 العربية</option><option value="en">🇺🇸 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="ur">🇵🇰 اردو</option><option value="bn">🇧🇩 বাংলা</option></select></div></div></div></div></header>
 <main>
+<div class="desktop-hero-stage"><img class="desktop-hero-background" src="./vaz-store-bg.jpg" alt="" aria-hidden="true">
 <section class="hero" id="home"><div class="hero-bg-force" aria-hidden="true"></div><div class="container"><div class="hero-content"><div class="eyebrow">DESIGN THAT DEFINES BRANDS</div><h1 data-i18n="hero_title">تصميم يخلق هوية<br><span>تبقى في الذاكرة.</span></h1><p data-i18n="hero_text">نحوّل الأفكار إلى هويات بصرية فريدة تعكس جوهر علامتك التجارية، ونبني حضورًا لا يُنسى.</p><div class="buttons"><a class="btn primary" href="#work" data-i18n="hero_work">↗ استكشف أعمالنا</a><a class="btn" href="#contact" data-i18n="hero_start">ابدأ مشروعك</a></div></div><div class="hero-brand"><div class="vaz">VAZ</div><div class="star">✦</div><div class="curve"></div><small>CREATIVE DESIGN STUDIO</small></div></div></section>
 
 <section class="features" id="about"><div class="container feature-grid">
@@ -123,7 +93,7 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
 <div class="feature"><div class="icon">✧</div><div><h3 data-i18n="about_ideas">أفكار إبداعية</h3><p data-i18n="about_ideas_text">حلول مبتكرة لهوية مميزة</p></div></div>
 <div class="feature"><div class="icon">◷</div><div><h3 data-i18n="about_time">الالتزام بالمواعيد</h3><p data-i18n="about_time_text">نسلم في الوقت المحدد دائمًا</p></div></div>
 <div class="feature"><div class="icon">♧</div><div><h3 data-i18n="about_support">دعم مستمر</h3><p data-i18n="about_support_text">نرافقك في كل خطوة</p></div></div>
-</div></section>
+</div></section></div>
 <section id="work"><div class="container"><div class="section-head"><div class="section-label" data-i18n="work_label">أعمالنا</div><div class="section-title" data-i18n="work_title">أعمال صنعت الفرق</div></div><div class="work-tabs"><span class="active" data-i18n="work_all">الكل</span><span data-i18n="work_identity">هويات بصرية</span><span data-i18n="work_logos">شعارات</span><span data-i18n="work_social">سوشيال ميديا</span><span data-i18n="work_ads">تصاميم إعلانية</span></div><div class="work-grid">
 <div class="work-card"><img src="AUREA-COSMETICS.jpeg" alt="AUREA Cosmetics"></div><div class="work-card"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" alt="NEX Collection"></div><div class="work-card"><img src="VAZ_LUMERA.png" alt="LUMERA"></div><div class="work-card"><img src="VAZ_MAVORA_final_800x434.png" alt="MAVORA"></div><div class="work-card"><img src="VAZ_VELORA.png" alt="VELORA"></div><div class="work-card"><img src="VAZ_VERANE_final_800x434.png" alt="VERANE"></div>
 </div><a class="work-btn" href="#contact" data-i18n="work_all_button">↗ عرض جميع الأعمال</a></div></section>
