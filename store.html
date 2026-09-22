@@ -123,6 +123,23 @@ footer{background:rgba(6,2,9,.78);border-top:1px solid rgba(232,184,202,.16)}
   .hero-content .buttons{order:4}
 }
 
+/* Phase 2 — order modal (same visual identity, no redesign) */
+.order-modal{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;padding:20px}
+.order-modal[hidden]{display:none}
+.order-modal-backdrop{position:absolute;inset:0;background:rgba(4,1,7,.72);backdrop-filter:blur(8px)}
+.order-modal-panel{position:relative;z-index:1;width:min(420px,100%);background:linear-gradient(145deg,rgba(35,18,44,.94),rgba(10,5,14,.96));border:1px solid rgba(232,184,202,.24);border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden}
+.order-modal-media{aspect-ratio:16/10;background:#100713;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.order-modal-media img{width:100%;height:100%;object-fit:cover;display:block}
+.order-modal-body{padding:22px}
+.order-modal-body h3{font-size:20px;font-weight:400;letter-spacing:1px;color:#faf4f8;margin-bottom:8px}
+.order-modal-status{display:inline-block;font-size:10px;color:#c09caf;border:1px solid rgba(232,184,202,.3);border-radius:14px;padding:4px 12px}
+.order-modal-actions{display:flex;gap:10px;margin-top:20px}
+.order-modal-actions .btn{flex:1;text-align:center;width:auto;padding:12px 16px}
+.order-modal-close{position:absolute;top:10px;left:10px;width:34px;height:34px;border:1px solid rgba(232,184,202,.3);border-radius:50%;background:rgba(8,3,12,.5);color:#e8b8ca;font-size:16px;line-height:1;cursor:pointer;display:grid;place-items:center;z-index:2;transition:.25s}
+.order-modal-close:hover{border-color:var(--purple2);box-shadow:0 0 18px rgba(154,63,168,.22)}
+html[dir="ltr"] .order-modal-close{left:auto;right:10px}
+@media(max-width:520px){.order-modal{padding:14px}.order-modal-body{padding:16px}}
+
 /* Unified navigation, language menu, and accessibility (shared with index.html) */
 @media(max-width:800px){
   .nav.open nav{display:flex}
@@ -180,6 +197,8 @@ html[lang="ur"] .hero p{line-height:2.2}
       <div class="section-title" data-i18n="store_title">اكتشف منتجات VAZ</div>
     </div>
 
+    <div class="grid" id="productGrid"></div>
+    <noscript>
     <div class="grid">
       <article class="card">
         <div class="media"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" width="800" height="533" loading="lazy" alt="NEX Collection"></div>
@@ -206,19 +225,33 @@ html[lang="ur"] .hero p{line-height:2.2}
         <div class="body"><h3>AUREA COSMETICS</h3><p data-i18n="product_aurea">عرض بصري فاخر يطابق لغة VAZ في الألوان والخامات.</p><div class="price"><strong data-i18n="status_soon">قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div>
       </article>
     </div>
+    </noscript>
     <div class="note" data-i18n="note">سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب.</div>
   </div>
 </section>
+<div class="order-modal" id="orderModal" hidden role="dialog" aria-modal="true" aria-labelledby="orderModalName">
+  <div class="order-modal-backdrop" id="orderModalBackdrop"></div>
+  <div class="order-modal-panel">
+    <button type="button" class="order-modal-close" id="orderModalClose" aria-label="إغلاق"><span aria-hidden="true">×</span></button>
+    <div class="order-modal-media"><img id="orderModalImage" src="" alt=""></div>
+    <div class="order-modal-body">
+      <h3 id="orderModalName"></h3>
+      <div class="order-modal-status" id="orderModalStatus"></div>
+      <div class="order-modal-actions"><a class="btn primary" id="orderModalPay" href="#" target="_blank" rel="noopener noreferrer" hidden data-i18n="order_pay">ادفع الآن</a><a class="btn primary" id="orderModalCta" href="https://wa.me/966580015256" target="_blank" rel="noopener noreferrer" data-i18n="order_cta">متابعة عبر واتساب</a></div>
+    </div>
+  </div>
+</div>
 </main>
 
 <footer>VAZ — CREATIVE DESIGN STUDIO</footer>
+<script src="assets/js/products.js"></script>
 <script>
 const translations={
-ar:{nav_home:"الرئيسية",nav_services:"الخدمات",nav_work:"أعمالنا",nav_store:"المتجر",nav_contact:"تواصل معنا",whatsapp:"تواصل عبر واتساب",hero_title:"متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span>",hero_text:"منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة.",hero_products:"↗ استكشف منتجاتنا",hero_start:"ابدأ طلبك",store_label:"المتجر",store_title:"اكتشف منتجات VAZ",product_nex:"مجموعة تصاميم رقمية بهوية تحريرية فاخرة.",product_lumera:"هوية بصرية ومنتج بصري مصمم بأسلوب VAZ.",product_mavora:"تصميم فاخر قابل للتوظيف ضمن مشاريع العلامات التجارية.",product_velora:"منتج بصري مستوحى من الهوية الداكنة الفاخرة لـ VAZ.",product_verane:"تصميم بصري أنيق للاستخدام ضمن مشاريع الهوية والإعلانات.",product_aurea:"عرض بصري فاخر يطابق لغة VAZ في الألوان والخامات.",status_soon:"قريبًا",order_whatsapp:"اطلب عبر واتساب",note:"سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب."},
-en:{nav_home:"Home",nav_services:"Services",nav_work:"Our Work",nav_store:"Store",nav_contact:"Contact",whatsapp:"WhatsApp",hero_title:"A store that creates an experience<br><span>that stays in memory.</span>",hero_text:"Digital products designed in the VAZ visual language — quiet luxury, precise details and a consistent visual experience.",hero_products:"↗ Explore our products",hero_start:"Start your order",store_label:"Store",store_title:"Discover VAZ products",product_nex:"A collection of digital designs with a luxury editorial identity.",product_lumera:"A visual identity and visual product designed in the VAZ style.",product_mavora:"A luxury design ready to be deployed across brand projects.",product_velora:"A visual product inspired by VAZ's dark luxury identity.",product_verane:"An elegant visual design for identity and advertising projects.",product_aurea:"A luxury visual presentation matching VAZ's language of color and texture.",status_soon:"Coming soon",order_whatsapp:"Order via WhatsApp",note:"Online purchasing will be enabled later. For now, products can be ordered directly via WhatsApp."},
-hi:{nav_home:"होम",nav_services:"सेवाएँ",nav_work:"हमारा काम",nav_store:"स्टोर",nav_contact:"संपर्क",whatsapp:"WhatsApp",hero_title:"एक स्टोर जो अनुभव बनाए<br><span>और याद रह जाए।</span>",hero_text:"VAZ की दृश्य भाषा में डिज़ाइन किए गए डिजिटल उत्पाद — शांत लक्ज़री और सटीक विवरण।",hero_products:"↗ हमारे उत्पाद देखें",hero_start:"अपना ऑर्डर शुरू करें",store_label:"स्टोर",store_title:"VAZ उत्पाद खोजें",product_nex:"लक्ज़री संपादकीय पहचान वाले डिजिटल डिज़ाइन का संग्रह।",product_lumera:"VAZ शैली में डिज़ाइन की गई दृश्य पहचान और दृश्य उत्पाद।",product_mavora:"ब्रांड परियोजनाओं में उपयोग के लिए तैयार लक्ज़री डिज़ाइन।",product_velora:"VAZ की गहरी लक्ज़री पहचान से प्रेरित दृश्य उत्पाद।",product_verane:"पहचान और विज्ञापन परियोजनाओं के लिए एक सुरुचिपूर्ण दृश्य डिज़ाइन।",product_aurea:"रंग और बनावट में VAZ की भाषा से मेल खाती लक्ज़री दृश्य प्रस्तुति।",status_soon:"जल्द आ रहा है",order_whatsapp:"WhatsApp पर ऑर्डर करें",note:"ऑनलाइन खरीद बाद में सक्रिय होगी। फिलहाल उत्पाद सीधे WhatsApp के माध्यम से ऑर्डर किए जा सकते हैं।"},
-ur:{nav_home:"ہوم",nav_services:"خدمات",nav_work:"ہمارا کام",nav_store:"اسٹور",nav_contact:"رابطہ",whatsapp:"واٹس ایپ",hero_title:"ایسا اسٹور جو تجربہ بنائے<br><span>اور یاد رہ جائے۔</span>",hero_text:"VAZ کی بصری زبان میں تیار کردہ ڈیجیٹل مصنوعات — پرسکون لگژری اور باریک تفصیلات۔",hero_products:"↗ ہمارے مصنوعات دیکھیں",hero_start:"اپنا آرڈر شروع کریں",store_label:"اسٹور",store_title:"VAZ مصنوعات دریافت کریں",product_nex:"لگژری ادارتی شناخت کے ساتھ ڈیجیٹل ڈیزائنز کا مجموعہ۔",product_lumera:"VAZ انداز میں ڈیزائن کی گئی بصری شناخت اور بصری مصنوعہ۔",product_mavora:"برانڈ منصوبوں میں استعمال کے لیے تیار لگژری ڈیزائن۔",product_velora:"VAZ کی گہری لگژری شناخت سے متاثر بصری مصنوعہ۔",product_verane:"شناخت اور اشتہاری منصوبوں کے لیے ایک خوبصورت بصری ڈیزائن۔",product_aurea:"رنگ اور ساخت میں VAZ کی زبان سے مماثل لگژری بصری پیشکش۔",status_soon:"جلد آ رہا ہے",order_whatsapp:"واٹس ایپ پر آرڈر کریں",note:"آن لائن خریداری بعد میں فعال ہوگی۔ فی الحال مصنوعات براہ راست واٹس ایپ کے ذریعے آرڈر کی جا سکتی ہیں۔"},
-bn:{nav_home:"হোম",nav_services:"সেবাসমূহ",nav_work:"আমাদের কাজ",nav_store:"স্টোর",nav_contact:"যোগাযোগ",whatsapp:"WhatsApp",hero_title:"একটি স্টোর যা অভিজ্ঞতা তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",hero_text:"VAZ-এর ভিজ্যুয়াল ভাষায় তৈরি ডিজিটাল পণ্য — শান্ত বিলাসিতা ও সূক্ষ্ম বিবরণ।",hero_products:"↗ আমাদের পণ্য দেখুন",hero_start:"আপনার অর্ডার শুরু করুন",store_label:"স্টোর",store_title:"VAZ পণ্য আবিষ্কার করুন",product_nex:"বিলাসবহুল সম্পাদকীয় পরিচয়সহ ডিজিটাল ডিজাইনের সংগ্রহ।",product_lumera:"VAZ স্টাইলে ডিজাইন করা একটি ভিজ্যুয়াল পরিচয় ও ভিজ্যুয়াল পণ্য।",product_mavora:"ব্র্যান্ড প্রকল্পে ব্যবহারের জন্য প্রস্তুত একটি বিলাসবহুল ডিজাইন।",product_velora:"VAZ-এর গাঢ় বিলাসবহুল পরিচয় থেকে অনুপ্রাণিত একটি ভিজ্যুয়াল পণ্য।",product_verane:"পরিচয় ও বিজ্ঞাপন প্রকল্পের জন্য একটি মার্জিত ভিজ্যুয়াল ডিজাইন।",product_aurea:"রঙ ও টেক্সচারে VAZ-এর ভাষার সাথে মেলে এমন বিলাসবহুল ভিজ্যুয়াল উপস্থাপনা।",status_soon:"শীঘ্রই আসছে",order_whatsapp:"WhatsApp-এ অর্ডার করুন",note:"অনলাইন কেনা পরে চালু হবে। আপাতত পণ্য সরাসরি WhatsApp-এর মাধ্যমে অর্ডার করা যাবে।"}
+ar:{nav_home:"الرئيسية",nav_services:"الخدمات",nav_work:"أعمالنا",nav_store:"المتجر",nav_contact:"تواصل معنا",whatsapp:"تواصل عبر واتساب",hero_title:"متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span>",hero_text:"منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة.",hero_products:"↗ استكشف منتجاتنا",hero_start:"ابدأ طلبك",store_label:"المتجر",store_title:"اكتشف منتجات VAZ",product_nex:"مجموعة تصاميم رقمية بهوية تحريرية فاخرة.",product_lumera:"هوية بصرية ومنتج بصري مصمم بأسلوب VAZ.",product_mavora:"تصميم فاخر قابل للتوظيف ضمن مشاريع العلامات التجارية.",product_velora:"منتج بصري مستوحى من الهوية الداكنة الفاخرة لـ VAZ.",product_verane:"تصميم بصري أنيق للاستخدام ضمن مشاريع الهوية والإعلانات.",product_aurea:"عرض بصري فاخر يطابق لغة VAZ في الألوان والخامات.",status_soon:"قريبًا",order_whatsapp:"اطلب عبر واتساب",order_pay:"ادفع الآن",order_title:"طلب المنتج",order_cta:"متابعة عبر واتساب",order_close:"إغلاق",status_available:"متوفر",status_sold_out:"نفدت الكمية",note:"سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب."},
+en:{nav_home:"Home",nav_services:"Services",nav_work:"Our Work",nav_store:"Store",nav_contact:"Contact",whatsapp:"WhatsApp",hero_title:"A store that creates an experience<br><span>that stays in memory.</span>",hero_text:"Digital products designed in the VAZ visual language — quiet luxury, precise details and a consistent visual experience.",hero_products:"↗ Explore our products",hero_start:"Start your order",store_label:"Store",store_title:"Discover VAZ products",product_nex:"A collection of digital designs with a luxury editorial identity.",product_lumera:"A visual identity and visual product designed in the VAZ style.",product_mavora:"A luxury design ready to be deployed across brand projects.",product_velora:"A visual product inspired by VAZ's dark luxury identity.",product_verane:"An elegant visual design for identity and advertising projects.",product_aurea:"A luxury visual presentation matching VAZ's language of color and texture.",status_soon:"Coming soon",order_whatsapp:"Order via WhatsApp",order_pay:"Pay now",order_title:"Order this product",order_cta:"Continue on WhatsApp",order_close:"Close",status_available:"Available",status_sold_out:"Sold out",note:"Online purchasing will be enabled later. For now, products can be ordered directly via WhatsApp."},
+hi:{nav_home:"होम",nav_services:"सेवाएँ",nav_work:"हमारा काम",nav_store:"स्टोर",nav_contact:"संपर्क",whatsapp:"WhatsApp",hero_title:"एक स्टोर जो अनुभव बनाए<br><span>और याद रह जाए।</span>",hero_text:"VAZ की दृश्य भाषा में डिज़ाइन किए गए डिजिटल उत्पाद — शांत लक्ज़री और सटीक विवरण।",hero_products:"↗ हमारे उत्पाद देखें",hero_start:"अपना ऑर्डर शुरू करें",store_label:"स्टोर",store_title:"VAZ उत्पाद खोजें",product_nex:"लक्ज़री संपादकीय पहचान वाले डिजिटल डिज़ाइन का संग्रह।",product_lumera:"VAZ शैली में डिज़ाइन की गई दृश्य पहचान और दृश्य उत्पाद।",product_mavora:"ब्रांड परियोजनाओं में उपयोग के लिए तैयार लक्ज़री डिज़ाइन।",product_velora:"VAZ की गहरी लक्ज़री पहचान से प्रेरित दृश्य उत्पाद।",product_verane:"पहचान और विज्ञापन परियोजनाओं के लिए एक सुरुचिपूर्ण दृश्य डिज़ाइन।",product_aurea:"रंग और बनावट में VAZ की भाषा से मेल खाती लक्ज़री दृश्य प्रस्तुति।",status_soon:"जल्द आ रहा है",order_whatsapp:"WhatsApp पर ऑर्डर करें",order_pay:"अभी भुगतान करें",order_title:"यह उत्पाद ऑर्डर करें",order_cta:"WhatsApp पर जारी रखें",order_close:"बंद करें",status_available:"उपलब्ध",status_sold_out:"बिक चुका",note:"ऑनलाइन खरीद बाद में सक्रिय होगी। फिलहाल उत्पाद सीधे WhatsApp के माध्यम से ऑर्डर किए जा सकते हैं।"},
+ur:{nav_home:"ہوم",nav_services:"خدمات",nav_work:"ہمارا کام",nav_store:"اسٹور",nav_contact:"رابطہ",whatsapp:"واٹس ایپ",hero_title:"ایسا اسٹور جو تجربہ بنائے<br><span>اور یاد رہ جائے۔</span>",hero_text:"VAZ کی بصری زبان میں تیار کردہ ڈیجیٹل مصنوعات — پرسکون لگژری اور باریک تفصیلات۔",hero_products:"↗ ہمارے مصنوعات دیکھیں",hero_start:"اپنا آرڈر شروع کریں",store_label:"اسٹور",store_title:"VAZ مصنوعات دریافت کریں",product_nex:"لگژری ادارتی شناخت کے ساتھ ڈیجیٹل ڈیزائنز کا مجموعہ۔",product_lumera:"VAZ انداز میں ڈیزائن کی گئی بصری شناخت اور بصری مصنوعہ۔",product_mavora:"برانڈ منصوبوں میں استعمال کے لیے تیار لگژری ڈیزائن۔",product_velora:"VAZ کی گہری لگژری شناخت سے متاثر بصری مصنوعہ۔",product_verane:"شناخت اور اشتہاری منصوبوں کے لیے ایک خوبصورت بصری ڈیزائن۔",product_aurea:"رنگ اور ساخت میں VAZ کی زبان سے مماثل لگژری بصری پیشکش۔",status_soon:"جلد آ رہا ہے",order_whatsapp:"واٹس ایپ پر آرڈر کریں",order_pay:"ابھی ادائیگی کریں",order_title:"یہ مصنوعہ آرڈر کریں",order_cta:"واٹس ایپ پر جاری رکھیں",order_close:"بند کریں",status_available:"دستیاب",status_sold_out:"فروخت ہو چکا",note:"آن لائن خریداری بعد میں فعال ہوگی۔ فی الحال مصنوعات براہ راست واٹس ایپ کے ذریعے آرڈر کی جا سکتی ہیں۔"},
+bn:{nav_home:"হোম",nav_services:"সেবাসমূহ",nav_work:"আমাদের কাজ",nav_store:"স্টোর",nav_contact:"যোগাযোগ",whatsapp:"WhatsApp",hero_title:"একটি স্টোর যা অভিজ্ঞতা তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",hero_text:"VAZ-এর ভিজ্যুয়াল ভাষায় তৈরি ডিজিটাল পণ্য — শান্ত বিলাসিতা ও সূক্ষ্ম বিবরণ।",hero_products:"↗ আমাদের পণ্য দেখুন",hero_start:"আপনার অর্ডার শুরু করুন",store_label:"স্টোর",store_title:"VAZ পণ্য আবিষ্কার করুন",product_nex:"বিলাসবহুল সম্পাদকীয় পরিচয়সহ ডিজিটাল ডিজাইনের সংগ্রহ।",product_lumera:"VAZ স্টাইলে ডিজাইন করা একটি ভিজ্যুয়াল পরিচয় ও ভিজ্যুয়াল পণ্য।",product_mavora:"ব্র্যান্ড প্রকল্পে ব্যবহারের জন্য প্রস্তুত একটি বিলাসবহুল ডিজাইন।",product_velora:"VAZ-এর গাঢ় বিলাসবহুল পরিচয় থেকে অনুপ্রাণিত একটি ভিজ্যুয়াল পণ্য।",product_verane:"পরিচয় ও বিজ্ঞাপন প্রকল্পের জন্য একটি মার্জিত ভিজ্যুয়াল ডিজাইন।",product_aurea:"রঙ ও টেক্সচারে VAZ-এর ভাষার সাথে মেলে এমন বিলাসবহুল ভিজ্যুয়াল উপস্থাপনা।",status_soon:"শীঘ্রই আসছে",order_whatsapp:"WhatsApp-এ অর্ডার করুন",order_pay:"এখনই পেমেন্ট করুন",order_title:"এই পণ্যটি অর্ডার করুন",order_cta:"WhatsApp-এ চালিয়ে যান",order_close:"বন্ধ করুন",status_available:"উপলব্ধ",status_sold_out:"বিক্রি শেষ",note:"অনলাইন কেনা পরে চালু হবে। আপাতত পণ্য সরাসরি WhatsApp-এর মাধ্যমে অর্ডার করা যাবে।"}
 };
 const langMeta={
  ar:{dir:"rtl",letter:"ع",font:"Cairo"},
@@ -233,6 +266,7 @@ function updateLanguageChip(lang){
  if(chip)chip.textContent=(langMeta[lang]||langMeta.ar).letter;
 }
 function applyLanguage(lang){
+ window.VAZ_currentLang=lang;
  const t=translations[lang]||translations.ar;
  const meta=langMeta[lang]||langMeta.ar;
  document.documentElement.lang=lang;
@@ -286,10 +320,114 @@ function initMenus(){
  });
  if(nav)nav.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",closeNav));
 }
+/* ---- Phase 2: render product grid from assets/js/products.js ---- */
+(function renderStore(){
+ const grid=document.getElementById("productGrid");
+ if(!grid||!window.VAZ_PRODUCTS)return;
+ function priceHtml(p){
+  if(p.availability==="sold_out")return '<strong data-i18n="status_sold_out">نفدت الكمية</strong>';
+  if(typeof p.price==="number")return '<strong>'+p.price+' SAR</strong>';
+  return '<strong data-i18n="status_soon">قريبًا</strong>';
+ }
+ function canPay(p){return p.availability==="available"&&typeof p.checkoutUrl==="string"&&/^https:\/\//.test(p.checkoutUrl)}
+ grid.innerHTML=window.VAZ_PRODUCTS.map(function(p){
+  return '<article class="card" data-product-id="'+p.id+'">'
+   +'<div class="media"><img src="'+p.image+'" width="'+(p.imageWidth||800)+'" height="'+(p.imageHeight||533)+'" loading="lazy" alt="'+((p.alt&&p.alt.ar)||p.name)+'"></div>'
+   +'<div class="body"><h3>'+p.name+'</h3><p data-i18n="'+p.descKey+'"></p>'
+   +'<div class="price">'+priceHtml(p)
+   +(canPay(p)?'<a class="btn primary" href="'+p.checkoutUrl+'" target="_blank" rel="noopener noreferrer" data-i18n="order_pay">ادفع الآن</a>':'')
+   +'<a class="btn'+(canPay(p)?"":" primary")+'" href="https://wa.me/966580015256" data-order="'+p.id+'" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div></article>';
+ }).join("");
+})();
+
+/* Phase 3 — payment-link checkout (inert until links are added to products.js).
+ * Saudi providers (Moyasar / Tap) expose hosted payment links; paste each
+ * product's link into checkoutUrl and set paymentProvider ("moyasar"/"tap").
+ * No API keys or secrets ever live in this file. */
+window.VAZCheckout={
+ canPay:function(p){
+  return !!p&&p.availability==="available"&&typeof p.checkoutUrl==="string"&&/^https:\/\//.test(p.checkoutUrl);
+ },
+ prepareOrder:function(p){
+  return {productId:p.id,language:window.VAZ_currentLang||"ar",timestamp:new Date().toISOString(),checkoutUrl:p.checkoutUrl||null,paymentProvider:p.paymentProvider||null,amount:p.price||null,currency:"SAR"};
+ },
+ beginCheckout:function(p){
+  if(this.canPay(p)){window.location.href=p.checkoutUrl;return {mode:"redirect",url:p.checkoutUrl};}
+  return {mode:"whatsapp",order:this.prepareOrder(p)};
+ }
+};
+
 let savedLang=null;
 try{savedLang=localStorage.getItem("vazLanguage")}catch(e){}
 applyLanguage(savedLang||"ar");
 initMenus();
+
+/* ---- Phase 2: order modal (same visual identity) ---- */
+(function initOrderFlow(){
+ const modal=document.getElementById("orderModal");
+ if(!modal)return;
+ const img=document.getElementById("orderModalImage"),
+       nameEl=document.getElementById("orderModalName"),
+       statusEl=document.getElementById("orderModalStatus"),
+       payBtn=document.getElementById("orderModalPay"),
+       cta=document.getElementById("orderModalCta"),
+       closeBtn=document.getElementById("orderModalClose"),
+       backdrop=document.getElementById("orderModalBackdrop");
+ const WA_NUMBER="966580015256";
+ const ORDER_MSGS={
+  ar:"مرحبًا VAZ، أرغب بطلب: ",
+  en:"Hello VAZ, I'd like to order: ",
+  hi:"नमस्ते VAZ, मुझे ऑर्डर करना है: ",
+  ur:"ہیلو VAZ، مجھے آرڈر کرنا ہے: ",
+  bn:"হ্যালো VAZ, আমি অর্ডার করতে চাই: "
+ };
+ let lastFocus=null;
+ function statusKey(p){return p.availability==="sold_out"?"status_sold_out":p.availability==="coming_soon"?"status_soon":"status_available"}
+ function openModal(p){
+  const lang=window.VAZ_currentLang||"ar";
+  lastFocus=document.activeElement;
+  img.src=p.image;
+  img.alt=(p.alt&&p.alt[lang])||p.name;
+  nameEl.textContent=p.name;
+  const key=statusKey(p);
+  statusEl.setAttribute("data-i18n",key);
+  statusEl.textContent=(translations[lang]&&translations[lang][key])||statusEl.textContent;
+  closeBtn.setAttribute("aria-label",(translations[lang]&&translations[lang].order_close)||"إغلاق");
+  const msg=(ORDER_MSGS[lang]||ORDER_MSGS.ar)+p.name;
+  cta.href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg);
+  const payable=window.VAZCheckout&&window.VAZCheckout.canPay(p);
+  if(payBtn){
+   payBtn.hidden=!payable;
+   if(payable){payBtn.href=p.checkoutUrl;cta.classList.remove("primary");}
+   else cta.classList.add("primary");
+  }
+  modal.hidden=false;
+  document.body.style.overflow="hidden";
+  closeBtn.focus();
+ }
+ function closeModal(){
+  modal.hidden=true;
+  document.body.style.overflow="";
+  if(lastFocus&&lastFocus.focus)lastFocus.focus();
+ }
+ document.addEventListener("click",function(e){
+  const t=e.target.closest?e.target.closest("[data-order]"):null;
+  if(!t)return;
+  e.preventDefault();
+  const p=(window.VAZ_PRODUCTS||[]).find(function(x){return x.id===t.getAttribute("data-order")});
+  if(p)openModal(p);
+ });
+ closeBtn.addEventListener("click",closeModal);
+ backdrop.addEventListener("click",closeModal);
+ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!modal.hidden)closeModal()});
+ modal.addEventListener("keydown",function(e){
+  if(e.key!=="Tab")return;
+  const f=[closeBtn,cta];
+  const first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+ });
+})();
 </script>
 </body>
 </html>

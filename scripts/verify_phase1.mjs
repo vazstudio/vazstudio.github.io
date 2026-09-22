@@ -14,7 +14,9 @@ function extractScript(html) {
 }
 
 function extractDataI18nKeys(html) {
-  return new Set([...html.matchAll(/data-i18n="([^"]+)"/g)].map((m) => m[1]));
+  // Skip dynamic render-template values like data-i18n="'+p.descKey+'"
+  return new Set([...html.matchAll(/data-i18n="([^"']*[A-Za-z0-9_-][^"]*)"/g)]
+    .map((m) => m[1]).filter((k) => !k.includes("+")));
 }
 
 function extractDictKeys(script) {
@@ -50,16 +52,16 @@ function stubEnv() {
     querySelectorAll: () => ({ forEach() {} }),
     addEventListener() {},
   };
-  return { doc, localStorage: { getItem: () => null, setItem() {} } };
+  return { doc, localStorage: { getItem: () => null, setItem() {} }, VAZ_PRODUCTS: [] };
 }
 
 for (const page of pages) {
   const html = fs.readFileSync(page, "utf8");
   const src = extractScript(html);
-  const { doc, localStorage } = stubEnv();
+  const { doc, localStorage, VAZ_PRODUCTS } = stubEnv();
   try {
-    const run = new Function("document", "localStorage", src + `\n;for (const l of ${JSON.stringify(LANGS)}) { applyLanguage(l); } return true;`);
-    run(doc, localStorage);
+    const run = new Function("window", "document", "localStorage", src + `\n;for (const l of ${JSON.stringify(LANGS)}) { applyLanguage(l); } return true;`);
+    run({ VAZ_PRODUCTS }, doc, localStorage);
     console.log(`PASS  ${page}: inline JS executes cleanly, applyLanguage() OK for all 5 languages (incl. languageLetter chip)`);
   } catch (err) {
     failures++;
@@ -84,7 +86,8 @@ for (const page of pages) {
 // ---- 3) asset references exist
 for (const page of pages) {
   const html = fs.readFileSync(page, "utf8");
-  const refs = new Set([...html.matchAll(/(?:src|href)="([^"]+)"/g)].map((m) => m[1]));
+  const refs = new Set([...html.matchAll(/(?:src|href)="([^"]+)"/g)]
+    .map((m) => m[1]).filter((r) => !r.includes("+")));
   const bad = [];
   for (const ref of refs) {
     if (/^(https?:|#|mailto:|tel:)/.test(ref)) continue;
