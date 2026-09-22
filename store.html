@@ -6,31 +6,44 @@
 <title>متجر VAZ — Creative Design Studio</title>
 <meta name="description" content="متجر VAZ — منتجات وتصاميم رقمية بهوية VAZ.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Playfair+Display:wght@400;500&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#120a18;--bg2:#1a1023;--card:#21152b;--purple:#7b3f91;--purple2:#a45bb8;--gold:#d9b0bc;--gold2:#efd1d8;--text:#faf4f8;--muted:#b9aab9;--line:rgba(235,205,220,.18)}
-html{scroll-behavior:smooth}
-body{background:radial-gradient(circle at 75% 12%,rgba(103,35,125,.18),transparent 30%),radial-gradient(circle at 15% 80%,rgba(79,24,100,.12),transparent 35%),var(--bg);color:var(--text);font-family:Cairo,Arial,sans-serif;min-height:100vh}
+html{scroll-behavior:smooth;--font-ar:1;--site-font:var(--font-ar) var(--font-en) var(--font-hi) var(--font-ur) var(--font-bn) Cairo,Arial,sans-serif}
+body{background:radial-gradient(circle at 75% 12%,rgba(103,35,125,.18),transparent 30%),radial-gradient(circle at 15% 80%,rgba(79,24,100,.12),transparent 35%),var(--bg);color:var(--text);font-family:var(--site-font);min-height:100vh}
 a{text-decoration:none;color:inherit}
 .container{width:min(1180px,calc(100% - 44px));margin:auto}
+.skip-link{position:absolute;right:16px;top:-60px;z-index:200;padding:10px 18px;border:1px solid rgba(232,184,202,.45);border-radius:6px;background:#21152b;color:var(--text);font-size:12px;transition:top .25s}
+.skip-link:focus{top:12px}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--purple2);outline-offset:3px}
 header{height:86px;border-bottom:1px solid var(--line);display:flex;align-items:center;background:rgba(18,10,24,.92);backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
 .nav{display:flex;align-items:center;justify-content:space-between;width:100%}
 .logo{direction:ltr;text-align:left}.logo-main{font-family:"Playfair Display",serif;font-size:42px;font-weight:400;letter-spacing:9px;line-height:1;color:#f4eaf2}.logo-sub{font-size:8px;letter-spacing:4px;color:#a99aa8;margin-top:8px}
-nav{display:flex;gap:34px;font-size:13px;color:#d8ced6}nav a{opacity:.9}nav a:hover{color:#fff}
+nav{display:flex;gap:34px;font-size:13px;color:#d8ced6}nav a{opacity:.9;transition:.25s}nav a:hover{color:#fff}
 .whatsapp{display:inline-flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;direction:ltr!important;gap:8px!important;padding:0 17px;font-size:12px}.whatsapp span{order:1!important;white-space:nowrap!important}.wa-icon{width:20px;height:20px;display:block;flex:0 0 20px;color:#e8b8ca;order:2}.whatsapp:hover .wa-icon{color:#fff}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(232,184,202,.38);border-radius:50%;background:rgba(8,3,12,.20);color:#e8b8ca;place-items:center;font-size:20px;line-height:1;cursor:pointer;transition:.25s}
+.nav-toggle:hover{border-color:var(--purple2);box-shadow:0 0 18px rgba(154,63,168,.22)}
+.menu-lang{position:relative}
+.menu-toggle{width:42px;height:42px;border:1px solid rgba(232,184,202,.38);border-radius:50%;background:rgba(8,3,12,.20);color:#e8b8ca;display:grid;place-items:center;font-size:16px;font-weight:600;line-height:1;cursor:pointer;transition:.25s}
+.menu-toggle:hover,.menu-lang.open .menu-toggle{border-color:var(--purple2);box-shadow:0 0 18px rgba(154,63,168,.22)}
+.menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(232,184,202,.22);border-radius:12px;background:rgba(11,6,16,.96);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.35);display:none;z-index:120}
+.menu-lang.open .menu-panel{display:block}
+.menu-panel select{position:static;width:100%;height:auto;opacity:1;appearance:none;-webkit-appearance:none;background:transparent;border:0;outline:0;color:var(--text);font:400 13px var(--site-font);padding:8px;cursor:pointer}
+.menu-panel select option{background:#1a1023;color:#fff}
+.menu-panel:after{content:'⌄';position:absolute;left:16px;top:15px;color:#e8b8ca;pointer-events:none}
 .hero{padding:80px 0 55px;text-align:center;border-bottom:1px solid var(--line)}
 .eyebrow{color:#a98a9f;letter-spacing:4px;font-size:11px;margin-bottom:14px;direction:ltr}
 h1{font-family:"Playfair Display",serif;font-size:48px;font-weight:400;letter-spacing:5px;color:#efd8df;margin-bottom:10px}
-.hero h2{font-size:27px;font-weight:300;color:#faf4f8;margin-bottom:15px}.hero p{max-width:620px;margin:auto;color:#a99ca8;font-size:13px;line-height:2}
+.hero p{max-width:620px;margin:auto;color:#a99ca8;font-size:13px;line-height:2}
 .store{padding:55px 0 70px}.section-head{text-align:center;margin-bottom:35px}.section-label{color:#9d6c8f;font-size:11px;margin-bottom:7px}.section-title{font-size:27px;font-weight:300}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card{background:linear-gradient(145deg,rgba(43,23,48,.92),rgba(19,10,24,.96));border:1px solid rgba(219,182,198,.13);border-radius:9px;overflow:hidden;transition:.3s}.card:hover{transform:translateY(-4px);border-color:rgba(218,173,190,.3)}
 .media{aspect-ratio:4/3;background:linear-gradient(135deg,#2a172d,#100914);display:flex;align-items:center;justify-content:center;overflow:hidden}.media img{width:100%;height:100%;object-fit:cover;display:block}
-.placeholder{font-family:"Playfair Display",serif;font-size:38px;letter-spacing:7px;color:#dcb8c5}.body{padding:20px}.body h3{font-size:17px;font-weight:400;margin-bottom:7px}.body p{font-size:11px;color:#948794;line-height:1.9;min-height:42px}.price{display:flex;align-items:center;justify-content:space-between;margin-top:18px}.price strong{font-size:16px;font-weight:400;color:#efd1d8}.btn{border:1px solid rgba(222,179,197,.4);padding:8px 15px;border-radius:5px;font-size:11px}.btn.primary{background:linear-gradient(135deg,#6b2b7b,#8a397d);border:0}
+.body{padding:20px}.body h3{font-size:17px;font-weight:400;margin-bottom:7px}.body p{font-size:11px;color:#948794;line-height:1.9;min-height:42px}.price{display:flex;align-items:center;justify-content:space-between;margin-top:18px}.price strong{font-size:16px;font-weight:400;color:#efd1d8}.btn{border:1px solid rgba(222,179,197,.4);padding:8px 15px;border-radius:5px;font-size:11px}.btn.primary{background:linear-gradient(135deg,#6b2b7b,#8a397d);border:0}
 .note{margin-top:35px;text-align:center;color:#817381;font-size:10px}
 footer{border-top:1px solid var(--line);padding:25px 0;color:#817381;font-size:10px;text-align:center}
-@media(max-width:800px){.container{width:calc(100% - 28px)}header{height:auto;min-height:74px;padding:13px 0}.logo-main{font-size:32px;letter-spacing:7px}.logo-sub{font-size:7px;letter-spacing:2.5px}nav{display:none}.whatsapp{padding:8px 12px;font-size:10px}.hero{padding:58px 0 42px}h1{font-size:39px}.hero h2{font-size:23px}.grid{grid-template-columns:1fr 1fr;gap:12px}.body{padding:15px}.body h3{font-size:14px}.body p{font-size:10px}.price{gap:8px;align-items:flex-end;flex-direction:column}.btn{width:100%;text-align:center}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}.media{aspect-ratio:16/10}.hero h2{font-size:21px}}
+@media(max-width:800px){.container{width:calc(100% - 28px)}header{height:auto;min-height:74px;padding:13px 0}.logo-main{font-size:32px;letter-spacing:7px}.logo-sub{font-size:7px;letter-spacing:2.5px}nav{display:none}.whatsapp{padding:8px 12px;font-size:10px}.hero{padding:58px 0 42px}h1{font-size:39px}.hero p{font-size:12px}.grid{grid-template-columns:1fr 1fr;gap:12px}.body{padding:15px}.body h3{font-size:14px}.body p{font-size:10px}.price{gap:8px;align-items:flex-end;flex-direction:column}.btn{width:100%;text-align:center}.nav-toggle{display:grid}.nav.open nav{display:flex;position:absolute;top:74px;right:0;left:0;padding:24px;flex-direction:column;gap:20px;background:rgba(18,10,24,.96);border-bottom:1px solid var(--line);text-align:right;z-index:110}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.media{aspect-ratio:16/10}.hero p{font-size:11.5px}}
 
 /* VAZ approved luxury visual layer */
 body{background:#08030b url("vaz-store-bg.jpg?v=20260916-4") center top/100% auto no-repeat;position:relative}
@@ -40,17 +53,14 @@ header{background:rgba(8,3,12,.48);border-bottom:1px solid rgba(232,184,202,.24)
 .hero .container{position:relative;width:min(1180px,calc(100% - 40px));margin:auto}
 .hero .container:after{content:"";position:absolute;left:8%;top:43%;transform:translateY(-50%);width:360px;height:210px;background:radial-gradient(ellipse,rgba(155,63,168,.18),transparent 68%);pointer-events:none}
 .hero:after{content:"VAZ";position:absolute;left:8%;top:42%;font:400 132px/.9 "Playfair Display",serif;letter-spacing:18px;color:rgba(237,200,211,.92);text-shadow:0 0 35px rgba(196,91,180,.15);direction:ltr}
-.hero:before{content:"✦";position:absolute;left:calc(8% + 335px);top:30%;font-size:34px;color:#e8b8ca;z-index:1}
 .eyebrow{color:#b995aa;font-size:10px;letter-spacing:4px;margin-bottom:18px}
 h1{font-family:Cairo,Arial,sans-serif;font-size:48px;font-weight:400;line-height:1.38;letter-spacing:0;color:#fbf7fa;margin-bottom:20px}h1 span{color:#e8b8ca}
-.hero h2{font-size:0}.hero p{max-width:610px;color:#d0c0ca;font-size:14px;line-height:2;margin-bottom:28px}
+.hero p{max-width:610px;color:#d0c0ca;font-size:14px;line-height:2;margin-bottom:28px}
 .buttons{display:flex;gap:12px}.btn{padding:12px 25px;border-radius:6px;border:1px solid rgba(232,184,202,.48);background:rgba(8,3,12,.28);backdrop-filter:blur(8px)}.btn.primary{background:linear-gradient(135deg,#8b2e9d,#b34bbb);border-color:transparent}
-.features{background:rgba(7,3,11,.48);backdrop-filter:blur(12px)}
 .store{background:rgba(7,3,11,.28);backdrop-filter:blur(8px)}
 .card{background:linear-gradient(145deg,rgba(31,15,39,.82),rgba(9,4,13,.90));border-color:rgba(232,184,202,.20)}
-.lang{height:42px;width:42px;border:1px solid rgba(232,184,202,.38);border-radius:50%;background:rgba(8,3,12,.20);position:relative;display:grid;place-items:center}.lang select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.lang span{font-size:17px;color:#e8b8ca}
 .actions{display:flex;align-items:center;gap:10px}
-@media(max-width:850px){body{background:#08030b url("./vaz-store-bg.jpg?v=20260916-6") center top/100% auto no-repeat;background-attachment:scroll}header{background:rgba(8,3,12,.42)}.hero{min-height:760px;align-items:flex-end}.hero .container{width:calc(100% - 28px)}.hero:after{display:none}.hero:before{display:none}.hero .container:after{display:none}.hero-content{width:100%;padding:0 0 58px}.hero{text-align:right}.eyebrow{font-size:9px;letter-spacing:3px}.hero h1,h1{font-size:31px;line-height:1.4}.hero p{font-size:12px;line-height:2}.buttons{gap:12px}.btn{padding:12px 20px}.feature-grid{grid-template-columns:1fr 1fr}.feature{min-height:108px;padding:18px 12px}.feature h3{font-size:12px}.feature p{font-size:9px}.icon{font-size:23px}.actions .whatsapp{padding:8px 11px;font-size:9px}.lang{width:42px;height:42px}}
+@media(max-width:850px){body{background:#08030b url("./vaz-store-bg.jpg?v=20260916-6") center top/100% auto no-repeat;background-attachment:scroll}header{background:rgba(8,3,12,.42)}.hero{min-height:760px;align-items:flex-end}.hero .container{width:calc(100% - 28px)}.hero:after{display:none}.hero .container:after{display:none}.hero-content{width:100%;padding:0 0 58px}.hero{text-align:right}.eyebrow{font-size:9px;letter-spacing:3px}.hero h1,h1{font-size:31px;line-height:1.4}.hero p{font-size:12px;line-height:2}.buttons{gap:12px}.btn{padding:12px 20px}.feature-grid{grid-template-columns:1fr 1fr}.feature{min-height:108px;padding:18px 12px}.feature h3{font-size:12px}.feature p{font-size:9px}.icon{font-size:23px}.actions .whatsapp{padding:8px 11px;font-size:9px}.menu-toggle,.nav-toggle{width:42px;height:42px}}
 
 /* VAZ SIGNATURE STORE — luxury presentation */
 body{background:#08030b url("./vaz-store-bg.jpg?v=20260916-11") center top/cover fixed no-repeat;position:relative}
@@ -73,11 +83,9 @@ h1 span{color:#e8b8ca}
 .grid{gap:18px}.card{border-radius:12px;background:linear-gradient(145deg,rgba(35,18,44,.88),rgba(10,5,14,.94));border:1px solid rgba(232,184,202,.20);box-shadow:0 24px 70px rgba(0,0,0,.28)}
 .card:hover{transform:translateY(-6px);border-color:rgba(232,184,202,.40);box-shadow:0 30px 80px rgba(0,0,0,.38)}
 .media{background:#100713}.body h3{letter-spacing:1px}.body p{color:#b0a1af}.price strong{color:#e8c5d0}
-.features{margin:0 auto 70px;width:min(1100px,calc(100% - 44px));border:1px solid rgba(232,184,202,.22);border-radius:14px;background:rgba(8,3,12,.54);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 25px 70px rgba(0,0,0,.28);overflow:hidden}
-.feature-grid{display:grid;grid-template-columns:repeat(4,1fr)}.feature{min-height:112px;background:transparent;border-left:1px solid rgba(232,184,202,.13)}
 footer{background:rgba(6,2,9,.78);border-top:1px solid rgba(232,184,202,.16)}
-@media(max-width:850px){body{background-attachment:scroll;background-size:auto 100svh;background-position:center top}header{height:76px;background:rgba(7,2,11,.38)}.hero{min-height:100svh}.hero .container{width:calc(100% - 28px);padding-bottom:110px}.hero:after,.hero .container:after{display:none}.hero-content{max-width:none;width:100%}.hero p{font-size:12px}.eyebrow{font-size:9px;letter-spacing:3px}.store{padding:70px 0 65px}.features{width:calc(100% - 28px);margin-bottom:50px;backdrop-filter:none;-webkit-backdrop-filter:none}.feature{min-height:104px;padding:16px 10px}}
-@media(max-width:520px){.hero .container{padding-bottom:108px}h1{font-size:31px}.hero p{font-size:11.5px}.buttons{gap:10px}.btn{padding:12px 18px;font-size:11px}.feature h3{font-size:11px}.feature p{font-size:8.5px}}
+@media(max-width:850px){body{background-attachment:scroll;background-size:auto 100svh;background-position:center top}header{height:76px;background:rgba(7,2,11,.38)}.hero{min-height:100svh}.hero .container{width:calc(100% - 28px);padding-bottom:110px}.hero:after,.hero .container:after{display:none}.hero-content{max-width:none;width:100%}.hero p{font-size:12px}.eyebrow{font-size:9px;letter-spacing:3px}.store{padding:70px 0 65px}}
+@media(max-width:520px){.hero .container{padding-bottom:108px}h1{font-size:31px}.hero p{font-size:11.5px}.buttons{gap:10px}.btn{padding:12px 18px;font-size:11px}}
 
 /* VAZ HERO POSITION — approved mobile layout: image ends before hero copy */
 @media(max-width:850px){
@@ -115,31 +123,52 @@ footer{background:rgba(6,2,9,.78);border-top:1px solid rgba(232,184,202,.16)}
   .hero-content .buttons{order:4}
 }
 
+/* Unified navigation, language menu, and accessibility (shared with index.html) */
+@media(max-width:800px){
+  .nav.open nav{display:flex}
+  .actions{gap:8px}
+}
+@media(min-width:801px){.nav-toggle{display:none!important}}
+html[dir="ltr"] .hero{text-align:left}
+html[dir="ltr"] .hero-content{margin-right:auto;margin-left:0}
+html[dir="ltr"] .hero-content .eyebrow{text-align:left}
+html[dir="ltr"] .menu-panel{right:auto;left:0}
+html[dir="ltr"] .nav.open nav{direction:ltr;text-align:left}
+html[lang="ur"] h1{line-height:1.7}
+html[lang="ur"] .hero p{line-height:2.2}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
 <header>
   <div class="container nav">
     <a class="logo" href="index.html"><div class="logo-main">VAZ</div><div class="logo-sub">CREATIVE DESIGN STUDIO</div></a>
-    <nav>
-      <a href="index.html">الرئيسية</a>
-      <a href="index.html#services">الخدمات</a>
-      <a href="index.html#work">أعمالنا</a>
-      <a href="store.html">المتجر</a>
-      <a href="index.html#contact">تواصل معنا</a>
+    <nav id="site-nav">
+      <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+      <a href="index.html#about" data-i18n="nav_services">الخدمات</a>
+      <a href="index.html#work" data-i18n="nav_work">أعمالنا</a>
+      <a href="store.html" data-i18n="nav_store" aria-current="page">المتجر</a>
+      <a href="index.html#contact" data-i18n="nav_contact">تواصل معنا</a>
     </nav>
-    <div class="actions"><a class="whatsapp" href="https://wa.me/966580015256" aria-label="تواصل عبر واتساب"><span>تواصل عبر واتساب</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.09.55 4.13 1.59 5.92L.1 24l6.34-1.66a11.9 11.9 0 0 0 5.64 1.43h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.18-1.24-6.17-3.45-8.41ZM12.09 21.78h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.76.99 1-3.67-.23-.38a9.87 9.87 0 0 1-1.52-5.25c0-5.46 4.45-9.9 9.91-9.9 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.91 7c0 5.46-4.45 9.9-9.9 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.4-.07-.12-.27-.2-.57-.35Z"/></svg></a><div class="lang"><span id="languageLetter">ع</span><select id="languageSelect" aria-label="Language"><option value="ar">العربية</option><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option><option value="bn">বাংলা</option></select></div></div>
+    <div class="actions">
+      <a class="whatsapp" href="https://wa.me/966580015256" aria-label="تواصل عبر واتساب"><span data-i18n="whatsapp">تواصل عبر واتساب</span><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.09.55 4.13 1.59 5.92L.1 24l6.34-1.66a11.9 11.9 0 0 0 5.64 1.43h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.18-1.24-6.17-3.45-8.41ZM12.09 21.78h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.76.99 1-3.67-.23-.38a9.87 9.87 0 0 1-1.52-5.25c0-5.46 4.45-9.9 9.91-9.9 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.91 7c0 5.46-4.45 9.9-9.9 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.4-.07-.12-.27-.2-.57-.35Z"/></svg></a>
+      <div class="menu-lang">
+        <button type="button" class="menu-toggle" aria-label="اختيار اللغة" aria-expanded="false"><span id="languageLetter" aria-hidden="true">ع</span></button>
+        <div class="menu-panel"><select id="languageSelect" aria-label="Language"><option value="ar">🇸🇦 العربية</option><option value="en">🇺🇸 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="ur">🇵🇰 اردو</option><option value="bn">🇧🇩 বাংলা</option></select></div>
+      </div>
+      <button type="button" class="nav-toggle" aria-label="القائمة" aria-expanded="false" aria-controls="site-nav"><span aria-hidden="true">≡</span></button>
+    </div>
   </div>
 </header>
 
-<main>
-<section class="hero"><div class="hero-bg-force" aria-hidden="true"></div>
+<main id="main">
+<section class="hero">
   <div class="container">
     <div class="hero-content">
       <div class="eyebrow">DESIGN THAT DEFINES BRANDS</div>
-      <h1>متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span></h1>
-      <p>منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة.</p>
-      <div class="buttons"><a class="btn primary" href="#products">↗ استكشف منتجاتنا</a><a class="btn" href="https://wa.me/966580015256">ابدأ طلبك</a></div>
+      <h1 data-i18n="hero_title">متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span></h1>
+      <p data-i18n="hero_text">منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة.</p>
+      <div class="buttons"><a class="btn primary" href="#products" data-i18n="hero_products">↗ استكشف منتجاتنا</a><a class="btn" href="https://wa.me/966580015256" data-i18n="hero_start">ابدأ طلبك</a></div>
     </div>
   </div>
 </section>
@@ -147,51 +176,120 @@ footer{background:rgba(6,2,9,.78);border-top:1px solid rgba(232,184,202,.16)}
 <section class="store" id="products">
   <div class="container">
     <div class="section-head">
-      <div class="section-label">المتجر</div>
-      <div class="section-title">اكتشف منتجات VAZ</div>
+      <div class="section-label" data-i18n="store_label">المتجر</div>
+      <div class="section-title" data-i18n="store_title">اكتشف منتجات VAZ</div>
     </div>
 
     <div class="grid">
       <article class="card">
-        <div class="media"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" alt="NEX Collection"></div>
-        <div class="body"><h3>NEX COLLECTION</h3><p>مجموعة تصاميم رقمية بهوية تحريرية فاخرة.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+        <div class="media"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" width="800" height="533" loading="lazy" alt="NEX Collection"></div>
+        <div class="body"><h3>NEX COLLECTION</h3><p data-i18n="product_nex">مجموعة تصاميم رقمية بهوية تحريرية فاخرة.</p><div class="price"><strong data-i18n="status_soon">قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div>
       </article>
       <article class="card">
-        <div class="media"><img src="VAZ_LUMERA.png" alt="LUMERA"></div>
-        <div class="body"><h3>LUMERA</h3><p>هوية بصرية ومنتج بصري مصمم بأسلوب VAZ.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+        <div class="media"><img src="VAZ_LUMERA.png" width="800" height="434" loading="lazy" alt="LUMERA"></div>
+        <div class="body"><h3>LUMERA</h3><p data-i18n="product_lumera">هوية بصرية ومنتج بصري مصمم بأسلوب VAZ.</p><div class="price"><strong data-i18n="status_soon">قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div>
       </article>
       <article class="card">
-        <div class="media"><img src="VAZ_MAVORA_final_800x434.png" alt="MAVORA"></div>
-        <div class="body"><h3>MAVORA</h3><p>تصميم فاخر قابل للتوظيف ضمن مشاريع العلامات التجارية.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+        <div class="media"><img src="VAZ_MAVORA_final_800x434.png" width="800" height="434" loading="lazy" alt="MAVORA"></div>
+        <div class="body"><h3>MAVORA</h3><p data-i18n="product_mavora">تصميم فاخر قابل للتوظيف ضمن مشاريع العلامات التجارية.</p><div class="price"><strong data-i18n="status_soon">قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div>
       </article>
       <article class="card">
-        <div class="media"><img src="VAZ_VELORA.png" alt="VELORA"></div>
-        <div class="body"><h3>VELORA</h3><p>منتج بصري مستوحى من الهوية الداكنة الفاخرة لـ VAZ.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+        <div class="media"><img src="VAZ_VELORA.png" width="800" height="434" loading="lazy" alt="VELORA"></div>
+        <div class="body"><h3>VELORA</h3><p data-i18n="product_velora">منتج بصري مستوحى من الهوية الداكنة الفاخرة لـ VAZ.</p><div class="price"><strong data-i18n="status_soon">قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div>
       </article>
       <article class="card">
-        <div class="media"><img src="VAZ_VERANE_final_800x434.png" alt="VERANE"></div>
-        <div class="body"><h3>VERANE</h3><p>تصميم بصري أنيق للاستخدام ضمن مشاريع الهوية والإعلانات.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+        <div class="media"><img src="VAZ_VERANE_final_800x434.png" width="800" height="434" loading="lazy" alt="VERANE"></div>
+        <div class="body"><h3>VERANE</h3><p data-i18n="product_verane">تصميم بصري أنيق للاستخدام ضمن مشاريع الهوية والإعلانات.</p><div class="price"><strong data-i18n="status_soon">قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div>
       </article>
       <article class="card">
-        <div class="media"><img src="AUREA-COSMETICS.jpeg" alt="AUREA Cosmetics"></div>
-        <div class="body"><h3>AUREA COSMETICS</h3><p>عرض بصري فاخر يطابق لغة VAZ في الألوان والخامات.</p><div class="price"><strong>قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256">اطلب عبر واتساب</a></div></div>
+        <div class="media"><img src="AUREA-COSMETICS.jpeg" width="1503" height="1047" loading="lazy" alt="AUREA Cosmetics"></div>
+        <div class="body"><h3>AUREA COSMETICS</h3><p data-i18n="product_aurea">عرض بصري فاخر يطابق لغة VAZ في الألوان والخامات.</p><div class="price"><strong data-i18n="status_soon">قريبًا</strong><a class="btn primary" href="https://wa.me/966580015256" data-i18n="order_whatsapp">اطلب عبر واتساب</a></div></div>
       </article>
     </div>
-    <div class="note">سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب.</div>
+    <div class="note" data-i18n="note">سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب.</div>
   </div>
 </section>
-<section class="features"><div class="container feature-grid">
-<div class="feature"><div class="icon">♢</div><div><h3>تصاميم احترافية</h3><p>جودة عالية واهتمام بالتفاصيل</p></div></div>
-<div class="feature"><div class="icon">✧</div><div><h3>أفكار إبداعية</h3><p>حلول مبتكرة لهوية مميزة</p></div></div>
-<div class="feature"><div class="icon">◷</div><div><h3>الالتزام بالمواعيد</h3><p>نسلم في الوقت المحدد دائمًا</p></div></div>
-<div class="feature"><div class="icon">♧</div><div><h3>دعم مستمر</h3><p>نرافقك في كل خطوة</p></div></div>
-</div></section></main>
+</main>
 
 <footer>VAZ — CREATIVE DESIGN STUDIO</footer>
 <script>
-const letters={ar:"ع",en:"E",hi:"ह",ur:"ا",bn:"ব"};
-const labels={ar:{hero:"متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span>",p:"منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة."},en:{hero:"A store that creates an experience<br><span>that stays in memory.</span>",p:"Digital products designed in the VAZ visual language — quiet luxury, precise details and a consistent visual experience."},hi:{hero:"एक स्टोर जो अनुभव बनाए<br><span>और याद रह जाए।</span>",p:"VAZ की दृश्य भाषा में डिज़ाइन किए गए डिजिटल उत्पाद — शांत लक्ज़री और सटीक विवरण।"},ur:{hero:"ایسا اسٹور جو تجربہ بنائے<br><span>اور یاد رہ جائے۔</span>",p:"VAZ کی بصری زبان میں تیار کردہ ڈیجیٹل مصنوعات — پرسکون لگژری اور باریک تفصیلات۔"},bn:{hero:"একটি স্টোর যা অভিজ্ঞতা তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",p:"VAZ-এর ভিজ্যুয়াল ভাষায় তৈরি ডিজিটাল পণ্য — শান্ত বিলাসিতা ও সূক্ষ্ম বিবরণ۔"}};
-function applyLanguage(lang){lang=labels[lang]?lang:"ar";document.documentElement.lang=lang;document.documentElement.dir=(lang==="ar"||lang==="ur")?"rtl":"ltr";document.querySelector(".hero h1").innerHTML=labels[lang].hero;document.querySelector(".hero p").textContent=labels[lang].p;document.getElementById("languageLetter").textContent=letters[lang];document.getElementById("languageSelect").value=lang;localStorage.setItem("vazLanguage",lang)}
-document.getElementById("languageSelect").addEventListener("change",e=>applyLanguage(e.target.value));applyLanguage(localStorage.getItem("vazLanguage")||"ar");
-</script></body>
+const translations={
+ar:{nav_home:"الرئيسية",nav_services:"الخدمات",nav_work:"أعمالنا",nav_store:"المتجر",nav_contact:"تواصل معنا",whatsapp:"تواصل عبر واتساب",hero_title:"متجر يصنع تجربة<br><span>تبقى في الذاكرة.</span>",hero_text:"منتجات رقمية مصممة بنفس هوية VAZ — فخامة هادئة، تفاصيل دقيقة، وتجربة بصرية متناسقة من أول نظرة.",hero_products:"↗ استكشف منتجاتنا",hero_start:"ابدأ طلبك",store_label:"المتجر",store_title:"اكتشف منتجات VAZ",product_nex:"مجموعة تصاميم رقمية بهوية تحريرية فاخرة.",product_lumera:"هوية بصرية ومنتج بصري مصمم بأسلوب VAZ.",product_mavora:"تصميم فاخر قابل للتوظيف ضمن مشاريع العلامات التجارية.",product_velora:"منتج بصري مستوحى من الهوية الداكنة الفاخرة لـ VAZ.",product_verane:"تصميم بصري أنيق للاستخدام ضمن مشاريع الهوية والإعلانات.",product_aurea:"عرض بصري فاخر يطابق لغة VAZ في الألوان والخامات.",status_soon:"قريبًا",order_whatsapp:"اطلب عبر واتساب",note:"سيتم تفعيل الشراء الإلكتروني لاحقًا. حاليًا يمكن طلب المنتجات مباشرة عبر واتساب."},
+en:{nav_home:"Home",nav_services:"Services",nav_work:"Our Work",nav_store:"Store",nav_contact:"Contact",whatsapp:"WhatsApp",hero_title:"A store that creates an experience<br><span>that stays in memory.</span>",hero_text:"Digital products designed in the VAZ visual language — quiet luxury, precise details and a consistent visual experience.",hero_products:"↗ Explore our products",hero_start:"Start your order",store_label:"Store",store_title:"Discover VAZ products",product_nex:"A collection of digital designs with a luxury editorial identity.",product_lumera:"A visual identity and visual product designed in the VAZ style.",product_mavora:"A luxury design ready to be deployed across brand projects.",product_velora:"A visual product inspired by VAZ's dark luxury identity.",product_verane:"An elegant visual design for identity and advertising projects.",product_aurea:"A luxury visual presentation matching VAZ's language of color and texture.",status_soon:"Coming soon",order_whatsapp:"Order via WhatsApp",note:"Online purchasing will be enabled later. For now, products can be ordered directly via WhatsApp."},
+hi:{nav_home:"होम",nav_services:"सेवाएँ",nav_work:"हमारा काम",nav_store:"स्टोर",nav_contact:"संपर्क",whatsapp:"WhatsApp",hero_title:"एक स्टोर जो अनुभव बनाए<br><span>और याद रह जाए।</span>",hero_text:"VAZ की दृश्य भाषा में डिज़ाइन किए गए डिजिटल उत्पाद — शांत लक्ज़री और सटीक विवरण।",hero_products:"↗ हमारे उत्पाद देखें",hero_start:"अपना ऑर्डर शुरू करें",store_label:"स्टोर",store_title:"VAZ उत्पाद खोजें",product_nex:"लक्ज़री संपादकीय पहचान वाले डिजिटल डिज़ाइन का संग्रह।",product_lumera:"VAZ शैली में डिज़ाइन की गई दृश्य पहचान और दृश्य उत्पाद।",product_mavora:"ब्रांड परियोजनाओं में उपयोग के लिए तैयार लक्ज़री डिज़ाइन।",product_velora:"VAZ की गहरी लक्ज़री पहचान से प्रेरित दृश्य उत्पाद।",product_verane:"पहचान और विज्ञापन परियोजनाओं के लिए एक सुरुचिपूर्ण दृश्य डिज़ाइन।",product_aurea:"रंग और बनावट में VAZ की भाषा से मेल खाती लक्ज़री दृश्य प्रस्तुति।",status_soon:"जल्द आ रहा है",order_whatsapp:"WhatsApp पर ऑर्डर करें",note:"ऑनलाइन खरीद बाद में सक्रिय होगी। फिलहाल उत्पाद सीधे WhatsApp के माध्यम से ऑर्डर किए जा सकते हैं।"},
+ur:{nav_home:"ہوم",nav_services:"خدمات",nav_work:"ہمارا کام",nav_store:"اسٹور",nav_contact:"رابطہ",whatsapp:"واٹس ایپ",hero_title:"ایسا اسٹور جو تجربہ بنائے<br><span>اور یاد رہ جائے۔</span>",hero_text:"VAZ کی بصری زبان میں تیار کردہ ڈیجیٹل مصنوعات — پرسکون لگژری اور باریک تفصیلات۔",hero_products:"↗ ہمارے مصنوعات دیکھیں",hero_start:"اپنا آرڈر شروع کریں",store_label:"اسٹور",store_title:"VAZ مصنوعات دریافت کریں",product_nex:"لگژری ادارتی شناخت کے ساتھ ڈیجیٹل ڈیزائنز کا مجموعہ۔",product_lumera:"VAZ انداز میں ڈیزائن کی گئی بصری شناخت اور بصری مصنوعہ۔",product_mavora:"برانڈ منصوبوں میں استعمال کے لیے تیار لگژری ڈیزائن۔",product_velora:"VAZ کی گہری لگژری شناخت سے متاثر بصری مصنوعہ۔",product_verane:"شناخت اور اشتہاری منصوبوں کے لیے ایک خوبصورت بصری ڈیزائن۔",product_aurea:"رنگ اور ساخت میں VAZ کی زبان سے مماثل لگژری بصری پیشکش۔",status_soon:"جلد آ رہا ہے",order_whatsapp:"واٹس ایپ پر آرڈر کریں",note:"آن لائن خریداری بعد میں فعال ہوگی۔ فی الحال مصنوعات براہ راست واٹس ایپ کے ذریعے آرڈر کی جا سکتی ہیں۔"},
+bn:{nav_home:"হোম",nav_services:"সেবাসমূহ",nav_work:"আমাদের কাজ",nav_store:"স্টোর",nav_contact:"যোগাযোগ",whatsapp:"WhatsApp",hero_title:"একটি স্টোর যা অভিজ্ঞতা তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",hero_text:"VAZ-এর ভিজ্যুয়াল ভাষায় তৈরি ডিজিটাল পণ্য — শান্ত বিলাসিতা ও সূক্ষ্ম বিবরণ।",hero_products:"↗ আমাদের পণ্য দেখুন",hero_start:"আপনার অর্ডার শুরু করুন",store_label:"স্টোর",store_title:"VAZ পণ্য আবিষ্কার করুন",product_nex:"বিলাসবহুল সম্পাদকীয় পরিচয়সহ ডিজিটাল ডিজাইনের সংগ্রহ।",product_lumera:"VAZ স্টাইলে ডিজাইন করা একটি ভিজ্যুয়াল পরিচয় ও ভিজ্যুয়াল পণ্য।",product_mavora:"ব্র্যান্ড প্রকল্পে ব্যবহারের জন্য প্রস্তুত একটি বিলাসবহুল ডিজাইন।",product_velora:"VAZ-এর গাঢ় বিলাসবহুল পরিচয় থেকে অনুপ্রাণিত একটি ভিজ্যুয়াল পণ্য।",product_verane:"পরিচয় ও বিজ্ঞাপন প্রকল্পের জন্য একটি মার্জিত ভিজ্যুয়াল ডিজাইন।",product_aurea:"রঙ ও টেক্সচারে VAZ-এর ভাষার সাথে মেলে এমন বিলাসবহুল ভিজ্যুয়াল উপস্থাপনা।",status_soon:"শীঘ্রই আসছে",order_whatsapp:"WhatsApp-এ অর্ডার করুন",note:"অনলাইন কেনা পরে চালু হবে। আপাতত পণ্য সরাসরি WhatsApp-এর মাধ্যমে অর্ডার করা যাবে।"}
+};
+const langMeta={
+ ar:{dir:"rtl",letter:"ع",font:"Cairo"},
+ en:{dir:"ltr",letter:"E",font:"Poppins"},
+ hi:{dir:"ltr",letter:"ह",font:"Noto Sans Devanagari"},
+ ur:{dir:"rtl",letter:"ا",font:"Noto Nastaliq Urdu"},
+ bn:{dir:"ltr",letter:"ব",font:"Noto Sans Bengali"}
+};
+const langFontVars={ar:"--font-ar",en:"--font-en",hi:"--font-hi",ur:"--font-ur",bn:"--font-bn"};
+function updateLanguageChip(lang){
+ const chip=document.getElementById("languageLetter");
+ if(chip)chip.textContent=(langMeta[lang]||langMeta.ar).letter;
+}
+function applyLanguage(lang){
+ const t=translations[lang]||translations.ar;
+ const meta=langMeta[lang]||langMeta.ar;
+ document.documentElement.lang=lang;
+ document.documentElement.dir=meta.dir;
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const key=el.dataset.i18n;
+  if(t[key]===undefined)return;
+  if(key==="whatsapp"&&el.querySelector(".wa-icon")){
+   const s=el.querySelector("span");
+   if(s)s.textContent=t[key];
+  }else{
+   el.innerHTML=t[key];
+  }
+ });
+ const select=document.getElementById("languageSelect");
+ if(select)select.value=lang;
+ updateLanguageChip(lang);
+ const bodyStyle=document.body.style;
+ Object.values(langFontVars).forEach(v=>bodyStyle.removeProperty(v));
+ bodyStyle.setProperty(langFontVars[lang]||"--font-ar","1");
+ try{localStorage.setItem("vazLanguage",lang)}catch(e){}
+}
+const languageSelect=document.getElementById("languageSelect");
+if(languageSelect)languageSelect.addEventListener("change",e=>applyLanguage(e.target.value));
+function initMenus(){
+ const nav=document.querySelector(".nav");
+ const navToggle=document.querySelector(".nav-toggle");
+ const langWrap=document.querySelector(".menu-lang");
+ const langToggle=document.querySelector(".menu-toggle");
+ function closeNav(){if(nav){nav.classList.remove("open");if(navToggle)navToggle.setAttribute("aria-expanded","false")}}
+ function closeLang(){if(langWrap){langWrap.classList.remove("open");if(langToggle)langToggle.setAttribute("aria-expanded","false")}}
+ if(nav&&navToggle){
+  navToggle.addEventListener("click",function(e){
+   e.stopPropagation();
+   const open=nav.classList.toggle("open");
+   navToggle.setAttribute("aria-expanded",open?"true":"false");
+   if(open)closeLang();
+  });
+ }
+ if(langWrap&&langToggle){
+  langToggle.addEventListener("click",function(e){
+   e.stopPropagation();
+   const open=langWrap.classList.toggle("open");
+   langToggle.setAttribute("aria-expanded",open?"true":"false");
+   if(open)closeNav();
+  });
+ }
+ document.addEventListener("click",function(e){
+  if(langWrap&&!langWrap.contains(e.target))closeLang();
+  if(nav&&(!navToggle||!navToggle.contains(e.target))&&e.target.closest!==undefined&&!e.target.closest("nav"))closeNav();
+ });
+ if(nav)nav.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",closeNav));
+}
+let savedLang=null;
+try{savedLang=localStorage.getItem("vazLanguage")}catch(e){}
+applyLanguage(savedLang||"ar");
+initMenus();
+</script>
+</body>
 </html>
