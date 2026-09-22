@@ -7,24 +7,34 @@
 <title>VAZ — Creative Design Studio</title>
 <meta name="description" content="VAZ — Creative Design Studio">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap');
 :root{
  --bg:#0b0610;--surface:#120a18;--surface2:#170d1f;--card:#1a1022;
  --accent:#9a3fa8;--accent2:#c06abb;--rose:#e5b7c8;--white:#fbf6fa;
  --muted:#b7a9b7;--line:rgba(229,183,200,.18);--shadow:0 24px 70px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:#08030b;color:var(--white);font-family:Cairo,Arial,sans-serif;overflow-x:hidden;position:relative}body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,2,8,.16) 0%,rgba(7,3,11,.08) 42%,rgba(8,3,12,.22) 100%),linear-gradient(90deg,rgba(3,1,6,.12),rgba(83,29,94,.04),rgba(3,1,6,.12));pointer-events:none}
+html{scroll-behavior:smooth;--font-ar:1;--site-font:var(--font-ar) var(--font-en) var(--font-hi) var(--font-ur) var(--font-bn) Cairo,Arial,sans-serif}
+body{background:#08030b;color:var(--white);font-family:var(--site-font);overflow-x:hidden;position:relative}body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,2,8,.16) 0%,rgba(7,3,11,.08) 42%,rgba(8,3,12,.22) 100%),linear-gradient(90deg,rgba(3,1,6,.12),rgba(83,29,94,.04),rgba(3,1,6,.12));pointer-events:none}
 a{color:inherit;text-decoration:none}.container{width:min(1180px,calc(100% - 40px));margin:auto}
+.skip-link{position:absolute;right:16px;top:-60px;z-index:200;padding:10px 18px;border:1px solid rgba(229,183,200,.45);border-radius:6px;background:#1a1022;color:var(--white);font-size:12px;transition:top .25s}
+.skip-link:focus{top:12px}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
 header{position:sticky;top:0;z-index:100;height:84px;background:rgba(8,3,12,.48);backdrop-filter:blur(18px);border-bottom:1px solid rgba(229,183,200,.22)}
 .nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{direction:ltr;text-align:left;flex-shrink:0}.logo-main{font:500 40px/1 "Playfair Display",serif;letter-spacing:9px;color:#f8eaf1}.logo-sub{margin-top:7px;font-size:8px;letter-spacing:4px;color:#b99eaf}
 nav{display:flex;align-items:center;gap:30px;color:#d9cbd6;font-size:13px}nav a{opacity:.86;transition:.25s}nav a:hover{opacity:1;color:#fff}
-.actions{display:flex;align-items:center;gap:10px}.whatsapp,.lang{height:42px;border:1px solid rgba(229,183,200,.32);border-radius:24px;background:rgba(255,255,255,.025)}
-.whatsapp{display:inline-flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;direction:ltr!important;gap:8px!important;padding:0 17px;font-size:12px}.whatsapp span{white-space:nowrap!important;order:2!important}.whatsapp .wa-icon{order:1!important;width:20px;height:20px;display:block;flex:0 0 20px;color:#fff;overflow:visible;flex-shrink:0}.whatsapp:hover .wa-icon{color:#fff}.lang{width:42px;position:relative;display:grid;place-items:center}
-.lang select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.lang span{font-size:15px;font-weight:600;line-height:1;color:var(--rose);letter-spacing:.3px}
-.menu{display:none;font-size:26px;color:var(--rose);cursor:pointer}
+.actions{display:flex;align-items:center;gap:10px}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);place-items:center;font-size:20px;line-height:1;cursor:pointer;transition:.25s}
+.nav-toggle:hover{border-color:var(--accent2);box-shadow:0 0 18px rgba(154,63,168,.22)}
+.menu-lang{position:relative}
+.menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:16px;font-weight:600;line-height:1;cursor:pointer;transition:.25s}
+.menu-toggle:hover,.menu-lang.open .menu-toggle{border-color:var(--accent2);box-shadow:0 0 18px rgba(154,63,168,.22)}
+.menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.35);display:none;z-index:120}
+.menu-lang.open .menu-panel{display:block}
+.menu-panel select{position:static;width:100%;height:auto;opacity:1;appearance:none;-webkit-appearance:none;background:transparent;border:0;outline:0;color:var(--white);font:400 13px var(--site-font);padding:8px;cursor:pointer}
+.menu-panel select option{background:#120a18;color:#fff}
+.menu-panel:after{content:'⌄';position:absolute;left:16px;top:15px;color:var(--rose);pointer-events:none}
 .hero{min-height:calc(100vh - 84px);position:relative;display:flex;align-items:center;border-bottom:1px solid rgba(229,183,200,.18);overflow:hidden;background:transparent}
 .hero:after{content:"";position:absolute;inset:auto -10% -100px 20%;height:230px;transform:rotate(-12deg);background:linear-gradient(90deg,transparent,rgba(86,39,91,.5),transparent);filter:blur(22px)}
 .hero-bg-force{position:absolute;inset:0;z-index:0;background:url("./vaz-store-bg.jpg?v=20260916-10") center top/contain no-repeat;background-repeat:no-repeat;pointer-events:none}
@@ -37,35 +47,35 @@ h1{font-size:48px;font-weight:400;line-height:1.35;margin-bottom:20px}h1 span{co
 .features{border:1px solid rgba(229,183,200,.22);background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;margin:0 auto;width:min(1100px,calc(100% - 40px));border-radius:12px;overflow:hidden;position:relative;z-index:5}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .feature{min-height:110px;padding:22px 18px;display:flex;gap:14px;align-items:center;border-left:1px solid var(--line);justify-content:center}.feature:last-child{border-left:0}.icon{font-size:27px;color:var(--rose)}.feature h3{font-size:14px;font-weight:500;margin-bottom:4px}.feature p{font-size:10px;color:#958797}
 section{padding:58px 0}.section-head{text-align:center;margin-bottom:30px}.section-label{color:#bd75aa;font-size:11px;letter-spacing:1px;margin-bottom:7px}.section-title{font-size:27px;font-weight:400}
-.services{background:rgba(10,4,15,.20);backdrop-filter:blur(8px)}.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.service{min-height:170px;padding:24px 18px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(145deg,rgba(39,20,48,.72),rgba(17,9,23,.9));box-shadow:0 12px 35px rgba(0,0,0,.16);transition:.3s}.service:hover{transform:translateY(-4px);border-color:rgba(229,183,200,.35)}.sicon{font-size:28px;color:var(--rose);margin-bottom:12px}.service h3{font-size:14px;font-weight:500;margin-bottom:7px}.service p{font-size:10px;line-height:1.9;color:#9d8f9e}
 .work-tabs{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-bottom:22px}.work-tabs span{padding:8px 15px;border:1px solid var(--line);border-radius:20px;color:#a996a8;font-size:10px}.work-tabs .active{background:linear-gradient(135deg,#7d2f8d,#a64daa);color:#fff;border-color:transparent}
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:start}.work-card{overflow:hidden;border:1px solid var(--line);border-radius:9px;background:#120a17}.work-card img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain}.work-btn{display:block;width:max-content;margin:22px auto 0;padding:10px 20px;border:1px solid var(--line);border-radius:5px;font-size:11px}
 .process{border-top:1px solid rgba(229,183,200,.18);background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;padding:70px 0}.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.step{text-align:center;position:relative;padding:0 8px}.step-number{width:92px;height:92px;border:2px solid #a86b8d;border-radius:50%;display:grid;place-items:center;margin:0 auto 34px;background:transparent;color:var(--rose);position:relative;z-index:2;font-size:28px}.step h3{font-size:22px;margin-bottom:16px;font-weight:600}.step p{font-size:15px;line-height:2;color:#918391;max-width:300px;margin:0 auto}
 .cta{position:relative;overflow:hidden;text-align:center;padding:52px 0;background:rgba(10,4,15,.28);backdrop-filter:blur(10px)}.cta h2{font-size:25px;font-weight:400;margin-bottom:7px}.cta p{font-size:12px;color:#a99aa8;margin-bottom:22px}.cta-buttons{display:flex;justify-content:center;gap:8px}.contact{min-width:185px;padding:10px 14px;border:1px solid var(--line);border-radius:6px;font-size:10px}.contact.highlight{background:linear-gradient(135deg,#7d2f8d,#a64daa);border-color:transparent;display:inline-flex;align-items:center;justify-content:center;gap:8px}.phone-contact{display:inline-flex;align-items:center;justify-content:center;gap:10px;direction:ltr}.phone-contact .phone-icon{width:17px;height:17px;display:block;flex:0 0 17px;color:#fff}.phone-contact span{white-space:nowrap}.contact.highlight .wa-icon{width:17px;height:17px;display:block;flex:0 0 17px;color:#fff}.contact.highlight span{white-space:nowrap}
 footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.24);backdrop-filter:none}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.social{display:flex;gap:18px;color:#a999a6;font-size:11px}.copy{font-size:9px;color:#766a78}
-@media(max-width:850px){html,body{background-color:#08030b;background-image:url("https://raw.githubusercontent.com/vazstudio/vazstudio.github.io/main/vaz-store-bg.jpg");background-repeat:no-repeat;background-position:center top;background-size:cover}header{height:84px;background:rgba(8,3,12,.40)}.container{width:calc(100% - 28px)}nav{display:none}.menu{display:none}.actions{margin-right:auto}.hero{min-height:0;position:relative;display:block;padding:0;background:transparent;border-bottom:0;overflow:hidden}.hero:after{display:none}.hero-bg-force{display:block;position:absolute;inset:0;width:100%;height:100%;background-size:100% auto;background-position:center top;background-repeat:no-repeat;opacity:1}.hero-content{position:relative;z-index:2;width:100%;padding:480px 24px 58px;text-align:center;display:flex;flex-direction:column;align-items:stretch;background:transparent}.eyebrow{font-size:9px;letter-spacing:3px;margin-bottom:14px;text-align:right;color:#ad8ca4;position:relative;top:0!important;transform:none!important}.hero h1,h1{font-size:34px;line-height:1.42;margin:0 0 18px;text-align:right;font-weight:400}.hero p{font-size:12px;line-height:2;margin:0 0 28px auto;max-width:560px;text-align:right}.hero-brand{display:none}.buttons{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:12px;direction:rtl}.btn{padding:12px 20px;background:rgba(7,3,10,.30);backdrop-filter:blur(8px);text-align:center}.btn.primary{background:linear-gradient(135deg,#8b2e9d,#b34bbb)}.feature-grid{grid-template-columns:1fr 1fr;width:calc(100% - 48px)}.feature{min-height:108px;padding:18px 12px;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}.services-grid{grid-template-columns:1fr 1fr}.work-grid{grid-template-columns:1fr 1fr}.process{padding:54px 0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}.process-grid{grid-template-columns:1fr 1fr;gap:52px 18px}.step{padding:0 4px}.step-number{width:72px;height:72px;font-size:22px;margin-bottom:22px}.step h3{font-size:17px;margin-bottom:10px}.step p{font-size:11px;line-height:1.9}.footer-inner{flex-direction:column}.nav.open nav{display:flex;position:absolute;top:84px;right:0;left:0;padding:24px;flex-direction:column;gap:20px;background:rgba(18,10,24,.92);border-bottom:1px solid var(--line)}}
+@media(max-width:850px){
+html,body{background-color:#08030b;background-image:url("./vaz-store-bg.jpg");background-repeat:no-repeat;background-position:center top;background-size:cover}
+header{height:84px;background:rgba(8,3,12,.40)}.container{width:calc(100% - 28px)}
+nav{display:none}
+.actions{margin-right:auto}
+.nav-toggle{display:grid}
+.hero{min-height:0;position:relative;display:block;padding:0;background:transparent;border-bottom:0;overflow:hidden}.hero:after{display:none}
+.hero-bg-force{display:block;position:absolute;inset:0;width:100%;height:100%;background-size:100% auto;background-position:center top;background-repeat:no-repeat;opacity:1}
+.hero-content{position:relative;z-index:2;width:100%;padding:480px 24px 58px;text-align:center;display:flex;flex-direction:column;align-items:stretch;background:transparent}
+.eyebrow{font-size:9px;letter-spacing:3px;margin-bottom:14px;text-align:right;color:#ad8ca4;position:relative;top:0!important;transform:none!important}
+.hero h1,h1{font-size:34px;line-height:1.42;margin:0 0 18px;text-align:right;font-weight:400}
+.hero p{font-size:12px;line-height:2;margin:0 0 28px auto;max-width:560px;text-align:right}
+.hero-brand{display:none}
+.buttons{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:12px;direction:rtl}
+.btn{padding:12px 20px;background:rgba(7,3,10,.30);backdrop-filter:blur(8px);text-align:center}.btn.primary{background:linear-gradient(135deg,#8b2e9d,#b34bbb)}
+.feature-grid{grid-template-columns:1fr 1fr;width:calc(100% - 48px)}.feature{min-height:108px;padding:18px 12px;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.work-grid{grid-template-columns:1fr 1fr}
+.process{padding:54px 0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}.process-grid{grid-template-columns:1fr 1fr;gap:52px 18px}.step{padding:0 4px}.step-number{width:72px;height:72px;font-size:22px;margin-bottom:22px}.step h3{font-size:17px;margin-bottom:10px}.step p{font-size:11px;line-height:1.9}
+.footer-inner{flex-direction:column}
+.nav.open nav{display:flex;position:absolute;top:84px;right:0;left:0;padding:24px;flex-direction:column;gap:20px;background:rgba(18,10,24,.96);border-bottom:1px solid var(--line);direction:rtl;text-align:right;z-index:110}
+}
 @media(max-width:850px){.features{overflow:visible}.feature-grid{min-height:216px}.feature{min-height:108px}}@media(max-width:850px){.hero{overflow:visible}.hero-bg-force{bottom:auto;height:calc(100% + 216px)}.features{position:relative;z-index:5}}
-@media(max-width:520px){.logo-main{font-size:31px;letter-spacing:6px}.logo-sub{font-size:7px;letter-spacing:2.5px}.whatsapp{padding:0 10px;font-size:9px}.whatsapp .wa-icon{width:18px;height:18px;flex-basis:18px}.lang{width:42px;height:42px}.lang span{font-size:16px}.hero h1,h1{font-size:31px}.services-grid,.work-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr 1fr}.section-title{font-size:22px}}
-
-@media(max-width:850px){.nav{direction:ltr}.actions{margin-left:auto;margin-right:0}.menu-lang{position:relative}.menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer;transition:.25s}.menu-toggle:hover,.menu-lang.open .menu-toggle{border-color:var(--accent2);box-shadow:0 0 18px rgba(154,63,168,.22)}.menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.35);display:none;z-index:120}.menu-lang.open .menu-panel{display:block}.menu-panel select{position:static;width:100%;height:auto;opacity:1;appearance:none;-webkit-appearance:none;background:transparent;border:0;outline:0;color:var(--white);font:400 13px Cairo,Arial,sans-serif;padding:8px;cursor:pointer}.menu-panel select option{background:#120a18;color:#fff}.menu-panel:after{content:'⌄';position:absolute;left:16px;top:15px;color:var(--rose);pointer-events:none}.whatsapp{display:none!important}}
-@media(min-width:851px){.actions .menu-lang{position:relative}.actions .menu-toggle{width:42px;height:42px;border:1px solid rgba(229,183,200,.32);border-radius:50%;background:rgba(255,255,255,.025);color:var(--rose);display:grid;place-items:center;font-size:25px;line-height:1;cursor:pointer}.actions .menu-panel{position:absolute;top:52px;right:0;width:150px;padding:8px;border:1px solid rgba(229,183,200,.22);border-radius:12px;background:rgba(11,6,16,.96);display:none;z-index:120}.actions .menu-lang.open .menu-panel{display:block}.actions .menu-panel select{position:static;width:100%;height:auto;opacity:1;background:transparent;border:0;color:var(--white);font:400 13px Cairo,Arial,sans-serif;padding:8px}.actions .menu-panel option{background:#120a18;color:#fff}}
-<!-- seamless-features-transition -->
-@media(max-width:850px){
-  .features{border:0!important;border-radius:0!important;overflow:visible!important;background:linear-gradient(180deg,rgba(8,3,12,0) 0%,rgba(8,3,12,.16) 18%,rgba(8,3,12,.30) 100%)!important;box-shadow:none!important;width:100%!important;margin:0!important;}
-  .feature-grid{width:calc(100% - 48px)!important;margin:0 auto!important;background:transparent!important;}
-  .feature{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-left:1px solid rgba(229,183,200,.12)!important;}
-  .feature:first-child{border-left:1px solid rgba(229,183,200,.12)!important;}
-  .feature:last-child{border-left:0!important;}
-}
-<!-- seamless-features-transition-v2 -->
-@media(max-width:850px){
-  .features{border:0!important;border-radius:0!important;overflow:visible!important;background:linear-gradient(180deg,rgba(8,3,12,0) 0%,rgba(8,3,12,.12) 20%,rgba(8,3,12,.28) 100%)!important;box-shadow:none!important;width:100%!important;margin:0!important;}
-  .feature-grid{width:calc(100% - 48px)!important;margin:0 auto!important;background:transparent!important;}
-  .feature{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-left:1px solid rgba(229,183,200,.10)!important;}
-  .feature:first-child{border-left:1px solid rgba(229,183,200,.10)!important;}
-  .feature:last-child{border-left:0!important;}
-}
-
+@media(max-width:520px){.logo-main{font-size:31px;letter-spacing:6px}.logo-sub{font-size:7px;letter-spacing:2.5px}.lang,.menu-toggle{width:42px;height:42px}.lang span,.menu-toggle span{font-size:16px}.hero h1,h1{font-size:31px}.work-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr 1fr}.section-title{font-size:22px}}
+@media(min-width:851px){.nav-toggle{display:none!important}}
 .desktop-hero-background{display:none}
 @media(min-width:851px){
   .desktop-hero-stage{position:relative;overflow:hidden}
@@ -74,18 +84,38 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
   .desktop-hero-stage>.hero,.desktop-hero-stage>.features{position:relative;z-index:1}
   #work{position:relative;z-index:1;background:#08030b}
 }
+/* LTR mirror patches (English / Hindi / Bengali) */
+html[dir="ltr"] .eyebrow{text-align:left}
+html[dir="ltr"] .hero-brand{left:auto;right:4%}
+html[dir="ltr"] .actions{margin-left:auto;margin-right:0}
+html[dir="ltr"] .menu-panel{right:auto;left:0}
+html[dir="ltr"] .buttons{direction:ltr}
+html[dir="ltr"] .nav.open nav{direction:ltr;text-align:left}
+@media(max-width:850px){html[dir="ltr"] .hero p{margin:0 auto 28px 0}}
+/* Urdu (Nastaliq) readability */
+html[lang="ur"] h1{line-height:1.7}
+html[lang="ur"] .hero p{line-height:2.2}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
 <header>
 <div class="container nav">
 <a class="logo" href="#home"><div class="logo-main">VAZ</div><div class="logo-sub">CREATIVE DESIGN STUDIO</div></a>
-<nav>
-<a href="#home" data-i18n="nav_home">الرئيسية</a><a href="#about" data-i18n="nav_about">عن VAZ</a><a href="#about" data-i18n="nav_services">المزايا</a><a href="#work" data-i18n="nav_work">أعمالنا</a><a href="#contact" data-i18n="nav_contact">تواصل معنا</a>
+<nav id="site-nav">
+<a href="#home" data-i18n="nav_home">الرئيسية</a><a href="#about" data-i18n="nav_about">عن VAZ</a><a href="#about" data-i18n="nav_services">المزايا</a><a href="#work" data-i18n="nav_work">أعمالنا</a><a href="store.html" data-i18n="nav_store">المتجر</a><a href="#contact" data-i18n="nav_contact">تواصل معنا</a>
 </nav>
-<div class="actions"><div class="menu-lang"><button type="button" class="menu-toggle" aria-label="فتح قائمة اللغات" aria-expanded="false"><span>=</span></button><div class="menu-panel"><select id="languageSelect" aria-label="Language"><option value="ar">🇸🇦 العربية</option><option value="en">🇺🇸 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="ur">🇵🇰 اردو</option><option value="bn">🇧🇩 বাংলা</option></select></div></div></div></div></header>
-<main>
-<div class="desktop-hero-stage"><img class="desktop-hero-background" src="./vaz-store-bg.jpg" alt="" aria-hidden="true">
+<div class="actions">
+<button type="button" class="nav-toggle" aria-label="القائمة" aria-expanded="false" aria-controls="site-nav"><span aria-hidden="true">≡</span></button>
+<div class="menu-lang">
+<button type="button" class="menu-toggle" aria-label="اختيار اللغة" aria-expanded="false"><span id="languageLetter" aria-hidden="true">ع</span></button>
+<div class="menu-panel"><select id="languageSelect" aria-label="Language"><option value="ar">🇸🇦 العربية</option><option value="en">🇺🇸 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="ur">🇵🇰 اردو</option><option value="bn">🇧🇩 বাংলা</option></select></div>
+</div>
+</div>
+</div>
+</header>
+<main id="main">
+<div class="desktop-hero-stage"><img class="desktop-hero-background" src="./vaz-store-bg.jpg" width="711" height="1536" alt="" aria-hidden="true">
 <section class="hero" id="home"><div class="hero-bg-force" aria-hidden="true"></div><div class="container"><div class="hero-content"><div class="eyebrow">DESIGN THAT DEFINES BRANDS</div><h1 data-i18n="hero_title">تصميم يخلق هوية<br><span>تبقى في الذاكرة.</span></h1><p data-i18n="hero_text">نحوّل الأفكار إلى هويات بصرية فريدة تعكس جوهر علامتك التجارية، ونبني حضورًا لا يُنسى.</p><div class="buttons"><a class="btn primary" href="#work" data-i18n="hero_work">↗ استكشف أعمالنا</a><a class="btn" href="#contact" data-i18n="hero_start">ابدأ مشروعك</a></div></div><div class="hero-brand"><div class="vaz">VAZ</div><div class="star">✦</div><div class="curve"></div><small>CREATIVE DESIGN STUDIO</small></div></div></section>
 
 <section class="features" id="about"><div class="container feature-grid">
@@ -95,7 +125,7 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
 <div class="feature"><div class="icon">♧</div><div><h3 data-i18n="about_support">دعم مستمر</h3><p data-i18n="about_support_text">نرافقك في كل خطوة</p></div></div>
 </div></section></div>
 <section id="work"><div class="container"><div class="section-head"><div class="section-label" data-i18n="work_label">أعمالنا</div><div class="section-title" data-i18n="work_title">أعمال صنعت الفرق</div></div><div class="work-tabs"><span class="active" data-i18n="work_all">الكل</span><span data-i18n="work_identity">هويات بصرية</span><span data-i18n="work_logos">شعارات</span><span data-i18n="work_social">سوشيال ميديا</span><span data-i18n="work_ads">تصاميم إعلانية</span></div><div class="work-grid">
-<div class="work-card"><img src="AUREA-COSMETICS.jpeg" alt="AUREA Cosmetics"></div><div class="work-card"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" alt="NEX Collection"></div><div class="work-card"><img src="VAZ_LUMERA.png" alt="LUMERA"></div><div class="work-card"><img src="VAZ_MAVORA_final_800x434.png" alt="MAVORA"></div><div class="work-card"><img src="VAZ_VELORA.png" alt="VELORA"></div><div class="work-card"><img src="VAZ_VERANE_final_800x434.png" alt="VERANE"></div>
+<div class="work-card"><img src="AUREA-COSMETICS.jpeg" width="1503" height="1047" loading="lazy" alt="AUREA Cosmetics"></div><div class="work-card"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" width="800" height="533" loading="lazy" alt="NEX Collection"></div><div class="work-card"><img src="VAZ_LUMERA.png" width="800" height="434" loading="lazy" alt="LUMERA"></div><div class="work-card"><img src="VAZ_MAVORA_final_800x434.png" width="800" height="434" loading="lazy" alt="MAVORA"></div><div class="work-card"><img src="VAZ_VELORA.png" width="800" height="434" loading="lazy" alt="VELORA"></div><div class="work-card"><img src="VAZ_VERANE_final_800x434.png" width="800" height="434" loading="lazy" alt="VERANE"></div>
 </div><a class="work-btn" href="#contact" data-i18n="work_all_button">↗ عرض جميع الأعمال</a></div></section>
 <section class="process"><div class="container"><div class="section-head"><div class="section-label" data-i18n="process_label">طريقة العمل</div><div class="section-title" data-i18n="process_title">من الفكرة إلى هوية متكاملة</div></div><div class="process-grid">
 <div class="step"><div class="step-number">01</div><h3 data-i18n="step1_title">نستلم المشروع</h3><p data-i18n="step1_text">نتعرف على فكرتك، جمهورك، شخصيتك والأهداف التي تريد أن تظهر بها.</p></div>
@@ -108,27 +138,82 @@ footer{border-top:1px solid var(--line);padding:25px 0;background:rgba(8,4,12,.2
 <footer><div class="container footer-inner"><div class="logo"><div class="logo-main">VAZ</div><div class="logo-sub">CREATIVE DESIGN STUDIO</div></div><div class="social"><a href="https://www.instagram.com/vaz.designlab/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@vaz.designlab" target="_blank" rel="noopener noreferrer">TikTok</a></div><div class="copy" data-i18n="copyright">© 2026 VAZ Creative Design Studio</div></div></footer>
 <script>
 const translations={
-ar:{nav_home:"الرئيسية",nav_about:"عن VAZ",nav_services:"المزايا",nav_work:"أعمالنا",nav_contact:"تواصل معنا",whatsapp:"تواصل عبر واتساب",hero_title:"تصميم يخلق هوية<br><span>تبقى في الذاكرة.</span>",hero_text:"نحوّل الأفكار إلى هويات بصرية فريدة تعكس جوهر علامتك التجارية، ونبني حضورًا لا يُنسى.",hero_work:"↗ استكشف أعمالنا",hero_start:"ابدأ مشروعك",about_design:"تصاميم احترافية",about_design_text:"جودة عالية واهتمام بالتفاصيل",about_ideas:"أفكار إبداعية",about_ideas_text:"حلول مبتكرة لهوية مميزة",about_time:"الالتزام بالمواعيد",about_time_text:"نسلم في الوقت المحدد دائمًا",about_support:"دعم مستمر",about_support_text:"نرافقك في كل خطوة",services_label:"خدماتنا",services_title:"حلول تصميم متكاملة لعلامتك",service_custom:"تصاميم مخصصة",service_custom_text:"حلول تصميم خاصة تناسب احتياجات مشروعك وأهدافك.",service_print:"تصاميم مطبوعة",service_print_text:"تصميم المطبوعات من كروت وبروشورات وبنرات والمزيد.",service_ads:"تصاميم إعلانية",service_ads_text:"تصاميم إعلانية فعالة توصل رسالتك وتحقق أهداف حملاتك.",service_social:"محتوى السوشيال ميديا",service_social_text:"تصاميم احترافية لمنصات التواصل تعكس هوية علامتك.",service_logo:"تصميم الشعارات",service_logo_text:"شعارات فريدة وبسيطة ومعبرة تبقى في ذاكرة عملائك.",service_identity:"الهوية البصرية",service_identity_text:"تصميم هوية متكاملة تعكس شخصية علامتك وتبني حضورك.",work_label:"أعمالنا",work_title:"أعمال صنعت الفرق",work_all:"الكل",work_identity:"هويات بصرية",work_logos:"شعارات",work_social:"سوشيال ميديا",work_ads:"تصاميم إعلانية",work_all_button:"↗ عرض جميع الأعمال",process_label:"طريقة العمل",process_title:"من الفكرة إلى هوية متكاملة",step1_title:"نستلم المشروع",step1_text:"نتعرف على فكرتك، جمهورك، شخصيتك والأهداف التي تريد أن تظهر بها.",step2_title:"نطور الفكرة",step2_text:"نحدد الاتجاه المناسب ونحوّل الفكرة إلى مفهوم بصري واضح.",step3_title:"نصمم الهوية",step3_text:"نصمم الشعار والألوان والعناصر ونبني هوية بصرية متكاملة.",step4_title:"نسلم المشروع",step4_text:"تحصل على الهوية النهائية الجاهزة للاستخدام في جميع المنصات.",cta_title:"جاهز لنعمل على مشروعك القادم؟",cta_text:"تواصل معنا الآن وابدأ رحلتك مع VAZ.",cta_whatsapp:"◔ تواصل عبر واتساب الآن",copyright:"© 2026 VAZ Creative Design Studio"},
-en:{nav_home:"Home",nav_about:"About VAZ",nav_services:"Features",nav_work:"Our Work",nav_contact:"Contact",whatsapp:"WhatsApp",hero_title:"Design that creates an identity<br><span>that stays in memory.</span>",hero_text:"We turn ideas into distinctive visual identities that reflect the essence of your brand and build a presence that lasts.",hero_work:"↗ Explore our work",hero_start:"Start your project",about_design:"Professional Design",about_design_text:"High quality and attention to detail",about_ideas:"Creative Ideas",about_ideas_text:"Distinctive identity solutions",about_time:"On-Time Delivery",about_time_text:"We deliver on schedule",about_support:"Continuous Support",about_support_text:"With you every step",services_label:"Our Services",services_title:"Complete design solutions for your brand",service_custom:"Custom Design",service_custom_text:"Tailored design solutions for your project and goals.",service_print:"Print Design",service_print_text:"Cards, brochures, banners and more.",service_ads:"Advertising Design",service_ads_text:"Effective visuals that communicate your campaign message.",service_social:"Social Media Content",service_social_text:"Professional content that reflects your brand identity.",service_logo:"Logo Design",service_logo_text:"Distinctive, simple logos your customers remember.",service_identity:"Visual Identity",service_identity_text:"A complete identity that builds a strong brand presence.",work_label:"Our Work",work_title:"Work that makes a difference",work_all:"All",work_identity:"Visual Identity",work_logos:"Logos",work_social:"Social Media",work_ads:"Advertising",work_all_button:"↗ View all work",process_label:"Our Process",process_title:"From idea to complete identity",step1_title:"Project Brief",step1_text:"We understand your idea, audience, personality and goals.",step2_title:"Develop the Idea",step2_text:"We define the direction and turn the idea into a clear visual concept.",step3_title:"Design the Identity",step3_text:"We design the logo, colors and elements into a complete identity.",step4_title:"Deliver",step4_text:"You receive the final identity ready for every platform.",cta_title:"Ready for your next project?",cta_text:"Contact us now and start your VAZ journey.",cta_whatsapp:"◔ Contact us on WhatsApp",copyright:"© 2026 VAZ Creative Design Studio"},
-hi:{nav_home:"होम",nav_about:"VAZ के बारे में",nav_services:"विशेषताएँ",nav_work:"हमारा काम",nav_contact:"संपर्क",whatsapp:"WhatsApp",hero_title:"ऐसा डिज़ाइन जो पहचान बनाए<br><span>और याद रह जाए।</span>",hero_text:"हम विचारों को ऐसी विशिष्ट दृश्य पहचान में बदलते हैं जो आपके ब्रांड की आत्मा को दर्शाती है।",hero_work:"↗ हमारा काम देखें",hero_start:"प्रोजेक्ट शुरू करें",about_design:"पेशेवर डिज़ाइन",about_design_text:"उच्च गुणवत्ता और बारीकी पर ध्यान",about_ideas:"रचनात्मक विचार",about_ideas_text:"विशिष्ट पहचान के समाधान",about_time:"समय पर डिलीवरी",about_time_text:"समय पर काम पूरा",about_support:"निरंतर सहयोग",about_support_text:"हर कदम पर आपके साथ",services_label:"हमारी सेवाएँ",services_title:"आपके ब्रांड के लिए संपूर्ण डिज़ाइन समाधान",service_custom:"कस्टम डिज़ाइन",service_custom_text:"आपकी परियोजना और लक्ष्यों के अनुरूप समाधान।",service_print:"प्रिंट डिज़ाइन",service_print_text:"कार्ड, ब्रोशर, बैनर और बहुत कुछ।",service_ads:"विज्ञापन डिज़ाइन",service_ads_text:"आपके अभियान का संदेश प्रभावी ढंग से पहुँचाने वाले डिज़ाइन।",service_social:"सोशल मीडिया सामग्री",service_social_text:"आपकी ब्रांड पहचान को दर्शाने वाली पेशेवर सामग्री।",service_logo:"लोगो डिज़ाइन",service_logo_text:"विशिष्ट और याद रहने वाले सरल लोगो।",service_identity:"विज़ुअल पहचान",service_identity_text:"एक संपूर्ण पहचान जो मजबूत ब्रांड उपस्थिति बनाए।",work_label:"हमारा काम",work_title:"ऐसा काम जो फर्क पैदा करे",work_all:"सभी",work_identity:"विज़ुअल पहचान",work_logos:"लोगो",work_social:"सोशल मीडिया",work_ads:"विज्ञापन",work_all_button:"↗ सभी काम देखें",process_label:"हमारी प्रक्रिया",process_title:"विचार से संपूर्ण पहचान तक",step1_title:"प्रोजेक्ट समझना",step1_text:"हम आपके विचार, दर्शकों और लक्ष्यों को समझते हैं।",step2_title:"विचार विकसित करना",step2_text:"हम दिशा तय करके विचार को स्पष्ट दृश्य अवधारणा में बदलते हैं।",step3_title:"पहचान डिज़ाइन",step3_text:"हम लोगो, रंग और तत्वों से पूरी पहचान बनाते हैं।",step4_title:"डिलीवरी",step4_text:"आपको सभी प्लेटफ़ॉर्म के लिए अंतिम पहचान मिलती है।",cta_title:"अपने अगले प्रोजेक्ट के लिए तैयार हैं?",cta_text:"अभी संपर्क करें और VAZ के साथ शुरुआत करें।",cta_whatsapp:"◔ WhatsApp पर संपर्क करें",copyright:"© 2026 VAZ Creative Design Studio"},
-ur:{nav_home:"ہوم",nav_about:"VAZ کے بارے میں",nav_services:"خصوصیات",nav_work:"ہمارا کام",nav_contact:"رابطہ",whatsapp:"واٹس ایپ",hero_title:"ایسا ڈیزائن جو شناخت بنائے<br><span>اور یاد رہ جائے۔</span>",hero_text:"ہم خیالات کو منفرد بصری شناخت میں بدلتے ہیں جو آپ کے برانڈ کی روح کو ظاہر کرتی ہے۔",hero_work:"↗ ہمارا کام دیکھیں",hero_start:"اپنا پروجیکٹ شروع کریں",about_design:"پیشہ ورانہ ڈیزائن",about_design_text:"اعلیٰ معیار اور باریک تفصیل",about_ideas:"تخلیقی خیالات",about_ideas_text:"منفرد شناخت کے حل",about_time:"وقت کی پابندی",about_time_text:"وقت پر کام مکمل",about_support:"مسلسل تعاون",about_support_text:"ہر قدم پر آپ کے ساتھ",services_label:"ہماری خدمات",services_title:"آپ کے برانڈ کے لیے مکمل ڈیزائن حل",service_custom:"کسٹم ڈیزائن",service_custom_text:"آپ کے پروجیکٹ اور اہداف کے مطابق ڈیزائن۔",service_print:"پرنٹ ڈیزائن",service_print_text:"کارڈز، بروشرز، بینرز اور مزید۔",service_ads:"اشتہاری ڈیزائن",service_ads_text:"آپ کے پیغام کو مؤثر انداز میں پہنچانے والے ڈیزائن۔",service_social:"سوشل میڈیا مواد",service_social_text:"آپ کے برانڈ کی شناخت کے مطابق پیشہ ورانہ مواد۔",service_logo:"لوگو ڈیزائن",service_logo_text:"منفرد اور یاد رہنے والے سادہ لوگوز۔",service_identity:"بصری شناخت",service_identity_text:"ایک مکمل شناخت جو مضبوط برانڈ موجودگی بنائے۔",work_label:"ہمارا کام",work_title:"ایسا کام جو فرق پیدا کرے",work_all:"سب",work_identity:"بصری شناخت",work_logos:"لوگوز",work_social:"سوشل میڈیا",work_ads:"اشتہارات",work_all_button:"↗ تمام کام دیکھیں",process_label:"ہمارا طریقہ",process_title:"خیال سے مکمل شناخت تک",step1_title:"پروجیکٹ سمجھنا",step1_text:"ہم آپ کے خیال، سامعین اور اہداف کو سمجھتے ہیں۔",step2_title:"خیال تیار کرنا",step2_text:"ہم سمت طے کرکے خیال کو واضح بصری تصور میں بدلتے ہیں۔",step3_title:"شناخت ڈیزائن",step3_text:"ہم لوگو، رنگوں اور عناصر سے مکمل شناخت بناتے ہیں۔",step4_title:"ڈیلیوری",step4_text:"آپ کو تمام پلیٹ فارمز کے لیے حتمی شناخت ملتی ہے۔",cta_title:"اپنے اگلے پروجیکٹ کے لیے تیار ہیں؟",cta_text:"ابھی رابطہ کریں اور VAZ کے ساتھ آغاز کریں۔",cta_whatsapp:"◔ واٹس ایپ پر رابطہ کریں",copyright:"© 2026 VAZ Creative Design Studio"},
-bn:{nav_home:"হোম",nav_about:"VAZ সম্পর্কে",nav_services:"সুবিধাসমূহ",nav_work:"আমাদের কাজ",nav_contact:"যোগাযোগ",whatsapp:"WhatsApp",hero_title:"যে ডিজাইন পরিচয় তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",hero_text:"আমরা ধারণাকে অনন্য ভিজ্যুয়াল পরিচয়ে রূপ দিই, যা আপনার ব্র্যান্ডের মূল ভাবনা তুলে ধরে।",hero_work:"↗ আমাদের কাজ দেখুন",hero_start:"প্রজেক্ট শুরু করুন",about_design:"পেশাদার ডিজাইন",about_design_text:"উচ্চ মান ও সূক্ষ্ম বিবরণ",about_ideas:"সৃজনশীল ধারণা",about_ideas_text:"অনন্য পরিচয়ের সমাধান",about_time:"সময়মতো ডেলিভারি",about_time_text:"সময় অনুযায়ী কাজ সম্পন্ন",about_support:"নিরবচ্ছিন্ন সহায়তা",about_support_text:"প্রতিটি ধাপে আপনার পাশে",services_label:"আমাদের সেবা",services_title:"আপনার ব্র্যান্ডের জন্য সম্পূর্ণ ডিজাইন সমাধান",service_custom:"কাস্টম ডিজাইন",service_custom_text:"আপনার প্রকল্প ও লক্ষ্য অনুযায়ী ডিজাইন সমাধান।",service_print:"প্রিন্ট ডিজাইন",service_print_text:"কার্ড, ব্রোশিওর, ব্যানার এবং আরও অনেক কিছু।",service_ads:"বিজ্ঞাপন ডিজাইন",service_ads_text:"আপনার প্রচারণার বার্তা কার্যকরভাবে পৌঁছে দেওয়ার ডিজাইন।",service_social:"সোশ্যাল মিডিয়া কনটেন্ট",service_social_text:"আপনার ব্র্যান্ড পরিচয় তুলে ধরা পেশাদার কনটেন্ট।",service_logo:"লোগো ডিজাইন",service_logo_text:"অনন্য ও সহজ লোগো যা গ্রাহকের মনে থাকে।",service_identity:"ভিজ্যুয়াল পরিচয়",service_identity_text:"একটি সম্পূর্ণ পরিচয় যা শক্তিশালী ব্র্যান্ড উপস্থিতি তৈরি করে।",work_label:"আমাদের কাজ",work_title:"যে কাজ পার্থক্য তৈরি করে",work_all:"সব",work_identity:"ভিজ্যুয়াল পরিচয়",work_logos:"লোগো",work_social:"সোশ্যাল মিডিয়া",work_ads:"বিজ্ঞাপন",work_all_button:"↗ সব কাজ দেখুন",process_label:"আমাদের প্রক্রিয়া",process_title:"ধারণা থেকে সম্পূর্ণ পরিচয়",step1_title:"প্রজেক্ট বোঝা",step1_text:"আমরা আপনার ধারণা, দর্শক ও লক্ষ্য বুঝি।",step2_title:"ধারণা তৈরি",step2_text:"আমরা দিক নির্ধারণ করে ধারণাকে পরিষ্কার ভিজ্যুয়াল কনসেপ্টে রূপ দিই।",step3_title:"পরিচয় ডিজাইন",step3_text:"আমরা লোগো, রঙ ও উপাদান দিয়ে সম্পূর্ণ পরিচয় তৈরি করি।",step4_title:"ডেলিভারি",step4_text:"সব প্ল্যাটফর্মের জন্য প্রস্তুত চূড়ান্ত পরিচয় পান।",cta_title:"আপনার পরবর্তী প্রজেক্টের জন্য প্রস্তুত?",cta_text:"এখনই যোগাযোগ করুন এবং VAZ-এর সাথে শুরু করুন।",cta_whatsapp:"◔ WhatsApp-এ যোগাযোগ করুন",copyright:"© 2026 VAZ Creative Design Studio"}
+ar:{nav_home:"الرئيسية",nav_about:"عن VAZ",nav_services:"المزايا",nav_work:"أعمالنا",nav_store:"المتجر",nav_contact:"تواصل معنا",whatsapp:"تواصل عبر واتساب",hero_title:"تصميم يخلق هوية<br><span>تبقى في الذاكرة.</span>",hero_text:"نحوّل الأفكار إلى هويات بصرية فريدة تعكس جوهر علامتك التجارية، ونبني حضورًا لا يُنسى.",hero_work:"↗ استكشف أعمالنا",hero_start:"ابدأ مشروعك",about_design:"تصاميم احترافية",about_design_text:"جودة عالية واهتمام بالتفاصيل",about_ideas:"أفكار إبداعية",about_ideas_text:"حلول مبتكرة لهوية مميزة",about_time:"الالتزام بالمواعيد",about_time_text:"نسلم في الوقت المحدد دائمًا",about_support:"دعم مستمر",about_support_text:"نرافقك في كل خطوة",work_label:"أعمالنا",work_title:"أعمال صنعت الفرق",work_all:"الكل",work_identity:"هويات بصرية",work_logos:"شعارات",work_social:"سوشيال ميديا",work_ads:"تصاميم إعلانية",work_all_button:"↗ عرض جميع الأعمال",process_label:"طريقة العمل",process_title:"من الفكرة إلى هوية متكاملة",step1_title:"نستلم المشروع",step1_text:"نتعرف على فكرتك، جمهورك، شخصيتك والأهداف التي تريد أن تظهر بها.",step2_title:"نطور الفكرة",step2_text:"نحدد الاتجاه المناسب ونحوّل الفكرة إلى مفهوم بصري واضح.",step3_title:"نصمم الهوية",step3_text:"نصمم الشعار والألوان والعناصر ونبني هوية بصرية متكاملة.",step4_title:"نسلم المشروع",step4_text:"تحصل على الهوية النهائية الجاهزة للاستخدام في جميع المنصات.",cta_title:"جاهز لنعمل على مشروعك القادم؟",cta_text:"تواصل معنا الآن وابدأ رحلتك مع VAZ.",cta_whatsapp:"◔ تواصل عبر واتساب الآن",copyright:"© 2026 VAZ Creative Design Studio"},
+en:{nav_home:"Home",nav_about:"About VAZ",nav_services:"Features",nav_work:"Our Work",nav_store:"Store",nav_contact:"Contact",whatsapp:"WhatsApp",hero_title:"Design that creates an identity<br><span>that stays in memory.</span>",hero_text:"We turn ideas into distinctive visual identities that reflect the essence of your brand and build a presence that lasts.",hero_work:"↗ Explore our work",hero_start:"Start your project",about_design:"Professional Design",about_design_text:"High quality and attention to detail",about_ideas:"Creative Ideas",about_ideas_text:"Distinctive identity solutions",about_time:"On-Time Delivery",about_time_text:"We deliver on schedule",about_support:"Continuous Support",about_support_text:"With you every step",work_label:"Our Work",work_title:"Work that makes a difference",work_all:"All",work_identity:"Visual Identity",work_logos:"Logos",work_social:"Social Media",work_ads:"Advertising",work_all_button:"↗ View all work",process_label:"Our Process",process_title:"From idea to complete identity",step1_title:"Project Brief",step1_text:"We understand your idea, audience, personality and goals.",step2_title:"Develop the Idea",step2_text:"We define the direction and turn the idea into a clear visual concept.",step3_title:"Design the Identity",step3_text:"We design the logo, colors and elements into a complete identity.",step4_title:"Deliver",step4_text:"You receive the final identity ready for every platform.",cta_title:"Ready for your next project?",cta_text:"Contact us now and start your VAZ journey.",cta_whatsapp:"◔ Contact us on WhatsApp",copyright:"© 2026 VAZ Creative Design Studio"},
+hi:{nav_home:"होम",nav_about:"VAZ के बारे में",nav_services:"विशेषताएँ",nav_work:"हमारा काम",nav_store:"स्टोर",nav_contact:"संपर्क",whatsapp:"WhatsApp",hero_title:"ऐसा डिज़ाइन जो पहचान बनाए<br><span>और याद रह जाए।</span>",hero_text:"हम विचारों को ऐसी विशिष्ट दृश्य पहचान में बदलते हैं जो आपके ब्रांड की आत्मा को दर्शाती है।",hero_work:"↗ हमारा काम देखें",hero_start:"प्रोजेक्ट शुरू करें",about_design:"पेशेवर डिज़ाइन",about_design_text:"उच्च गुणवत्ता और बारीकी पर ध्यान",about_ideas:"रचनात्मक विचार",about_ideas_text:"विशिष्ट पहचान के समाधान",about_time:"समय पर डिलीवरी",about_time_text:"समय पर काम पूरा",about_support:"निरंतर सहयोग",about_support_text:"हर कदम पर आपके साथ",work_label:"हमारा काम",work_title:"ऐसा काम जो फर्क पैदा करे",work_all:"सभी",work_identity:"विज़ुअल पहचान",work_logos:"लोगो",work_social:"सोशल मीडिया",work_ads:"विज्ञापन",work_all_button:"↗ सभी काम देखें",process_label:"हमारी प्रक्रिया",process_title:"विचार से संपूर्ण पहचान तक",step1_title:"प्रोजेक्ट समझना",step1_text:"हम आपके विचार, दर्शकों और लक्ष्यों को समझते हैं।",step2_title:"विचार विकसित करना",step2_text:"हम दिशा तय करके विचार को स्पष्ट दृश्य अवधारणा में बदलते हैं।",step3_title:"पहचान डिज़ाइन",step3_text:"हम लोगो, रंग और तत्वों से पूरी पहचान बनाते हैं।",step4_title:"डिलीवरी",step4_text:"आपको सभी प्लेटफ़ॉर्म के लिए अंतिम पहचान मिलती है।",cta_title:"अपने अगले प्रोजेक्ट के लिए तैयार हैं?",cta_text:"अभी संपर्क करें और VAZ के साथ शुरुआत करें।",cta_whatsapp:"◔ WhatsApp पर संपर्क करें",copyright:"© 2026 VAZ Creative Design Studio"},
+ur:{nav_home:"ہوم",nav_about:"VAZ کے بارے میں",nav_services:"خصوصیات",nav_work:"ہمارا کام",nav_store:"اسٹور",nav_contact:"رابطہ",whatsapp:"واٹس ایپ",hero_title:"ایسا ڈیزائن جو شناخت بنائے<br><span>اور یاد رہ جائے۔</span>",hero_text:"ہم خیالات کو منفرد بصری شناخت میں بدلتے ہیں جو آپ کے برانڈ کی روح کو ظاہر کرتی ہے۔",hero_work:"↗ ہمارا کام دیکھیں",hero_start:"اپنا پروجیکٹ شروع کریں",about_design:"پیشہ ورانہ ڈیزائن",about_design_text:"اعلیٰ معیار اور باریک تفصیل",about_ideas:"تخلیقی خیالات",about_ideas_text:"منفرد شناخت کے حل",about_time:"وقت کی پابندی",about_time_text:"وقت پر کام مکمل",about_support:"مسلسل تعاون",about_support_text:"ہر قدم پر آپ کے ساتھ",work_label:"ہمارا کام",work_title:"ایسا کام جو فرق پیدا کرے",work_all:"سب",work_identity:"بصری شناخت",work_logos:"لوگوز",work_social:"سوشل میڈیا",work_ads:"اشتہارات",work_all_button:"↗ تمام کام دیکھیں",process_label:"ہمارا طریقہ",process_title:"خیال سے مکمل شناخت تک",step1_title:"پروجیکٹ سمجھنا",step1_text:"ہم آپ کے خیال، سامعین اور اہداف کو سمجھتے ہیں۔",step2_title:"خیال تیار کرنا",step2_text:"ہم سمت طے کرکے خیال کو واضح بصری تصور میں بدلتے ہیں۔",step3_title:"شناخت ڈیزائن",step3_text:"ہم لوگو، رنگوں اور عناصر سے مکمل شناخت بناتے ہیں۔",step4_title:"ڈیلیوری",step4_text:"آپ کو تمام پلیٹ فارمز کے لیے حتمی شناخت ملتی ہے۔",cta_title:"اپنے اگلے پروجیکٹ کے لیے تیار ہیں؟",cta_text:"ابھی رابطہ کریں اور VAZ کے ساتھ آغاز کریں۔",cta_whatsapp:"◔ واٹس ایپ پر رابطہ کریں",copyright:"© 2026 VAZ Creative Design Studio"},
+bn:{nav_home:"হোম",nav_about:"VAZ সম্পর্কে",nav_services:"সুবিধাসমূহ",nav_work:"আমাদের কাজ",nav_store:"স্টোর",nav_contact:"যোগাযোগ",whatsapp:"WhatsApp",hero_title:"যে ডিজাইন পরিচয় তৈরি করে<br><span>এবং মনে থেকে যায়।</span>",hero_text:"আমরা ধারণাকে অনন্য ভিজ্যুয়াল পরিচয়ে রূপ দিই, যা আপনার ব্র্যান্ডের মূল ভাবনা তুলে ধরে।",hero_work:"↗ আমাদের কাজ দেখুন",hero_start:"প্রজেক্ট শুরু করুন",about_design:"পেশাদার ডিজাইন",about_design_text:"উচ্চ মান ও সূক্ষ্ম বিবরণ",about_ideas:"সৃজনশীল ধারণা",about_ideas_text:"অনন্য পরিচয়ের সমাধান",about_time:"সময়মতো ডেলিভারি",about_time_text:"সময় অনুযায়ী কাজ সম্পন্ন",about_support:"নিরবচ্ছিন্ন সহায়তা",about_support_text:"প্রতিটি ধাপে আপনার পাশে",work_label:"আমাদের কাজ",work_title:"যে কাজ পার্থক্য তৈরি করে",work_all:"সব",work_identity:"ভিজ্যুয়াল পরিচয়",work_logos:"লোগো",work_social:"সোশ্যাল মিডিয়া",work_ads:"বিজ্ঞাপন",work_all_button:"↗ সব কাজ দেখুন",process_label:"আমাদের প্রক্রিয়া",process_title:"ধারণা থেকে সম্পূর্ণ পরিচয়",step1_title:"প্রজেক্ট বোঝা",step1_text:"আমরা আপনার ধারণা, দর্শক ও লক্ষ্য বুঝি।",step2_title:"ধারণা তৈরি",step2_text:"আমরা দিক নির্ধারণ করে ধারণাকে পরিষ্কার ভিজ্যুয়াল কনসেপ্টে রূপ দিই।",step3_title:"পরিচয় ডিজাইন",step3_text:"আমরা লোগো, রঙ ও উপাদান দিয়ে সম্পূর্ণ পরিচয় তৈরি করি।",step4_title:"ডেলিভারি",step4_text:"সব প্ল্যাটফর্মের জন্য প্রস্তুত চূড়ান্ত পরিচয় পান।",cta_title:"আপনার পরবর্তী প্রজেক্টের জন্য প্রস্তুত?",cta_text:"এখনই যোগাযোগ করুন এবং VAZ-এর সাথে শুরু করুন।",cta_whatsapp:"◔ WhatsApp-এ যোগাযোগ করুন",copyright:"© 2026 VAZ Creative Design Studio"}
 };
+const langMeta={
+ ar:{dir:"rtl",letter:"ع",font:"Cairo"},
+ en:{dir:"ltr",letter:"E",font:"Poppins"},
+ hi:{dir:"ltr",letter:"ह",font:"Noto Sans Devanagari"},
+ ur:{dir:"rtl",letter:"ا",font:"Noto Nastaliq Urdu"},
+ bn:{dir:"ltr",letter:"ব",font:"Noto Sans Bengali"}
+};
+const langFontVars={ar:"--font-ar",en:"--font-en",hi:"--font-hi",ur:"--font-ur",bn:"--font-bn"};
+function updateLanguageChip(lang){
+ const chip=document.getElementById("languageLetter");
+ if(chip)chip.textContent=(langMeta[lang]||langMeta.ar).letter;
+}
 function applyLanguage(lang){
  const t=translations[lang]||translations.ar;
+ const meta=langMeta[lang]||langMeta.ar;
  document.documentElement.lang=lang;
- document.documentElement.dir=(lang==="ar"||lang==="ur")?"rtl":"ltr";
- document.querySelectorAll("[data-i18n]").forEach(el=>{if(t[el.dataset.i18n]!==undefined){if((el.dataset.i18n==="whatsapp"||el.dataset.i18n==="cta_whatsapp")&&el.querySelector(".wa-icon")){const s=el.querySelector("span");if(s)s.textContent=t[el.dataset.i18n];}else{el.innerHTML=t[el.dataset.i18n]}}});
- document.getElementById("languageSelect").value=lang;
- const letters={ar:"ع",en:"E",hi:"ह",ur:"ا",bn:"ব"};
- document.getElementById("languageLetter").textContent=letters[lang]||"ع";
- localStorage.setItem("vazLanguage",lang);
+ document.documentElement.dir=meta.dir;
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const key=el.dataset.i18n;
+  if(t[key]===undefined)return;
+  if((key==="whatsapp"||key==="cta_whatsapp")&&el.querySelector(".wa-icon")){
+   const s=el.querySelector("span");
+   if(s)s.textContent=t[key];
+  }else{
+   el.innerHTML=t[key];
+  }
+ });
+ const select=document.getElementById("languageSelect");
+ if(select)select.value=lang;
+ updateLanguageChip(lang);
+ const bodyStyle=document.body.style;
+ Object.values(langFontVars).forEach(v=>bodyStyle.removeProperty(v));
+ bodyStyle.setProperty(langFontVars[lang]||"--font-ar","1");
+ try{localStorage.setItem("vazLanguage",lang)}catch(e){}
 }
-document.getElementById("languageSelect").addEventListener("change",e=>applyLanguage(e.target.value));
-function toggleMenu(){document.querySelector(".nav").classList.toggle("open")}
-applyLanguage(localStorage.getItem("vazLanguage")||"ar");
+const languageSelect=document.getElementById("languageSelect");
+if(languageSelect)languageSelect.addEventListener("change",e=>applyLanguage(e.target.value));
+function initMenus(){
+ const nav=document.querySelector(".nav");
+ const navToggle=document.querySelector(".nav-toggle");
+ const langWrap=document.querySelector(".menu-lang");
+ const langToggle=document.querySelector(".menu-toggle");
+ function closeNav(){if(nav){nav.classList.remove("open");if(navToggle)navToggle.setAttribute("aria-expanded","false")}}
+ function closeLang(){if(langWrap){langWrap.classList.remove("open");if(langToggle)langToggle.setAttribute("aria-expanded","false")}}
+ if(nav&&navToggle){
+  navToggle.addEventListener("click",function(e){
+   e.stopPropagation();
+   const open=nav.classList.toggle("open");
+   navToggle.setAttribute("aria-expanded",open?"true":"false");
+   if(open)closeLang();
+  });
+ }
+ if(langWrap&&langToggle){
+  langToggle.addEventListener("click",function(e){
+   e.stopPropagation();
+   const open=langWrap.classList.toggle("open");
+   langToggle.setAttribute("aria-expanded",open?"true":"false");
+   if(open)closeNav();
+  });
+ }
+ document.addEventListener("click",function(e){
+  if(langWrap&&!langWrap.contains(e.target))closeLang();
+  if(nav&&(!navToggle||!navToggle.contains(e.target))&&e.target.closest!==undefined&&!e.target.closest("nav"))closeNav();
+ });
+ if(nav)nav.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",closeNav));
+}
+let savedLang=null;
+try{savedLang=localStorage.getItem("vazLanguage")}catch(e){}
+applyLanguage(savedLang||"ar");
+initMenus();
 </script>
-
-<script>document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.menu-toggle'),w=document.querySelector('.menu-lang');if(b&&w){b.addEventListener('click',function(e){e.stopPropagation();var o=w.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')});document.addEventListener('click',function(e){if(!w.contains(e.target)){w.classList.remove('open');b.setAttribute('aria-expanded','false')}})}});</script>
 </body>
 </html>
