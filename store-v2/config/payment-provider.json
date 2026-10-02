@@ -1,0 +1,7 @@
+{
+  "provider": null,
+  "mode": "sandbox",
+  "credentialsLocation": "server_environment_only",
+  "clientSecretsInFrontend": false,
+  "paymentConfirmation": "server_verified_webhook"
+}
