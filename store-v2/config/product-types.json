@@ -1,0 +1,21 @@
+{
+  "productTypes": [
+    {
+      "id": "digital",
+      "label": "منتج رقمي",
+      "fulfillment": "secure_download"
+    },
+    {
+      "id": "physical",
+      "label": "منتج فعلي",
+      "fulfillment": "shipping"
+    },
+    {
+      "id": "service",
+      "label": "خدمة",
+      "fulfillment": "manual_or_scheduled"
+    }
+  ],
+  "currency": "SAR",
+  "storeVersion": "2.0"
+}
