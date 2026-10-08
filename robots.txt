@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vazstudio.github.io/sitemap.xml
