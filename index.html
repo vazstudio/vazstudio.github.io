@@ -194,6 +194,14 @@ html[lang="ur"] .hero p{line-height:2.2}
   }
   .mobile-store-discovery::after{content:"↗";font-size:14px;color:#c58bd0}
 }
+
+.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.service-card{padding:24px 18px;border:1px solid var(--line);border-radius:10px;background:rgba(18,10,24,.45);transition:.25s}
+.service-card:hover{transform:translateY(-3px);border-color:rgba(192,106,187,.45)}
+.service-card h3{font-size:15px;font-weight:500;margin-bottom:10px;color:var(--white)}
+.service-card p{font-size:11px;line-height:1.9;color:#a99aa8}
+@media(max-width:1000px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.services-grid{grid-template-columns:1fr}.service-card{padding:20px 16px}}
 </style>
 </head>
 <body>
@@ -223,6 +231,23 @@ html[lang="ur"] .hero p{line-height:2.2}
 <div class="feature"><div class="icon">◷</div><div><h3 data-i18n="about_time">الالتزام بالمواعيد</h3><p data-i18n="about_time_text">نسلم في الوقت المحدد دائمًا</p></div></div>
 <div class="feature"><div class="icon">♧</div><div><h3 data-i18n="about_support">دعم مستمر</h3><p data-i18n="about_support_text">نرافقك في كل خطوة</p></div></div>
 </div></section></div>
+
+<section id="services">
+<div class="container">
+<div class="section-head">
+<div class="section-label">خدماتنا</div>
+<div class="section-title">حلول تصميم تصنع حضورًا أقوى لعلامتك</div>
+</div>
+<div class="services-grid">
+<div class="service-card"><h3>تصميم الهوية التجارية</h3><p>نصمم هويات تجارية متكاملة تعكس شخصية العلامة التجارية وتمنحها حضورًا مميزًا.</p></div>
+<div class="service-card"><h3>تصميم المطاعم والمقاهي</h3><p>نصمم هويات ومواد بصرية للمطاعم والمقاهي تساعد العلامة على الظهور بشكل احترافي ومميز.</p></div>
+<div class="service-card"><h3>تصميم منيو المطاعم</h3><p>تصميم منيو احترافي وواضح يعرض المنتجات بطريقة جذابة ومناسبة لهوية المطعم.</p></div>
+<div class="service-card"><h3>تصميم الإعلانات</h3><p>نصمم إعلانات بصرية جذابة للمنتجات والعروض والحملات التسويقية.</p></div>
+<div class="service-card"><h3>تصميم السوشيال ميديا</h3><p>تصاميم احترافية لمنصات التواصل الاجتماعي تحافظ على هوية العلامة وتلفت انتباه الجمهور.</p></div>
+</div>
+</div>
+</section>
+
 <section id="work"><div class="container"><div class="section-head"><div class="section-label" data-i18n="work_label">أعمالنا</div><div class="section-title" data-i18n="work_title">أعمال صنعت الفرق</div></div><div class="work-tabs"><span class="active" data-i18n="work_all">الكل</span><span data-i18n="work_identity">هويات بصرية</span><span data-i18n="work_logos">شعارات</span><span data-i18n="work_social">سوشيال ميديا</span><span data-i18n="work_ads">تصاميم إعلانية</span></div><div class="work-grid">
 <div class="work-card"><img src="AUREA-COSMETICS.jpeg" width="1503" height="1047" loading="lazy" alt="AUREA Cosmetics"></div><div class="work-card"><img src="VAZ_NEX_COLLECTION_DIGITAL_FINAL_800x533.jpg" width="800" height="533" loading="lazy" alt="NEX Collection"></div><div class="work-card"><img src="VAZ_LUMERA.png" width="800" height="434" loading="lazy" alt="LUMERA"></div><div class="work-card"><img src="VAZ_MAVORA_final_800x434.png" width="800" height="434" loading="lazy" alt="MAVORA"></div><div class="work-card"><img src="VAZ_VELORA.png" width="800" height="434" loading="lazy" alt="VELORA"></div><div class="work-card"><img src="VAZ_VERANE_final_800x434.png" width="800" height="434" loading="lazy" alt="VERANE"></div>
 </div><a class="work-btn" href="#contact" data-i18n="work_all_button">↗ عرض جميع الأعمال</a></div></section>
